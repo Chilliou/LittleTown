@@ -15,9 +15,9 @@ public class Tuile
 	{
 		this.nom   = nom;
 		
-		this.cout              = new ArrayList ();
-		this.coutProduction    = new ArrayList ();
-		this.revientProduction = new ArrayList ();
+		this.cout              = new ArrayList <Ressource>();
+		this.coutProduction    = new ArrayList <Ressource>();
+		this.revientProduction = new ArrayList <Ressource>();
 		
 		this.score = score;
 	}
@@ -25,15 +25,18 @@ public class Tuile
 	public boolean ajouterCout ( Ressource r )
 	{
 		this.cout.add ( r );
+		return true;
 	}
 	
 	public boolean ajouterCoutProd ( Ressource r )
 	{
 		this.coutProduction.add ( r );
+		return true;
 	}
 	
 	public boolean ajouterRevientProd ( Ressource r )
 	{
 		this.revientProduction.add ( r );
+		return true;
 	}
 }
