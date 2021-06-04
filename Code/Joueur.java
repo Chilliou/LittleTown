@@ -6,5 +6,8 @@ public class Joueur
     private Batiment ensBatiment;
     
     
-    public Joueur
+    public Joueur()
+    {
+    	
+    }
 }
