@@ -3,11 +3,11 @@ public class Joueur
     // Attributs
     private int iScore;
     private String sCouleur;
-    private Batiment ensBatiment;
+    private Tuile ensBatiment;
     
     
     public Joueur()
     {
-    	
+
     }
 }
