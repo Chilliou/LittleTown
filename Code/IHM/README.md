@@ -6,8 +6,8 @@ Partie ihm du projet.
 
 > Menu du jeu
 
-![Menu](https://i.ibb.co/rmSmRt9/Menu.png)
+![Menu](https://i.ibb.co/2yQy16J/Menu.png)
 
 > Plateau du jeu
 
-![Plateau](https://i.ibb.co/dgjmbXk/Plateau-de-jeu.png)
+![Plateau](https://i.ibb.co/0tmsB1Y/Plateau-de-jeu.png)
