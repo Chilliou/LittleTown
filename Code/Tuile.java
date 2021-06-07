@@ -1,9 +1,12 @@
 import java.util.ArrayList;
 
+
 public class Tuile
 {
 	
 	private String nom;
+
+	private Joueur proprietaire;
 	
 	private ArrayList<Ressource> cout;
 	private ArrayList<Ressource> coutProduction;
@@ -20,6 +23,8 @@ public class Tuile
 		this.cout              = new ArrayList <Ressource>();
 		this.coutProduction    = new ArrayList <Ressource>();
 		this.revientProduction = new ArrayList <Ressource>();
+
+		this.proprietaire = null;
 		
 		this.score = score;
 		this.revientPassif = false;
@@ -28,6 +33,16 @@ public class Tuile
 	public Tuile ( String nom)  // Le temps que l'on fasse une classe TuilePlateau pour les tuilles de plateau
 	{
 		this(nom,0,true);
+	}
+
+	public Joueur getProprietaire()
+	{
+		return this.proprietaire;
+	}
+
+	public void setProprietaire(Joueur proprietaire)
+	{
+		this.proprietaire = proprietaire;
 	}
 
 	
