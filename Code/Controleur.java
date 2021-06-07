@@ -32,12 +32,12 @@ public class Controleur
 			
 			switch ( action )
 			{
-				case 1 : this.metier.placerOuvrier     (  );
+				case 1 -> this.metier.placerOuvrier     (  );
 				//case 2 : this.metier.construireBatiment     (  );
-				case 3 : this.metier.activerTuile     (  );
-				case 4 : this.metier.getInfoBatiment     ( );
-				case 5 : this.metier.echangerPiece     (  );
-				case 6 : this.metier.finTour     (  );
+				case 3 -> this.metier.activerTuile     (  );
+				case 4 -> this.metier.getInfoBatiment     ( );
+				case 5 -> this.metier.echangerPiece     (  );
+				case 6 -> this.metier.finTour     (  );
 
 			}
 
