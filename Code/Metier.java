@@ -95,13 +95,12 @@ public class Metier
 
     public String getInfoBatiment( )
     {
-      System.out.println("JE PASSE ICI");
-      /*
+      
        String saisie = this.ctrl.getIhm().getSaisiePos();
-        int col =  saisie.charAt(0) - (int) ('A');
-        int lig = saisie.charAt(1);
-      */
-      return this.ctrl.getIhm().getTuile(1,2).toString();
+        int y =  saisie.charAt(0) - (int) ('A');
+        int x = (Integer.parseInt(saisie.charAt(1)+"")-1) ;
+
+      return this.ctrl.getIhm().getTuile(x,y).toString();
     }
 
     public void finTour()
