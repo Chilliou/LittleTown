@@ -1,7 +1,6 @@
 import java.util.Scanner;
 import java.io.FileInputStream;
 
-
 public class Plateau 
 {
 	private Tuile[][] terrainDeJeu;
@@ -19,19 +18,19 @@ public class Plateau
 	{
 		try
 		{
-			Scanner sc = new Scanner ( new FileInputStream ( "Plateau"+choixPlateau+".data" ) );
+			Scanner sc = new Scanner ( new FileInputStream ( "plateau"+choixPlateau+".data" ) );
 
 			int ligne = 0;
 			while ( sc.hasNextLine() )
 			{
-				int colone=0;
+				int colone = 0;
 				for(Character c : sc.nextLine().toCharArray())
 				{
-					if(c == 'P')  // pierre
+					if(c == 'P')  // Pierre
 						this.terrainDeJeu[ligne][colone] = new Tuile("Pierre");
 					if(c == 'V')  // Vide
 						this.terrainDeJeu[ligne][colone] = new Tuile("Vide");
-					if(c == 'E')  // eau
+					if(c == 'E')  // Eau
 						this.terrainDeJeu[ligne][colone] = new Tuile("Eau");
 					if(c == 'A')  // Arbre
 						this.terrainDeJeu[ligne][colone] = new Tuile("Arbre");
@@ -52,14 +51,27 @@ public class Plateau
 	public String toString()
 	{
 		String sRet="";
-		for(int i=0;i<this.terrainDeJeu.length;i++)
+
+        // LIGNE HAUTE
+        for (int cpt = 0; (cpt < this.terrainDeJeu[0].length -1); cpt++) sRet += "+---";
+		sRet+="+---+\n";
+		
+		for(int i=0; i < this.terrainDeJeu.length;i++)
 		{
-			for(int y=0;y<this.terrainDeJeu[0].length;y++)
+			for(int y=0; y < this.terrainDeJeu[0].length;y++)
 			{
-				sRet+=this.terrainDeJeu[i][y].toString();
+				if (! this.terrainDeJeu[i][y].toString().equals("V")) sRet+= "| " + this.terrainDeJeu[i][y].toString() + " ";
+				else sRet+= "|   ";
+
+				if ( y == this.terrainDeJeu[0].length -1) sRet += "|";
 			}
 			sRet+="\n";
+
 		}
+
+        // LIGNE BASSE
+        for (int cpt = 0; (cpt < this.terrainDeJeu[0].length -1 ); cpt++) sRet += "+---";
+		sRet+="+---+\n";
 
 		return sRet;
 	}
