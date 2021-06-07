@@ -2,15 +2,13 @@ public class Controleur
 {
 	private Metier metier;
 
-	private Plateau    PlateauPrincpal;
-	private PlateauBas PlateauSecondaire;
+	private IhmCui ihm
 
 	public Controleur()
 	{
 		this.metier = Metier();
 
-		this.Plateau    =  new PlateauPrincpal   (  );
-		this.PlateauBas = new PlateauSecondaire  (  );
+		this.ihm    =  new IhmCui   ( this );
 
 		this.lancerJeu();
 	}
@@ -19,26 +17,26 @@ public class Controleur
 	{
 		char action;
 
-		this.PlateauPrincpal.afficher();
-		this.PlateauPrincpal.afficher();
+		this.ihm.afficher();
 
-		while ( true )
+		while ( this.metier.getTour() <= 4 )
 		{
 			action = this.ihm.getChoix();
 
 			switch ( action )
 			{
-				case 'i' -> this.metier.poser     ( );
-				case 'j' -> this.metier.constuire     (  );
-				case 'k' -> this.metier.info     (  );
-				
+				case '1' -> this.metier.placerOuvrier     ( );
+				case '2' -> this.metier.constuireBtm     (  );
+				case '3' -> this.metier.activerTuile     (  );
+				case '4' -> this.metier.infoBtm     ( );
+				case '5' -> this.metier.echangerRrc     (  );
+				case '6' -> this.metier.finDeTour     (  );
 
 			}
 
-			this.metier.changeJoueurActif();
+			this.metier.changerJoueurActif();
 
-			this.PlateauPrincpal.afficher();
-			this.PlateauPrincpal.afficher();
+			this.ihm.afficher();
 		}
 	}
 
