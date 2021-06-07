@@ -1,5 +1,3 @@
-package Code;
-
 public class Ressource
 {
 	private String nom;
