@@ -6,33 +6,36 @@ public class Controleur
 
 	public Controleur()
 	{
-		this.metier = Metier();
+		this.metier = new Metier(this);
 
-		this.ihm    =  new IhmCui   ( this );
+		this.ihm    =  new IhmCUI   ( );
 
 		this.lancerJeu();
 	}
 
 	private void lancerJeu()
 	{
-		char action;
+		int action;
 
 		this.ihm.afficher();
 
 		while ( this.metier.getTour() <= 4 )
 		{
 			action = this.ihm.getChoix();
+			System.out.println(action);
 
+			/*
 			switch ( action )
 			{
-				case '1' : this.metier.placerOuvrier     ( );
-				case '2' : this.metier.constuireBtm     (  );
-				case '3' : this.metier.activerTuile     (  );
-				case '4' : this.metier.infoBtm     ( );
-				case '5' : this.metier.echangerRrc     (  );
-				case '6' : this.metier.finDeTour     (  );
+				case 1 : this.metier.placerOuvrier     ( );
+				case 2 : this.metier.construireBatiment     (  );
+				case 3 : this.metier.activerTuile     (  );
+				case 4 : this.metier.getInfoBatiment     ( );
+				case 5 : this.metier.echangerPiece     (  );
+				case 6 : this.metier.finTour     (  );
 
 			}
+			*/
 
 			this.metier.changerJoueurActif();
 

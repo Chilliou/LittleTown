@@ -1,9 +1,8 @@
 public class Metier
 {
 
-    Controleur ctrl;
-    Plateau    plateau;
-
+    private Controleur ctrl;
+  
     private int nbJoueurs;
     private Joueur jActif;
     private int tourActuel;
@@ -21,7 +20,7 @@ public class Metier
         return this.jActif;
     }
 
-    public void placerOuvrier(int x, int y)
+    public void placerOuvrier()
     {
         
     }
@@ -54,5 +53,10 @@ public class Metier
     public int getTour()
     {
         return this.tourActuel;
+    }
+
+    public void changerJoueurActif()
+    {
+    	
     }
 }

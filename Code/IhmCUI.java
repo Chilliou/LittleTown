@@ -15,8 +15,8 @@ public class IhmCUI
     public void afficher()
     {
         System.out.println("Plateau actuel : ");
-        this.plateau.toString();
-        this.plateauBas.toString();
+        System.out.println( this.plateau);
+        System.out.println( this.plateauBas);
 
     }
 
@@ -35,13 +35,13 @@ public class IhmCUI
         sChoix += "| 6 - Fin de tour                                \n";
         sChoix += "+-----------------------------------------------+\n";
 
-        try ( Scanner scanner = new Scanner( System.in ) )
-        {
-            
-            System.out.print( "Faites votre choix :" );
-            iChoix = scanner.nextInt();
-        }
-
+		System.out.println( sChoix);
+		 
+        Scanner sc = new Scanner( System.in );
+        
+        System.out.print( "Faites votre choix :" );
+        iChoix = sc.nextInt();
+        
 
         return iChoix;
     }
