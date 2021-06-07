@@ -18,13 +18,13 @@ public class PlateauBas
 
     private void initPlateauBas()
     {
-        this.plateauBas[0] = new Tuile("T");
-        this.plateauBas[1] = new Tuile("T");
-        this.plateauBas[2] = new Tuile("T");
+        this.plateauBas[0] = new Batiment("T");
+        this.plateauBas[1] = new Batiment("T");
+        this.plateauBas[2] = new Batiment("T");
 
-        this.plateauBas[3] = new Tuile("T");
-        this.plateauBas[4] = new Tuile("T");
-        this.plateauBas[5] = new Tuile("T");
+        this.plateauBas[3] = new Batiment("T");
+        this.plateauBas[4] = new Batiment("T");
+        this.plateauBas[5] = new Batiment("T");
     }
 
 

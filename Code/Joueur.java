@@ -28,4 +28,10 @@ public class Joueur
 	{
 		this.iScore+=i;
 	}
+
+	public String toString()
+	{
+		return "Joueur n°" + this.iNumJoueur + ", " +  " couleur : " + this.sCouleur;
+
+	}
 }

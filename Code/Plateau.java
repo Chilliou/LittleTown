@@ -27,13 +27,13 @@ public class Plateau
 				for(Character c : sc.nextLine().toCharArray())
 				{
 					if(c == 'P')  // Pierre
-						this.terrainDeJeu[ligne][colone] = new Tuile("Pierre");
+						this.terrainDeJeu[ligne][colone] = new Batiment("Pierre");
 					if(c == 'V')  // Vide
-						this.terrainDeJeu[ligne][colone] = new Tuile("Vide");
+						this.terrainDeJeu[ligne][colone] = new TuileVide();
 					if(c == 'E')  // Eau
-						this.terrainDeJeu[ligne][colone] = new Tuile("Eau");
+						this.terrainDeJeu[ligne][colone] = new Batiment("Eau");
 					if(c == 'A')  // Arbre
-						this.terrainDeJeu[ligne][colone] = new Tuile("Arbre");
+						this.terrainDeJeu[ligne][colone] = new Batiment("Arbre");
 
 					colone++;
 				}
@@ -47,6 +47,27 @@ public class Plateau
 		{ e.printStackTrace(); }
 		
 	}
+
+    public Tuile getTuile(int x, int y)
+    {
+        return this.terrainDeJeu[x][y];
+    }
+
+    public TuileVide getTuileVide ( int x, int y )
+    {
+      return (TuileVide) this.terrainDeJeu[x][y];
+    }
+
+    public void setTuile(int x, int y, Tuile tuile)
+    {
+      this.terrainDeJeu[x][y] = tuile;
+    }
+
+    public void setTuileVide (int x, int y, TuileVide tuile)
+    {
+      this.terrainDeJeu[x][y] = tuile;
+    }
+
 
 	public String toString()
 	{
@@ -76,7 +97,7 @@ public class Plateau
 					}
 					else
 					{
-						sRet+= "| " + this.terrainDeJeu[i][y].toString() + this.terrainDeJeu[i][y].getProprietaire().getNumJoueur() + " ";
+						sRet+= "| " + this.terrainDeJeu[i][y].toString() + "p ";
 					}
 					
 				}	
@@ -105,4 +126,3 @@ public class Plateau
 		System.out.println(p);
     }
 }
-
