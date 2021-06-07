@@ -50,36 +50,59 @@ public class Plateau
 
 	public String toString()
 	{
-		String sRet="";
+		String sRet = "";
 
         // LIGNE HAUTE
-        for (int cpt = 0; (cpt < this.terrainDeJeu[0].length -1); cpt++) sRet += "+---";
-		sRet+="+---+\n";
+
+        for (int cpt = 0; (cpt < this.terrainDeJeu[0].length); cpt++)
+		{
+			sRet+="  " + (char)('A'+cpt) + "  ";
+		}
+
+		sRet+="\n";
+
+		for (int cpt = 0; (cpt < this.terrainDeJeu[0].length -1); cpt++) sRet += "+----";
+		sRet+="+----+\n";
 		
 		for(int i=0; i < this.terrainDeJeu.length;i++)
 		{
 			for(int y=0; y < this.terrainDeJeu[0].length;y++)
 			{
-				if (! this.terrainDeJeu[i][y].toString().equals("V")) sRet+= "| " + this.terrainDeJeu[i][y].toString() + " ";
-				else sRet+= "|   ";
+				if (! this.terrainDeJeu[i][y].toString().equals("V"))
+				{
+					if ( this.terrainDeJeu[i][y].getProprietaire() == null)
+					{
+						sRet+= "| " + this.terrainDeJeu[i][y].toString() + "- ";
+					}
+					else
+					{
+						sRet+= "| " + this.terrainDeJeu[i][y].toString() + this.terrainDeJeu[i][y].getProprietaire().getNumJoueur() + " ";
+					}
+					
+				}	
+				else
+				{
+					sRet+= "|    ";
+				}
 
 				if ( y == this.terrainDeJeu[0].length -1) sRet += "|";
 			}
+			sRet +=  " " + (i+1) ;
 			sRet+="\n";
 
-		}
+			for (int cpt = 0; (cpt < this.terrainDeJeu[0].length -1 ); cpt++) sRet += "+----";
+			sRet+="+----+\n";
 
-        // LIGNE BASSE
-        for (int cpt = 0; (cpt < this.terrainDeJeu[0].length -1 ); cpt++) sRet += "+---";
-		sRet+="+---+\n";
+		}
 
 		return sRet;
 	}
 
-	public static void main(String[] args)
-	{
+    public static void main(String[] args)
+    {
+		System.out.println();
 		Plateau p  = new Plateau(4,1);
 		System.out.println(p);
-	}
+    }
 }
 
