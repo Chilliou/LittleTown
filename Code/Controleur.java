@@ -2,7 +2,7 @@ public class Controleur
 {
 	private Metier metier;
 
-	private IhmCui ihm
+	private IhmCUI ihm;
 
 	public Controleur()
 	{
@@ -25,12 +25,12 @@ public class Controleur
 
 			switch ( action )
 			{
-				case '1' -> this.metier.placerOuvrier     ( );
-				case '2' -> this.metier.constuireBtm     (  );
-				case '3' -> this.metier.activerTuile     (  );
-				case '4' -> this.metier.infoBtm     ( );
-				case '5' -> this.metier.echangerRrc     (  );
-				case '6' -> this.metier.finDeTour     (  );
+				case '1' : this.metier.placerOuvrier     ( );
+				case '2' : this.metier.constuireBtm     (  );
+				case '3' : this.metier.activerTuile     (  );
+				case '4' : this.metier.infoBtm     ( );
+				case '5' : this.metier.echangerRrc     (  );
+				case '6' : this.metier.finDeTour     (  );
 
 			}
 
