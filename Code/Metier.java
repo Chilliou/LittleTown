@@ -268,9 +268,37 @@ public class Metier
     {
     }
 
-    public void echangerPiece()
+    public boolean echangerPiece()
     {
-        
+        if ( this.tabJoueurs[numJoueurActif].getRsc('M') < 3 )
+            return false;
+
+        Scanner sc = new Scanner( System.in );
+        System.out.print( "Entrez Ressources : " );
+
+        String sSaisie = sc.nextLine();
+
+        char rsc = sSaisie.charAt(0);
+
+        if ( rsc != 'A' && rsc != 'C' && rsc != 'E' && rsc != 'P' )
+            return false;
+
+        try
+        {
+            this.tabJoueurs[numJoueurActif].echangerRscJoueurVBanque( this.banque,
+                                                                      'M',
+                                                                      3            );
+
+            this.banque.echangerRscBanqueVJoueur( this.tabJoueurs[numJoueurActif],
+                                                  rsc                            ,
+                                                  1                               );
+
+
+            return true;
+        }
+        catch (Exception e){ System.out.println( "Ressource Inconnu" ); }
+
+        return false;
     }
 
     public int getTour()
