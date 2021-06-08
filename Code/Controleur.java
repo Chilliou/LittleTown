@@ -46,7 +46,9 @@ public class Controleur
 					case 5 -> this.metier.echangerPiece     (  );
 					case 6 ->
 					{
-						bTour = true;
+						if (this.metier.getJoueurActif().aJouer()) bTour = true;
+						else System.out.println("Merci d'effectuer une action !");
+
 						this.metier.finTour     (  );
 					}
 					
@@ -54,12 +56,11 @@ public class Controleur
 				}
 
 			}
-			while (!(this.metier.getJoueurActif().aJouer()) || bTour == false);
+			while (! (this.metier.getJoueurActif().aJouer()) || bTour == false);
 
+
+			this.metier.getJoueurActif().setAction(false);
 			this.metier.changementJoueur();
-			this.metier.changerJoueurActif();
-
-
 			// NOURIR OUVRIER
 
 			

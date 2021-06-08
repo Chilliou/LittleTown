@@ -166,8 +166,6 @@ public class Metier
 
     public void finTour()
     {
-        // Reset des actions du joueurs
-        this.tabJoueurs[numJoueurActif].setAction(false);
     }
 
     public void echangerPiece()
@@ -180,8 +178,5 @@ public class Metier
         return this.tourActuel;
     }
 
-    public void changerJoueurActif()
-    {
-    	
-    }
+
 }
