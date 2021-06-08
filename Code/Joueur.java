@@ -34,7 +34,7 @@ public class Joueur extends Banque
 	{
 		String sRet = "Joueur n°" + this.iNumJoueur + ", " +  " couleur : " + this.sCouleur+ "\n";
 		sRet+=super.toString();
-		return sRet;
+		return sRet;	
 
 	}
 }

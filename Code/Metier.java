@@ -4,6 +4,8 @@ public class Metier
 {
 
     private Controleur ctrl;
+
+    private Banque banque;
   
     private int  nbJoueurs;
     private int  tourActuel;
@@ -15,6 +17,8 @@ public class Metier
 
     public Metier(Controleur ctrl)
     {
+        this.banque = new Banque();
+
         this.ctrl              = ctrl;
         this.nbJoueurs         = 2;
         this.numJoueurActif    = 0;
@@ -114,7 +118,7 @@ public class Metier
                 if (this.ctrl.getIhm().getTuile(xTuile, yTuile).isActivable())
                 {
                     System.out.println("> Activation de la tuile : " + this.ctrl.getIhm().getTuile(xTuile, yTuile).getNom());
-
+                    this.banque.echangerRscBanqueVJoueur(this.tabJoueurs[numJoueurActif],this.ctrl.getIhm().getTuile(xTuile, yTuile).toString().charAt(0),1);
                     this.ctrl.getIhm().getTuile(xTuile, yTuile).setActivation(false);
                 }
                 else

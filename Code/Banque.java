@@ -34,10 +34,10 @@ public class Banque
 		return nombre = switch(rsc)
 						{
 							case 'P' -> this.nbPierre;
-							case 'B' -> this.nbBois;
+							case 'A' -> this.nbBois;
 							case 'E' -> this.nbEau;
 							case 'C' -> this.nbBle;
-							case 'A' -> this.nbPiece;
+							case 'M' -> this.nbPiece;
 							default -> 99;
 						};
 	}
@@ -47,11 +47,11 @@ public class Banque
 		switch(rsc)
 		{
 			case 'P' -> this.nbPierre += nb;
-			case 'B' -> this.nbBois   += nb;
+			case 'A' -> this.nbBois   += nb;
 			case 'E' -> this.nbEau    += nb;
 			case 'C' -> this.nbBle    += nb;
-			case 'A' -> this.nbPiece  += nb;
-		}
+			case 'M' -> this.nbPiece  += nb;
+		}	
 	}
 
 	
