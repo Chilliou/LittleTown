@@ -168,7 +168,7 @@ public class Metier
 
 
             // Vérifiaction des coordonnées de la tuile
-            if ((xTuile == xOuvrier - 1 || xTuile == yOuvrier + 1 || xTuile == xOuvrier)
+            if ((xTuile == xOuvrier - 1 || xTuile == xOuvrier + 1 || xTuile == xOuvrier)
              && (yTuile == yOuvrier - 1 || yTuile == yOuvrier + 1 || yTuile == yOuvrier))
             {
                 
@@ -176,7 +176,9 @@ public class Metier
                 if (this.ctrl.getIhm().getTuile(xTuile, yTuile).isActivable())
                 {
                     System.out.println("> Activation de la tuile : " + this.ctrl.getIhm().getTuile(xTuile, yTuile).getNom());
-                    this.banque.echangerRscBanqueVJoueur(this.tabJoueurs[numJoueurActif],this.ctrl.getIhm().getTuile(xTuile, yTuile).toString().charAt(0),1);
+                    this.banque.echangerRscBanqueVJoueur(this.tabJoueurs[numJoueurActif],
+                                                         this.ctrl.getIhm().getTuile(xTuile, yTuile).toString().charAt(0),
+                                                         Integer.parseInt( this.ctrl.getIhm().getBatiment(xTuile, yTuile).getRevientProd().charAt(1) + "" ) );
                     this.ctrl.getIhm().getTuile(xTuile, yTuile).setActivation(false);
                 }
                 else { System.out.println("Vous avez deja était activé cette tuile !"); }
