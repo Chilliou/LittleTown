@@ -22,6 +22,15 @@ public class Joueur extends Banque
 		this.bAJouer     = false;
 	}
 
+	public void echangerRscJoueurVBanque(Banque b,char rsc,int nb)
+	{
+		
+		
+		b.ajouterEnlever(rsc, nb);
+		this.ajouterEnlever(rsc,-nb);
+
+	} 
+
 	public int getNumJoueur()
 	{
 		return this.iNumJoueur;

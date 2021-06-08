@@ -31,9 +31,20 @@ public class IhmCUI
       return this.plateau.getTuileVide(x,y);
     }
 
+    public Batiment getBatiment( int x, int y)
+    {
+        if(x <= 5)
+            return this.plateau.getBatiment(x,y);
+        else
+            return this.plateauBas.getBatiment(x,y);
+    }
+
     public void setTuile(int x, int y, Tuile tuile)
     {
-      this.plateau.setTuile(x,y,tuile);
+        if(x <= 5)
+            this.plateau.setTuile(x,y,tuile);
+        else
+            this.plateauBas.setTuile(x,y,tuile);
     }
 
     public void setTuileVide (int x, int y, TuileVide tuile)
@@ -70,7 +81,7 @@ public class IhmCUI
     public String getSaisiePos()
     {
       Scanner sc = new Scanner( System.in );
-      System.out.print( "Entrez la positioJKJKn : " );
+      System.out.print( "Entrez la position : " );
 
       String saisie = sc.nextLine();
       return saisie;

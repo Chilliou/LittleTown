@@ -4,28 +4,35 @@ public class Batiment extends Tuile
 {
   private Joueur proprietaire;
 	
-	private ArrayList<Ressource> cout;
-	private ArrayList<Ressource> coutProduction;
-	private ArrayList<Ressource> revientProduction;
+	private String cout;
+	private String coutProduction;
+	private String revientProduction;
 	
 	private int score;
 
-  public Batiment ( String nom, int score)
+  public Batiment ( String nom,String cout,String coutProduction,String revientProduction, int score)
 	{
 		super(nom);
 		
-		this.cout              = new ArrayList <Ressource>();
-		this.coutProduction    = new ArrayList <Ressource>();
-		this.revientProduction = new ArrayList <Ressource>();
+		this.cout              = cout;
+		this.coutProduction    = coutProduction;
+		this.revientProduction = revientProduction;
 
 		this.proprietaire = null;
 		
 		this.score = score;
 	}
+
   public Batiment(String nom)
   {
-    this(nom,0);
+
+    this(nom,"","","",0);
   }
+
+  public String getCout(){ return this.cout;}
+  public String getCoutProd(){ return this.coutProduction;}
+  public String getRevientProd(){ return this.revientProduction;}
+  public int   getScore(){ return this.score;}
 
 	public Joueur getProprietaire()
 	{
@@ -41,24 +48,6 @@ public class Batiment extends Tuile
 		this.proprietaire = proprietaire;
 	}
 
-	
-	public boolean ajouterCout ( Ressource r )
-	{
-		this.cout.add ( r );
-		return true;
-	}
-	
-	public boolean ajouterCoutProd ( Ressource r )
-	{
-		this.coutProduction.add ( r );
-		return true;
-	}
-	
-	public boolean ajouterRevientProd ( Ressource r )
-	{
-		this.revientProduction.add ( r );
-		return true;
-	}
 
   public String toString()
   {

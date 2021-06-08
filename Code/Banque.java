@@ -7,22 +7,28 @@ public class Banque
 
 	private int nbPiece;
 
+	private int iScore;
+
 	public Banque()
 	{
 		this.nbPierre = 15;
 		this.nbBois   = 15;
 		this.nbEau    = 15;
 		this.nbBle    = 15;
+		
+		this.iScore   = 0;
 
 		this.nbPiece = 40;
 	}
 
 	public Banque(int nbPiece)
 	{
-		this.nbPierre = 0;
-		this.nbBois   = 0;
-		this.nbEau    = 0;
-		this.nbBle    = 0;
+		this.nbPierre = 10;
+		this.nbBois   = 10;
+		this.nbEau    = 10;
+		this.nbBle    = 10;
+
+		this.iScore   = 0;
 
 		this.nbPiece = nbPiece;
 	}
@@ -54,6 +60,16 @@ public class Banque
 		}	
 	}
 
+	// Cette méthode peut retirer ou ajouter du score
+	public void changeScore(int iScore)
+	{
+		this.iScore += iScore;
+	}
+
+	public int  getScore()
+	{
+		return this.iScore;
+	}
 	
 	public boolean echangerRscBanqueVJoueur(Joueur j,char rsc,int nb)
 	{
@@ -76,7 +92,8 @@ public class Banque
            "Nombre de Ble    : " + this.nbBle    + "\n" +
            "Nombre d'eau     : " + this.nbEau    + "\n" +
            "Nombre de Pierre : " + this.nbPierre + "\n" +
-           "Nombre de Piece  : " + this.nbPiece  + "\n" ;
+           "Nombre de Piece  : " + this.nbPiece  + "\n" +
+           "Nombre de Point  : " + this.iScore    ;
 }
 
 	public static void main(String[] args)

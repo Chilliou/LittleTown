@@ -1,8 +1,10 @@
-
+import java.util.Scanner;
 
 public class Metier
 {
 
+    private final int NB_OUVRIERS = 3;
+    
     private Controleur ctrl;
 
     private Banque banque;
@@ -33,6 +35,10 @@ public class Metier
     {
         return this.tabJoueurs[numJoueurActif];
     }
+    
+
+    public int getNbJoueur() { return this.nbJoueurs; }
+
 
     private void initJoueur()
     {
@@ -82,27 +88,56 @@ public class Metier
     }
 
 
-    public boolean construireBatiment(char col, int lig, Tuile tuile)
+    public boolean construireBatiment()
     {
-        if (! this.tabJoueurs[numJoueurActif].aJouer())
+
+        if(!this.tabJoueurs[numJoueurActif].aJouer() ) 
         {
-            int x, y;
-            x = (int) col - (int) ('A');
-    
-    
-            if (this.ctrl.getIhm().getTuile(x,lig) == null ) return false;
-    
-            this.ctrl.getIhm().setTuile(x,lig,tuile);
-    
-            // Le joueur a fait son action
-            this.tabJoueurs[numJoueurActif].setAction(true);
-    
-            return true;
+
+            String sCordBatiment ;
+            sCordBatiment = this.getSaisie();
+            int col =  sCordBatiment.charAt(0) - (int) ('A');
+            int lig = (Integer.parseInt(sCordBatiment.charAt(1)+"")-1) ;
+
+            String sCoordPlacement ;
+            sCoordPlacement = this.getSaisie();
+            int y =  sCoordPlacement.charAt(0) - (int) ('A');
+            int x = (Integer.parseInt(sCoordPlacement.charAt(1)+"")-1) ;
+
+            
+
+            try
+            {
+                Batiment bat = this.ctrl.getIhm().getBatiment( lig, col ) ;
+                TuileVide terrain = this.ctrl.getIhm().getTuileVide( x, y );
+
+                if(!terrain.getNom().equals( "Vide" ) )
+                    return false;
+
+                for(int i=0;i<bat.getCout().length();i+=2)
+                    if(this.tabJoueurs[numJoueurActif].getRsc(bat.getCout().charAt(i))<Integer.parseInt(bat.getCout().charAt(i+1)+""))
+                        return false;
+
+                //DU coup on peut ajouter le batiment 
+                for(int i=0;i<bat.getCout().length();i+=2)
+                    this.tabJoueurs[numJoueurActif].echangerRscJoueurVBanque(this.banque,bat.getCout().charAt(i),Integer.parseInt(bat.getCout().charAt(i+1)+""));
+
+                this.ctrl.getIhm().setTuile(x,y,bat);
+                this.ctrl.getIhm().setTuile(lig,col,terrain);
+                this.tabJoueurs[numJoueurActif].changeScore(bat.getScore());
+                bat.setProprietaire(this.tabJoueurs[numJoueurActif]);
+                this.tabJoueurs[numJoueurActif].setAction(true);
+                return true;
+
+            }
+            catch (Exception e){ System.out.println("Tu ne peut pas le poser ici"); }
         }
+        else
         {
             System.out.println("Vous avez déja réalisé votre action.");
             return false;
         }
+        return false;
 
 
 
@@ -154,6 +189,69 @@ public class Metier
     }
 
 
+    public void nourrirOuvrier()
+    {
+        int iOuvrierNourri = 0;
+        int iSaisi;
+        Scanner kb = new Scanner(System.in);
+
+        System.out.println("<=======> A table !!!! <=======>\n");
+        for (Joueur j : this.tabJoueurs)
+        {
+            System.out.println(j.toString());
+            System.out.println("Vous devez maintenant nourrir vos ouvriers...");
+            System.out.println("Vous pouvez utiliser votre eau, votre blé ou 3 pièces par nourriture manquante.");
+            System.out.println("En cas de nourriture manquante, vous recevez -3 de score par ouvrier non nourri.");
+
+            System.out.println();
+            if (j.getRsc('C') != 0  && iOuvrierNourri < this.NB_OUVRIERS)
+            {
+                System.out.println("Il vous reste " +  (this.NB_OUVRIERS - iOuvrierNourri) + " ouvrier(s) à nourrir.");
+                System.out.println("Combien de votre blé voulez vous utiliser ? : ");
+                iSaisi = kb.nextInt();
+                iOuvrierNourri += iSaisi;
+
+                
+            }
+            if (j.getRsc('E') != 0 && iOuvrierNourri < this.NB_OUVRIERS)
+            {
+                System.out.println("Il vous reste " +  (this.NB_OUVRIERS - iOuvrierNourri) + " ouvrier(s) à nourrir.");
+                System.out.println("Combien de votre eau voulez vous utiliser ? : ");
+                iSaisi = kb.nextInt();
+                iOuvrierNourri += iSaisi;
+
+            }
+            if (j.getRsc('M') != 0 && iOuvrierNourri < this.NB_OUVRIERS)
+            {
+                System.out.println("Il vous reste " +  (this.NB_OUVRIERS - iOuvrierNourri) + " ouvrier(s) à nourrir.");
+                System.out.println("Combien de vos pièces voulez vous utiliser ? (3 pièces / ouvrier): ");
+                iSaisi = kb.nextInt();
+
+                while (iSaisi >= 3)
+                {
+                    iSaisi -= 3;
+                    iOuvrierNourri+=1;
+                }
+
+            }
+
+            if (iOuvrierNourri < this.NB_OUVRIERS)
+            {
+                System.out.println("Vous n'avez pas nourri " +  (this.NB_OUVRIERS - iOuvrierNourri) + " ouvrier(s)");
+                System.out.println("Vous allez recevoir -" + (this.NB_OUVRIERS - iOuvrierNourri)*3 + " de score.");
+                j.changeScore(-(this.NB_OUVRIERS - iOuvrierNourri)*3);
+                System.out.println("Joueur n°" + j.getNumJoueur() + ", votre score est maintenant de : " + j.getScore());
+            }
+            else
+            {
+                System.out.println("Féliciation joueur n°" + j.getNumJoueur() + ", vous avez nourri tous vos ouvriers");
+            }
+
+            System.out.println("\n");
+
+        }
+    }
+
     public String getInfoBatiment( )
     {
       
@@ -166,8 +264,6 @@ public class Metier
 
     public void finTour()
     {
-        // Reset des actions du joueurs
-        this.tabJoueurs[numJoueurActif].setAction(false);
     }
 
     public void echangerPiece()
@@ -180,8 +276,5 @@ public class Metier
         return this.tourActuel;
     }
 
-    public void changerJoueurActif()
-    {
-    	
-    }
+
 }

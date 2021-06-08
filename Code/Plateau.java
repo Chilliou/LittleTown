@@ -58,6 +58,11 @@ public class Plateau
       return (TuileVide) this.terrainDeJeu[x][y];
     }
 
+    public Batiment getBatiment(int x, int y)
+    {
+    	return (Batiment) this.terrainDeJeu[x][y];
+    }
+
     public void setTuile(int x, int y, Tuile tuile)
     {
       this.terrainDeJeu[x][y] = tuile;
@@ -89,7 +94,7 @@ public class Plateau
 		{
 			for(int y=0; y < this.terrainDeJeu[0].length;y++)
 			{
-				if (! this.terrainDeJeu[i][y].toString().equals("V"))
+				if (! this.terrainDeJeu[i][y].toString().equals(" "))
 				{
 					if ( this.terrainDeJeu[i][y].getProprietaire() == null)
 					{
