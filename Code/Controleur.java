@@ -33,9 +33,7 @@ public class Controleur
 				
 					System.out.println(this.metier.getJoueurActif().toString());
 					
-					action = this.ihm.getChoix();
-					System.out.println(action);
-	
+					action = this.ihm.getChoix();	
 					
 					switch ( action )
 					{
