@@ -70,7 +70,7 @@ public class IhmCUI
     public String getSaisiePos()
     {
       Scanner sc = new Scanner( System.in );
-      System.out.print( "Entrez la positioJKJKn : " );
+      System.out.print( "Entrez la position : " );
 
       String saisie = sc.nextLine();
       return saisie;

@@ -89,7 +89,7 @@ public class Plateau
 		{
 			for(int y=0; y < this.terrainDeJeu[0].length;y++)
 			{
-				if (! this.terrainDeJeu[i][y].toString().equals("V"))
+				if (! this.terrainDeJeu[i][y].toString().equals(" "))
 				{
 					if ( this.terrainDeJeu[i][y].getProprietaire() == null)
 					{
