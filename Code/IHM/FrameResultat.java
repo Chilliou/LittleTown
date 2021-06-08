@@ -7,9 +7,15 @@ public class FrameResultat extends JFrame
 
 	public FrameResultat ( Controleur ctrl)
 	{
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
 		this.setTitle    ( "LittleTown | Résultats" );
-		this.setLocation ( 10, 10     );
-        this.setResizable(false);
+
+		int x = (screenSize.width - this.getWidth()) / 5;
+        int y = (screenSize.height - this.getHeight()) / 10;
+        this.setLocation(x, y);
+        
+		this.setResizable(false);
 		this.setSize(820,150);
 		// Organisation du LayoutManager
         

@@ -8,7 +8,6 @@ public class FrameMenu extends JFrame
 	public FrameMenu ( Controleur ctrl)
 	{
 		this.setTitle    ( "LittleTown | Menu" );
-		this.setLocation ( 10, 10     );
 		this.setSize     ( 400, 340  );
         this.setResizable(false);
 
@@ -21,6 +20,9 @@ public class FrameMenu extends JFrame
 
 		// Positionnement des Panels
 		this.add ( this.panelMenu   );
+
+		// On centre la fenêtre au millieu de l'écran
+		this.setLocationRelativeTo(null);
 
 		// Activation de la fenÃªtre
 		this.setVisible ( true );

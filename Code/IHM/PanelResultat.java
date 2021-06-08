@@ -13,7 +13,7 @@ public class PanelResultat extends JPanel
 		this.ctrl = ctrl;
 
         String donnees[][]={ {"05/06/2021", "32 (Quentin)","22 (Dorian)","28 (Théo)","42 (Mathéo)","Mathéo","124"} };
-                          
+    
                           
         String colonnes[]={"Date", "Joueur 1", "Joueur 2", "Joueur 3", "Joueur 4", "Gagnant", "Total"};         
         JTable jt=new JTable(donnees,colonnes);
@@ -29,6 +29,7 @@ public class PanelResultat extends JPanel
         {
             columnModel.getColumn(i).setPreferredWidth(150);
             jt.getColumnModel().getColumn(i).setCellRenderer( centerRenderer );
+            jt.getColumnModel().getColumn(i).setHeaderRenderer( centerRenderer );
         }
 
         sp.setPreferredSize(new Dimension(800, 100));

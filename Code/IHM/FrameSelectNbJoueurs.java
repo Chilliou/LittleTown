@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.BorderLayout;
 
 public class FrameSelectNbJoueurs extends JFrame
 {
@@ -14,15 +13,19 @@ public class FrameSelectNbJoueurs extends JFrame
         this.ctrl = ctrl;
 
         this.setTitle("Joueurs");
-
         this.setSize(250,150);
         this.setResizable(false);
 
+        // Création des panels
         this.panelSelectNbJoueurs = new PanelSelectNbJoueurs(ctrl);
 
+        // Positionnement des Panels
         this.add(this.panelSelectNbJoueurs);
 
+        // On centre la fenêtre au millieu de l'écran
+		this.setLocationRelativeTo(null);
 
+        // Activation de la fenêtre
         this.setVisible(true);
     }
 

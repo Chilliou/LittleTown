@@ -1,7 +1,6 @@
-import java.awt.Graphics;
-
 import javax.swing.*;
 
+import java.awt.Graphics;
 import java.awt.Image;
 
 public class PanelPlateau extends JPanel
@@ -14,8 +13,11 @@ public class PanelPlateau extends JPanel
     {
         this.ctrl = ctrl;
 
+        // Image de fond
         ImageIcon imgFond = new ImageIcon("../../img/plateau_1.png");
         this.fond = imgFond.getImage().getScaledInstance(700, 700, Image.SCALE_DEFAULT);
+
+        this.add(new JLabel("Plateau de jeu", JLabel.CENTER));
 
     }
 

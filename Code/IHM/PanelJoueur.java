@@ -4,12 +4,12 @@ import javax.swing.*;
 
 import java.awt.Image;
 
-public class PanelJoueurUn extends JPanel
+public class PanelJoueur extends JPanel
 {
 
     Controleur ctrl;
 
-    public PanelJoueurUn(Controleur ctrl) 
+    public PanelJoueur(Controleur ctrl) 
     {
         this.ctrl = ctrl;
 

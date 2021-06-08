@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.table.*;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -14,7 +13,7 @@ public class PanelSelectNbJoueurs extends JPanel implements ActionListener
     private JButton btnPlus;
     private JButton btnCommencer;
 
-    private JComboBox cbPlateau;
+    private JComboBox<String> cbPlateau;
     
     private JTextField txtNbJoueurs;
 
@@ -87,6 +86,7 @@ public class PanelSelectNbJoueurs extends JPanel implements ActionListener
         if(e.getSource() == this.btnCommencer)
         {
             this.ctrl.appelFramePlateau();
+            this.frameSelectNbJoueurs.setVisible(false);
         }
         
     }
