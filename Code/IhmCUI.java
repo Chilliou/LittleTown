@@ -44,7 +44,7 @@ public class IhmCUI
     public int getChoix()
     {
         String sChoix;
-        int iChoix;
+        int iChoix = 0;
 
         sChoix  = "+-----------------------------------------------+\n";
         sChoix += "| > Action possibles:                           |\n";
@@ -61,7 +61,11 @@ public class IhmCUI
         Scanner sc = new Scanner( System.in );
         
         System.out.print( "Faites votre choix : " );
-        iChoix = sc.nextInt();
+        try
+        {
+            iChoix = sc.nextInt();    
+        }
+        catch (Exception e){ System.out.println("Rentrer un nombre"); }
         
 
         return iChoix;
