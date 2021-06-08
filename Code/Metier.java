@@ -3,6 +3,8 @@
 public class Metier
 {
 
+    private final int NB_OUVRIERS = 3;
+    
     private Controleur ctrl;
 
     private Banque banque;
@@ -33,6 +35,10 @@ public class Metier
     {
         return this.tabJoueurs[numJoueurActif];
     }
+    
+
+    public int getNbJoueur() { return this.nbJoueurs; }
+
 
     private void initJoueur()
     {
@@ -182,6 +188,60 @@ public class Metier
 
     }
 
+
+    public void nourrirOuvrier()
+    {
+        int iOuvrierNourri = 0;
+        int iSaisi;
+        Scanner kb = new Scanner(System.in);
+
+        System.out.println("<=======> A table !!!! <=======>\n");
+        for (Joueur j : this.tabJoueurs)
+        {
+            System.out.println(j.toString());
+            System.out.println("Vous devez maintenant nourrir vos ouvriers...");
+            System.out.println("Vous pouvez utiliser votre eau, votre blé ou 3 pièces par nourriture manquante.");
+            System.out.println("En cas de nourriture manquante, vous recevez -3 de score par ouvrier non nourri.");
+
+            System.out.println();
+            if (j.getNbBle() != 0  && iOuvrierNourri < this.NB_OUVRIERS)
+            {
+                System.out.println("Il vous reste " +  (this.NB_OUVRIERS - iOuvrierNourri) + " ouvrier(s) à nourrir.");
+                System.out.println("Combien de votre blé voulez vous utiliser ? : ");
+                iSaisi = kb.nextInt();
+
+                
+            }
+            if (j.getNbEau() != 0 && iOuvrierNourri < this.NB_OUVRIERS)
+            {
+                System.out.println("Il vous reste " +  (this.NB_OUVRIERS - iOuvrierNourri) + " ouvrier(s) à nourrir.");
+                System.out.println("Combien de votre eau voulez vous utiliser ? : ");
+                iSaisi = kb.nextInt();
+
+            }
+            if (j.getNbPiece() != 0 && iOuvrierNourri < this.NB_OUVRIERS)
+            {
+                System.out.println("Il vous reste " +  (this.NB_OUVRIERS - iOuvrierNourri) + " ouvrier(s) à nourrir.");
+                System.out.println("Combien de vos pièces voulez vous utiliser ? (3 pièces / ouvrier): ");
+                iSaisi = kb.nextInt();
+
+            }
+
+            if (iOuvrierNourri < this.NB_OUVRIERS)
+            {
+                System.out.println("Vous n'avez pas nourri " +  (this.NB_OUVRIERS - iOuvrierNourri) + " ouvrier(s)");
+                System.out.println("Vous allez recevoir -" + (this.NB_OUVRIERS - iOuvrierNourri)*3 + " de score.");
+                j.changeScore(-(this.NB_OUVRIERS - iOuvrierNourri)*3);
+                System.out.println("Joueur n°" + j.getNumJoueur() + ", votre score est maintenant de : " + j.getScore());
+            }
+            else
+            {
+                System.out.println("Féliciation joueur n°" + j.getNumJoueur() + ", vous avez nourri tous vos ouvriers");
+            }
+
+            System.out.println("\n");
+
+        }
 
     public String getInfoBatiment( )
     {
