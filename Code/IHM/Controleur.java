@@ -1,4 +1,3 @@
-import javax.swing.JFrame;
 import java.awt.event.*;
 import java.awt.Point;
 
@@ -11,10 +10,9 @@ public class Controleur implements ComponentListener
     private FrameResultat   resultat;
     private FrameSelectNbJoueurs selectNbJoueurs;
 
-	private FrameSelectNbJoueurs frameSelectNbJoueurs;
-
+    private FrameBanque frameBanque;
 	private FramePlateau framePlateau;
-	private FrameJoueurUn frameJoueurUn;
+	private FrameJoueur frameJoueur;
 
 	public  Controleur ()
 	{
@@ -34,8 +32,15 @@ public class Controleur implements ComponentListener
 
 	public void appelFramePlateau()
     {
-		this.frameJoueurUn = new FrameJoueurUn(this);
         this.framePlateau = new FramePlateau(this);
+        this.frameBanque = new FrameBanque(this);
+		this.frameJoueur = new FrameJoueur(this);
+
+        this.selectNbJoueurs.closeFrame();
+
+        this.framePlateau.addComponentListener(this);
+        this.frameBanque.addComponentListener(this);
+        this.frameJoueur.addComponentListener(this);
     }
 
     public void action ( int numAction )
@@ -58,43 +63,50 @@ public class Controleur implements ComponentListener
 
     public void majFrameJoueur(int x, int y)
     {
-        this.frameJoueurUn.setLocation(x, y);
+        this.frameJoueur.setLocation(x, y);
     }
 
-	public void componentResized(ComponentEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void majFrameBanque(int x, int y)
+    {
+        this.frameBanque.setLocation(x, y);
+    }
+
+	public void componentResized(ComponentEvent e) {}
 
 	public void componentMoved(ComponentEvent e) 
     { 
         if (e.getSource() == this.framePlateau )
         {
-            System.out.println("Frame Plateau se déplace --->" + "(" + this.framePlateau.getX() + ": " + this.framePlateau.getY() + ")");
-            Point p;
+            Point p, p2;
+            
+            p2 = this.framePlateau.getLocation();
+            p2.setLocation(p2.getX(), p2.getY()-110);
+
             p = this.framePlateau.getLocation();
-            p.setLocation(p.getX(), p.getY()+310);
-            this.frameJoueurUn.setLocation(p);
+            p.setLocation(p.getX(), p.getY()+590);
+            
+            this.frameJoueur.setLocation(p);
+            this.frameBanque.setLocation(p2);
         }
-        if (e.getSource() == this.frameJoueurUn )
+        if (e.getSource() == this.frameJoueur )
         {
-            System.out.println("Frame Joueur se déplace --->" + "(" + this.frameJoueurUn.getX() + ": " + this.frameJoueurUn.getY() + ")");
             Point p;
-            p = this.frameJoueurUn.getLocation();
-            p.setLocation(p.getX(), p.getY()-310);
+            p = this.frameJoueur.getLocation();
+            p.setLocation(p.getX(), p.getY()-590);
+            this.framePlateau.setLocation(p);
+        }
+        if (e.getSource() == this.frameBanque )
+        {
+            Point p;
+            p = this.frameBanque.getLocation();
+            p.setLocation(p.getX(), p.getY()+110);
             this.framePlateau.setLocation(p);
         }
     }
 
-	public void componentShown(ComponentEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void componentShown(ComponentEvent e) {}
 
-	public void componentHidden(ComponentEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void componentHidden(ComponentEvent e) {}
 
 	public static void main(String[] a)
 	{
