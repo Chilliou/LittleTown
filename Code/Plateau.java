@@ -58,6 +58,11 @@ public class Plateau
       return (TuileVide) this.terrainDeJeu[x][y];
     }
 
+    public Batiment getBatiment(int x, int y)
+    {
+    	return (Batiment) this.terrainDeJeu[x][y];
+    }
+
     public void setTuile(int x, int y, Tuile tuile)
     {
       this.terrainDeJeu[x][y] = tuile;

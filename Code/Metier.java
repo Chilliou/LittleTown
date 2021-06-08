@@ -82,27 +82,56 @@ public class Metier
     }
 
 
-    public boolean construireBatiment(char col, int lig, Tuile tuile)
+    public boolean construireBatiment()
     {
-        if (! this.tabJoueurs[numJoueurActif].aJouer())
+
+        if(!this.tabJoueurs[numJoueurActif].aJouer() ) 
         {
-            int x, y;
-            x = (int) col - (int) ('A');
-    
-    
-            if (this.ctrl.getIhm().getTuile(x,lig) == null ) return false;
-    
-            this.ctrl.getIhm().setTuile(x,lig,tuile);
-    
-            // Le joueur a fait son action
-            this.tabJoueurs[numJoueurActif].setAction(true);
-    
-            return true;
+
+            String sCordBatiment ;
+            sCordBatiment = this.getSaisie();
+            int col =  sCordBatiment.charAt(0) - (int) ('A');
+            int lig = (Integer.parseInt(sCordBatiment.charAt(1)+"")-1) ;
+
+            String sCoordPlacement ;
+            sCoordPlacement = this.getSaisie();
+            int y =  sCoordPlacement.charAt(0) - (int) ('A');
+            int x = (Integer.parseInt(sCoordPlacement.charAt(1)+"")-1) ;
+
+            
+
+            try
+            {
+                Batiment bat = this.ctrl.getIhm().getBatiment( lig, col ) ;
+                TuileVide terrain = this.ctrl.getIhm().getTuileVide( x, y );
+
+                if(!terrain.getNom().equals( "Vide" ) )
+                    return false;
+
+                for(int i=0;i<bat.getCout().length();i+=2)
+                    if(this.tabJoueurs[numJoueurActif].getRsc(bat.getCout().charAt(i))<Integer.parseInt(bat.getCout().charAt(i+1)+""))
+                        return false;
+
+                //DU coup on peut ajouter le batiment 
+                for(int i=0;i<bat.getCout().length();i+=2)
+                    this.tabJoueurs[numJoueurActif].echangerRscJoueurVBanque(this.banque,bat.getCout().charAt(i),Integer.parseInt(bat.getCout().charAt(i+1)+""));
+
+                this.ctrl.getIhm().setTuile(x,y,bat);
+                this.ctrl.getIhm().setTuile(lig,col,terrain);
+                //this.tabJoueurs[numJoueurActif].ajouteScore(bat.getScore());
+                bat.setProprietaire(this.tabJoueurs[numJoueurActif]);
+                this.tabJoueurs[numJoueurActif].setAction(true);
+                return true;
+
+            }
+            catch (Exception e){ System.out.println("Tu ne peut pas le poser ici"); }
         }
+        else
         {
             System.out.println("Vous avez déja réalisé votre action.");
             return false;
         }
+        return false;
 
 
 

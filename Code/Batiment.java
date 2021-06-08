@@ -29,6 +29,11 @@ public class Batiment extends Tuile
     this(nom,"","","",0);
   }
 
+  public String getCout(){ return this.cout;}
+  public String getCoutProd(){ return this.coutProduction;}
+  public String getRevientProd(){ return this.revientProduction;}
+  public int   getScore(){ return this.score;}
+
 	public Joueur getProprietaire()
 	{
 		return this.proprietaire;

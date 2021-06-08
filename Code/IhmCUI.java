@@ -31,9 +31,20 @@ public class IhmCUI
       return this.plateau.getTuileVide(x,y);
     }
 
+    public Batiment getBatiment( int x, int y)
+    {
+        if(x <= 5)
+            return this.plateau.getBatiment(x,y);
+        else
+            return this.plateauBas.getBatiment(x,y);
+    }
+
     public void setTuile(int x, int y, Tuile tuile)
     {
-      this.plateau.setTuile(x,y,tuile);
+        if(x <= 5)
+            this.plateau.setTuile(x,y,tuile);
+        else
+            this.plateauBas.setTuile(x,y,tuile);
     }
 
     public void setTuileVide (int x, int y, TuileVide tuile)
@@ -44,7 +55,7 @@ public class IhmCUI
     public int getChoix()
     {
         String sChoix;
-        int iChoix = 0;
+        int iChoix;
 
         sChoix  = "+-----------------------------------------------+\n";
         sChoix += "| > Action possibles:                           |\n";
@@ -61,11 +72,7 @@ public class IhmCUI
         Scanner sc = new Scanner( System.in );
         
         System.out.print( "Faites votre choix : " );
-        try
-        {
-            iChoix = sc.nextInt();    
-        }
-        catch (Exception e){ System.out.println("Rentrer un nombre"); }
+        iChoix = sc.nextInt();
         
 
         return iChoix;
