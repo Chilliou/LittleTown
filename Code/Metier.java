@@ -124,7 +124,7 @@ public class Metier
 
                 this.ctrl.getIhm().setTuile(x,y,bat);
                 this.ctrl.getIhm().setTuile(lig,col,terrain);
-                //this.tabJoueurs[numJoueurActif].ajouteScore(bat.getScore());
+                this.tabJoueurs[numJoueurActif].changeScore(bat.getScore());
                 bat.setProprietaire(this.tabJoueurs[numJoueurActif]);
                 this.tabJoueurs[numJoueurActif].setAction(true);
                 return true;
