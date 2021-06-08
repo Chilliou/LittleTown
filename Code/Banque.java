@@ -62,7 +62,7 @@ public class Banque
 			return false;
 		else
 		{
-			this.j.ajouterEnlever(rsc, nb);
+			j.ajouterEnlever(rsc, nb);
 			this.ajouterEnlever(rsc,-nb);
 			return true;
 		}
