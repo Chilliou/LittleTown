@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 
 public class Metier
 {
@@ -204,26 +204,34 @@ public class Metier
             System.out.println("En cas de nourriture manquante, vous recevez -3 de score par ouvrier non nourri.");
 
             System.out.println();
-            if (j.getNbBle() != 0  && iOuvrierNourri < this.NB_OUVRIERS)
+            if (j.getRsc('C') != 0  && iOuvrierNourri < this.NB_OUVRIERS)
             {
                 System.out.println("Il vous reste " +  (this.NB_OUVRIERS - iOuvrierNourri) + " ouvrier(s) à nourrir.");
                 System.out.println("Combien de votre blé voulez vous utiliser ? : ");
                 iSaisi = kb.nextInt();
+                iOuvrierNourri += iSaisi;
 
                 
             }
-            if (j.getNbEau() != 0 && iOuvrierNourri < this.NB_OUVRIERS)
+            if (j.getRsc('E') != 0 && iOuvrierNourri < this.NB_OUVRIERS)
             {
                 System.out.println("Il vous reste " +  (this.NB_OUVRIERS - iOuvrierNourri) + " ouvrier(s) à nourrir.");
                 System.out.println("Combien de votre eau voulez vous utiliser ? : ");
                 iSaisi = kb.nextInt();
+                iOuvrierNourri += iSaisi;
 
             }
-            if (j.getNbPiece() != 0 && iOuvrierNourri < this.NB_OUVRIERS)
+            if (j.getRsc('M') != 0 && iOuvrierNourri < this.NB_OUVRIERS)
             {
                 System.out.println("Il vous reste " +  (this.NB_OUVRIERS - iOuvrierNourri) + " ouvrier(s) à nourrir.");
                 System.out.println("Combien de vos pièces voulez vous utiliser ? (3 pièces / ouvrier): ");
                 iSaisi = kb.nextInt();
+
+                while (iSaisi >= 3)
+                {
+                    iSaisi -= 3;
+                    iOuvrierNourri+=1;
+                }
 
             }
 
@@ -242,6 +250,7 @@ public class Metier
             System.out.println("\n");
 
         }
+    }
 
     public String getInfoBatiment( )
     {
