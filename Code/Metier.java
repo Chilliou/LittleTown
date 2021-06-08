@@ -11,13 +11,16 @@ public class Metier
     private int  numJoueurActif;
     private Joueur[] tabJoueurs;
 
+    private String dernierOuvrierPos;
+
     public Metier(Controleur ctrl)
     {
-        this.ctrl           = ctrl;
-        this.nbJoueurs      = 2;
-        this.numJoueurActif = 0;
-        this.tourActuel     = 1;
-        this.tabJoueurs     = new Joueur[2];
+        this.ctrl              = ctrl;
+        this.nbJoueurs         = 2;
+        this.numJoueurActif    = 0;
+        this.tourActuel        = 1;
+        this.tabJoueurs        = new Joueur[2];
+        this.dernierOuvrierPos = null;
 
         this.initJoueur();
     }
@@ -43,10 +46,10 @@ public class Metier
 
     public void placerOuvrier()
     {
-        String zinzon ;
-       zinzon = this.getSaisie();
-        int y =  zinzon.charAt(0) - (int) ('A');
-        int x = (Integer.parseInt(zinzon.charAt(1)+"")-1) ;
+        String sCoordOuvrier ;
+        sCoordOuvrier = this.getSaisie();
+        int y =  sCoordOuvrier.charAt(0) - (int) ('A');
+        int x = (Integer.parseInt(sCoordOuvrier.charAt(1)+"")-1) ;
         
         try
         {
@@ -56,6 +59,7 @@ public class Metier
           {
             terrain.setOuvrier( new Ouvrier ( x, y ) );
             this.ctrl.getIhm().setTuileVide ( x, y, terrain );
+            this.dernierOuvrierPos = sCoordOuvrier;
           }
         }
         catch (Exception e){ System.out.println("Tu ne peut pas le poser ici"); }
@@ -81,7 +85,7 @@ public class Metier
 
     public String getSaisie()
     {
-      String saisie="je sais pas";
+      String saisie;
       saisie = this.ctrl.getIhm().getSaisiePos();
       return saisie;
     }
@@ -90,6 +94,47 @@ public class Metier
     public void activerTuile()
     {
         
+        if (this.dernierOuvrierPos != null)
+        {
+            String coorTuile = "";
+            coorTuile = this.getSaisie();
+            int yOuvrier =  this.dernierOuvrierPos.charAt(0) - (int) ('A');
+            int xOuvrier = (Integer.parseInt(this.dernierOuvrierPos.charAt(1)+"")-1);
+
+            int yTuile   =  coorTuile.charAt(0) - (int) ('A');
+            int xTuile   = (Integer.parseInt(coorTuile.charAt(1)+"")-1);
+
+
+            // Vérifiaction des coordonnées de la tuile
+            if ((xTuile == xOuvrier - 1 || xTuile == yOuvrier + 1 || xTuile == xOuvrier)
+             && (yTuile == yOuvrier - 1 || yTuile == yOuvrier + 1 || yTuile == yOuvrier))
+            {
+                
+                // Vérification que la tuile n'a pas deja était activée.
+                if (this.ctrl.getIhm().getTuile(xTuile, yTuile).isActivable())
+                {
+                    System.out.println("> Activation de la tuile : " + this.ctrl.getIhm().getTuile(xTuile, yTuile).getNom());
+
+                    this.ctrl.getIhm().getTuile(xTuile, yTuile).setActivation(false);
+                }
+                else
+                {
+                    System.out.println("Vous avez deja était activé cette tuile !");
+                }
+            }
+            else
+            {
+                System.out.println("/!\\ Aucun ouvrié se trouve dans le autour de cette tuile !");
+            }
+
+
+
+        }
+        else
+        {
+            System.out.println("/!\\ Aucun ouvrié n'as encore été placé !");
+        }
+
     }
 
 
