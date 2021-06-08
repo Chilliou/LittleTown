@@ -92,7 +92,8 @@ public class Banque
            "Nombre de Ble    : " + this.nbBle    + "\n" +
            "Nombre d'eau     : " + this.nbEau    + "\n" +
            "Nombre de Pierre : " + this.nbPierre + "\n" +
-           "Nombre de Piece  : " + this.nbPiece  + "\n" ;
+           "Nombre de Piece  : " + this.nbPiece  + "\n" +
+           "Nombre de Point  : " + this.iScore    ;
 }
 
 	public static void main(String[] args)
