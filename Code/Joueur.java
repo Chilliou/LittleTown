@@ -8,6 +8,7 @@ public class Joueur extends Banque
 	private Tuile[] ensBatiment;
 	private Ouvrier[] ensOuvrier;
 	private int iNumJoueur;
+	private boolean bAJouer;
 
 
 	public Joueur(String sCouleur)
@@ -18,6 +19,7 @@ public class Joueur extends Banque
 		this.ensBatiment = new Tuile[5]; // Pour le futur c'est forcement le nombre de maison dispo  a la base
 		this.ensOuvrier  = new Ouvrier[3]; // Depend toujours du nbJoueurs
 		this.iNumJoueur  = ++ Joueur.nbJoueur;
+		this.bAJouer     = false;
 	}
 
 	public int getNumJoueur()
@@ -25,9 +27,19 @@ public class Joueur extends Banque
 		return this.iNumJoueur;
 	}
 
+	public void setAction(boolean bJouer)
+	{
+		this.bAJouer = bJouer;
+	}
+
+	public boolean aJouer()
+	{
+		return this.bAJouer;
+	}
+
 	public void majScore(int i)
 	{
-		this.iScore+=i;
+		this.iScore+= i;
 	}
 
 	public String toString()

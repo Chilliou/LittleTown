@@ -20,42 +20,58 @@ public class Controleur
 		int action;
 
 
-		this.ihm.afficher();
+		
 
 		while ( this.metier.getTour() <= 4 )
 		{
-			System.out.println(this.metier.getJoueurActif().toString());
-			
-			action = this.ihm.getChoix();
-			System.out.println(action);
+			boolean bTour = false;
 
-			
-			switch ( action )
+
+			do
 			{
-				case 1 -> this.metier.placerOuvrier     (  );
-				//case 2 : this.metier.construireBatiment     (  );
-				case 3 -> this.metier.activerTuile     (  );
-				case 4 -> this.metier.getInfoBatiment     ( );
-				case 5 -> this.metier.echangerPiece     (  );
-				case 6 -> this.metier.finTour     (  );
+				this.ihm.afficher();
+			
+				System.out.println(this.metier.getJoueurActif().toString());
+				
+				action = this.ihm.getChoix();
+				System.out.println(action);
+
+				
+				switch ( action )
+				{
+					case 1 -> this.metier.placerOuvrier     (  );
+					//case 2 : this.metier.construireBatiment     (  );
+					case 3 -> this.metier.activerTuile     (  );
+					case 4 -> this.metier.getInfoBatiment     ( );
+					case 5 -> this.metier.echangerPiece     (  );
+					case 6 ->
+					{
+						bTour = true;
+						this.metier.finTour     (  );
+					}
+					
+
+				}
 
 			}
+			while (!(this.metier.getJoueurActif().aJouer()) || bTour == false);
 
 			this.metier.changementJoueur();
-			
-
 			this.metier.changerJoueurActif();
 
-			this.ihm.afficher();
+
+			// NOURIR OUVRIER
+
+			
 		}
 	}
 
   
 
-  public IhmCUI getIhm ()
-  {
-    return this.ihm;
-  }
+	public IhmCUI getIhm ()
+	{
+		return this.ihm;
+	}
 
 	public static void main(String[] a)
 	{
