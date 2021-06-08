@@ -256,14 +256,14 @@ public class Metier
         }
     }
 
-    public String getInfoBatiment( )
+    public void getInfoBatiment( )
     {
       
        String saisie = this.ctrl.getIhm().getSaisiePos();
         int y =  saisie.charAt(0) - (int) ('A');
         int x = (Integer.parseInt(saisie.charAt(1)+"")-1) ;
 
-      return this.ctrl.getIhm().getTuile(x,y).toString();
+      System.out.println(this.ctrl.getIhm().getBatiment(x,y).infoBatiment()); 
     }
 
     public boolean echangerPiece()

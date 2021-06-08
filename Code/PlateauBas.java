@@ -42,14 +42,31 @@ public class PlateauBas
     {
 		String sRet="";
 
+        for (int i = 0; i < this.plateauBas[0].length + 1; i++) sRet+= "+----";
+
+        sRet += "+----+\n";
+
+
         for(int i = 0; i < this.plateauBas.length; i++)
         {
             for(int y = 0; y < this.plateauBas[0].length; y++)
             {
-                sRet += this.plateauBas[i][y].toString() + " ";
+                if (i == 0 && y == 0)
+                    sRet += "| " + this.iNbBle + "  | B  ";
+
+                if (i == 1 && y == 0)
+                    sRet += "| " + this.iNbConstru1 + "  | " + this.iNbConstru2 + "  ";
+                sRet += "| " + this.plateauBas[i][y].toString() + "  ";
+
             }
-            sRet+= "\n";
+            sRet+= "|\n";
+            for (int cpt = 0; cpt < this.plateauBas[0].length + 1; cpt++) sRet+= "+----";
+
+            sRet += "+----+\n";
         }
+
+
+
 
 		return sRet;
     }

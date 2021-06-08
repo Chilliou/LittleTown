@@ -48,6 +48,21 @@ public class Batiment extends Tuile
 		this.proprietaire = proprietaire;
 	}
 
+	public String infoBatiment()
+	{
+		String sRet="\n";
+
+		sRet += "Nom du batiment    : " + super.getNom()   + "\n" +
+            "Cout               : " + this.cout    + "\n" +
+            "Cout de Production : " + this.coutProduction    + "\n" +
+            "Revient Production : " + this.revientProduction + "\n" +
+            "Gain de score      : " + this.score  ;
+
+
+
+		return sRet;
+	}
+
 
   public String toString()
   {
