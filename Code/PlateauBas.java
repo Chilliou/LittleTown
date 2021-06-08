@@ -18,13 +18,13 @@ public class PlateauBas
 
     private void initPlateauBas()
     {
-        this.plateauBas[0] = new Batiment("Bar","P2C2","","S3",7);
-        this.plateauBas[1] = new Batiment("Librairie","P4","","M3",8);
-        this.plateauBas[2] = new Batiment("Mine","A1P1","","M2",4);
+        this.plateauBas[0] = new Batiment("T");
+        this.plateauBas[1] = new Batiment("T");
+        this.plateauBas[2] = new Batiment("T");
 
-        this.plateauBas[3] = new Batiment("Ponton","A3","","E2",5);
-        this.plateauBas[4] = new Batiment("Puits","A1P1","","S2",4);
-        this.plateauBas[5] = new Batiment("Statue","P4","","",10);
+        this.plateauBas[3] = new Batiment("T");
+        this.plateauBas[4] = new Batiment("T");
+        this.plateauBas[5] = new Batiment("T");
     }
 
 
@@ -43,7 +43,7 @@ public class PlateauBas
 
         for (int cpt=0; cpt < 3; cpt++) sRet+= "| " + this.plateauBas[cpt].toString() + cpt+ " ";
 
-        sRet+="|\n";
+        sRet+="| 7\n";
 
 
         for (int cpt = 0; (cpt < this.plateauBas.length -2); cpt++)
@@ -57,7 +57,7 @@ public class PlateauBas
         sRet+="| " + this.iNbConstru1 + " | " +  this.iNbConstru2 + " ";
 
         for (int cpt=3; cpt < 6; cpt++) sRet+= "| " + this.plateauBas[cpt].toString()+cpt + " ";
-        sRet+="|\n";
+        sRet+="| 8\n";
 
         for (int cpt = 0; (cpt < this.plateauBas.length -2); cpt++)
         {
@@ -69,9 +69,4 @@ public class PlateauBas
 		return sRet;
     }
 
-    public static void main(String[] args)
-    {
-		PlateauBas p  = new PlateauBas();
-		System.out.println(p);
-    }
 }
