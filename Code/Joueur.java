@@ -1,4 +1,4 @@
-public class Joueur
+public class Joueur extends Banque
 {
 	// Attributs
 	private static int nbJoueur = 0;
@@ -12,6 +12,7 @@ public class Joueur
 
 	public Joueur(String sCouleur)
 	{
+		super(3);
 		this.iScore      = 0;
 		this.sCouleur    = sCouleur;
 		this.ensBatiment = new Tuile[5]; // Pour le futur c'est forcement le nombre de maison dispo  a la base
@@ -31,7 +32,9 @@ public class Joueur
 
 	public String toString()
 	{
-		return "Joueur n°" + this.iNumJoueur + ", " +  " couleur : " + this.sCouleur;
+		String sRet = "Joueur n°" + this.iNumJoueur + ", " +  " couleur : " + this.sCouleur+ "\n";
+		sRet+=super.toString();
+		return sRet;
 
 	}
 }
