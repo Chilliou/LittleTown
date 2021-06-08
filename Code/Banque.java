@@ -5,6 +5,8 @@ public class Banque
 	private int nbEau;
 	private int nbBle;
 
+	private int iScore;
+
 	private int nbPiece;
 
 	public Banque()
@@ -14,7 +16,7 @@ public class Banque
 		this.nbEau    = 15;
 		this.nbBle    = 15;
 
-		this.nbPiece = 40;
+		this.nbPiece  = 40;
 	}
 
 	public Banque(int nbPiece)
@@ -23,6 +25,7 @@ public class Banque
 		this.nbBois   = 0;
 		this.nbEau    = 0;
 		this.nbBle    = 0;
+		this.iScore   = 0;
 
 		this.nbPiece = nbPiece;
 	}
@@ -68,16 +71,26 @@ public class Banque
 		}
 
 	}
-	
+
+	// Cette méthode peut retirer ou ajouter du score
+	public void changeScore(int iScore)
+	{
+		this.iScore += iScore;
+	}
+
+	public int  getScore()
+	{
+		return this.iScore;
+	}
 
 	public String toString ()
-{
-    return "Nombre de bois   : " + this.nbBois   + "\n" +
-           "Nombre de Ble    : " + this.nbBle    + "\n" +
-           "Nombre d'eau     : " + this.nbEau    + "\n" +
-           "Nombre de Pierre : " + this.nbPierre + "\n" +
-           "Nombre de Piece  : " + this.nbPiece  + "\n" ;
-}
+	{
+		return "Nombre de bois   : " + this.nbBois   + "\n" +
+			"Nombre de Ble    : " + this.nbBle    + "\n" +
+			"Nombre d'eau     : " + this.nbEau    + "\n" +
+			"Nombre de Pierre : " + this.nbPierre + "\n" +
+			"Nombre de Piece  : " + this.nbPiece  + "\n" ;
+	}
 
 	public static void main(String[] args)
 	{
