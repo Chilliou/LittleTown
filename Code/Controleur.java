@@ -22,10 +22,9 @@ public class Controleur
 		while ( this.metier.getTour() <= 4 )
 		{
 
-			for(int iTour = 0; iTour < this.metier.getNbJoueur(); iTour++)
+			for(int iTour = 0; iTour < this.metier.getNbOuvrier() * 2; iTour++)
 			{
 				boolean bTour = false;
-
 
 				do
 				{
@@ -46,8 +45,6 @@ public class Controleur
 						{
 							if (this.metier.getJoueurActif().aJouer()) bTour = true;
 							else System.out.println("Merci d'effectuer une action !");
-	
-							this.metier.finTour     (  );
 						}
 						
 	
@@ -64,7 +61,7 @@ public class Controleur
 
 			// NOURIR OUVRIER
 			this.metier.nourrirOuvrier();
-			
+			this.metier.plus1Tour();
 		}
 	}
 

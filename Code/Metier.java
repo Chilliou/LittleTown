@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Metier
 {
 
-    private final int NB_OUVRIERS = 3;
+    private final int NB_OUVRIERS = 5;
     
     private Controleur ctrl;
 
@@ -38,6 +38,8 @@ public class Metier
     
 
     public int getNbJoueur() { return this.nbJoueurs; }
+
+    public int getNbOuvrier() { return this.NB_OUVRIERS; }
 
 
     private void initJoueur()
@@ -264,10 +266,6 @@ public class Metier
       return this.ctrl.getIhm().getTuile(x,y).toString();
     }
 
-    public void finTour()
-    {
-    }
-
     public boolean echangerPiece()
     {
         if ( this.tabJoueurs[numJoueurActif].getRsc('M') < 3 )
@@ -304,6 +302,11 @@ public class Metier
     public int getTour()
     {
         return this.tourActuel;
+    }
+
+    public void plus1Tour()
+    {
+        this.tourActuel++;
     }
 
 
