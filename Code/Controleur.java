@@ -19,50 +19,53 @@ public class Controleur
 	{
 		int action;
 
-
-		
-
 		while ( this.metier.getTour() <= 4 )
 		{
-			boolean bTour = false;
 
-
-			do
+			for(int iTour = 0; iTour < this.metier.getNbJoueur(); iTour++)
 			{
-				this.ihm.afficher();
-			
-				System.out.println(this.metier.getJoueurActif().toString());
-				
-				action = this.ihm.getChoix();
-				System.out.println(action);
+				boolean bTour = false;
 
-				
-				switch ( action )
+
+				do
 				{
-					case 1 -> this.metier.placerOuvrier     (  );
-					case 2 -> this.metier.construireBatiment     (  );
-					case 3 -> this.metier.activerTuile     (  );
-					case 4 -> this.metier.getInfoBatiment     ( );
-					case 5 -> this.metier.echangerPiece     (  );
-					case 6 ->
-					{
-						if (this.metier.getJoueurActif().aJouer()) bTour = true;
-						else System.out.println("Merci d'effectuer une action !");
-
-						this.metier.finTour     (  );
-					}
+					this.ihm.afficher();
+				
+					System.out.println(this.metier.getJoueurActif().toString());
 					
-
+					action = this.ihm.getChoix();
+					System.out.println(action);
+	
+					
+					switch ( action )
+					{
+						case 1 -> this.metier.placerOuvrier     (  );
+						//case 2 : this.metier.construireBatiment     (  );
+						case 3 -> this.metier.activerTuile     (  );
+						case 4 -> this.metier.getInfoBatiment     ( );
+						case 5 -> this.metier.echangerPiece     (  );
+						case 6 ->
+						{
+							if (this.metier.getJoueurActif().aJouer()) bTour = true;
+							else System.out.println("Merci d'effectuer une action !");
+	
+							this.metier.finTour     (  );
+						}
+						
+	
+					}
+	
 				}
-
+				while (! (this.metier.getJoueurActif().aJouer()) || bTour == false);
+	
+	
+				this.metier.getJoueurActif().setAction(false);
+				this.metier.changementJoueur();
+	
 			}
-			while (! (this.metier.getJoueurActif().aJouer()) || bTour == false);
 
-
-			this.metier.getJoueurActif().setAction(false);
-			this.metier.changementJoueur();
 			// NOURIR OUVRIER
-
+			this.metier.nourrirOuvrier();
 			
 		}
 	}
