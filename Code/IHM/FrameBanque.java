@@ -18,9 +18,8 @@ public class FrameBanque extends JFrame
         this.setResizable(false);
 
 		// Organisation du LayoutManager
-		
 
-		// CrÃ©ation des Panels
+		// Création des Panels
 		this.panelBanque   = new PanelBanque   ( ctrl );
 
 		// Positionnement des Panels
