@@ -92,6 +92,108 @@ public class IhmCUI
         return iChoix;
     }
 
+
+    // Méthode  pour nourir les ouvriers
+    public void nourrirOuvrierInfo(Joueur j)
+    {
+        System.out.println("<=======> A table !!!! <=======>\n");
+        System.out.println(j.toString());
+        System.out.println("Vous devez maintenant nourrir vos ouvriers...");
+        System.out.println("Vous pouvez utiliser votre eau, votre blé ou 3 pièces par nourriture manquante.");
+        System.out.println("En cas de nourriture manquante, vous recevez -3 de score par ouvrier non nourri.");
+    }
+
+    // Méthode  pour nourir les ouvriers
+    public int nourrirOuvrier(char ressource, int iOuvrierNourri, int nbOuvrierTotint, Joueur j)
+    {
+        int     iSaisi;
+        int     iNouveauNbOuvrierNourri = 0;
+        Scanner kb = new Scanner(System.in);
+
+        if (nbOuvrierTotint - iOuvrierNourri > 0)
+        {
+            switch (ressource)
+            {
+                case 'C' ->
+                {
+                    System.out.println("Il vous reste " +  (nbOuvrierTotint - iOuvrierNourri) + " ouvrier(s) à nourrir.");
+                    System.out.println("Combien de votre blé voulez vous utiliser ? : ");
+                    iSaisi = kb.nextInt();
+                    if ( j.getRsc('C') >= iSaisi )
+                    {
+                        if   ( iSaisi <= nbOuvrierTotint-iOuvrierNourri ) iNouveauNbOuvrierNourri += iSaisi;
+                        else iNouveauNbOuvrierNourri = nbOuvrierTotint;
+                    }
+                    else
+                    {
+                        System.out.println("Ressource insufisante");
+                    }
+
+                }
+    
+    
+                case 'E' ->
+                {
+                    System.out.println("Il vous reste " +  (nbOuvrierTotint - iOuvrierNourri) + " ouvrier(s) à nourrir.");
+                    System.out.println("Combien de votre eau voulez vous utiliser ? : ");
+                    iSaisi = kb.nextInt();
+                    if ( j.getRsc('E') >= iSaisi )
+                    {
+                        if ( iSaisi <= nbOuvrierTotint-iOuvrierNourri) iNouveauNbOuvrierNourri += iSaisi;
+                        else iNouveauNbOuvrierNourri = nbOuvrierTotint;
+                    }
+                    else
+                    {
+                        System.out.println("Ressource insufisante");
+                    }
+                }
+    
+    
+                case 'M' ->
+                {
+                    System.out.println("Il vous reste " +  (nbOuvrierTotint - iOuvrierNourri) + " ouvrier(s) à nourrir.");
+                    System.out.println("Combien de vos pièces voulez vous utiliser ? (3 pièces / ouvrier): ");
+                    iSaisi = kb.nextInt();
+                    if ( j.getRsc('M') >= iSaisi )
+                    {
+                        while (iSaisi >= 3)
+                        {
+                            System.out.println("Je passe :");
+                            iSaisi                  -= 3;
+                            iNouveauNbOuvrierNourri += 1;
+                        }
+                    }
+                    else
+                    {
+                        System.out.println("Ressource insufisante");
+                    }
+
+                }
+            }
+        }
+
+
+        return iNouveauNbOuvrierNourri;
+        
+    }
+
+    // Méthode  pour nourir les ouvriers
+    public void finNourrir(int iOuvrierNourri, int nbOuvrierTot, Joueur j)
+    {
+        if (iOuvrierNourri < nbOuvrierTot)
+        {
+            System.out.println("Vous n'avez pas nourri " +  (nbOuvrierTot- iOuvrierNourri) + " ouvrier(s)");
+            System.out.println("Vous allez recevoir -" + (nbOuvrierTot - iOuvrierNourri)*3 + " de score.");
+            j.changeScore(-(nbOuvrierTot - iOuvrierNourri)*3);
+            System.out.println(j.toString() );
+        }
+        else
+        {
+            System.out.println("Féliciation joueur n°" + j.getNumJoueur() + ", vous avez nourri tous vos ouvriers");
+            System.out.println(j.toString() );
+        }
+    }
+	
     public String getSaisiePos()
     {
       Scanner sc = new Scanner( System.in );
