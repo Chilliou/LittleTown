@@ -1,38 +1,36 @@
 public class Banque
 {
-	private int iNbPierre;
-	private int iNbBois;
-	private int iNbEau;
-	private int iNbBle;
+	private int nbPierre;
+	private int nbBois;
+	private int nbEau;
+	private int nbBle;
 
-	private int iNbPiece;
+	private int nbPiece;
 
 	private int iScore;
 
 	public Banque()
 	{
-		this.iNbPierre = 15;
-		this.iNbBois   = 15;
-		this.iNbEau    = 15;
-		this.iNbBle    = 15;
-		this.iNbPiece = 40;
-
+		this.nbPierre = 15;
+		this.nbBois   = 15;
+		this.nbEau    = 15;
+		this.nbBle    = 15;
+		
 		this.iScore   = 0;
 
-		
+		this.nbPiece = 40;
 	}
 
-	public Banque(int iNbPiece)
+	public Banque(int nbPiece)
 	{
-		this.iNbPierre = 10;
-		this.iNbBois   = 10;
-		this.iNbEau    = 10;
-		this.iNbBle    = 10;
-		this.iNbPiece = iNbPiece;
+		this.nbPierre = 10;
+		this.nbBois   = 10;
+		this.nbEau    = 10;
+		this.nbBle    = 10;
 
 		this.iScore   = 0;
 
-		
+		this.nbPiece = nbPiece;
 	}
 
 	public int getRsc(char rsc)
@@ -41,11 +39,11 @@ public class Banque
 
 		return nombre = switch(rsc)
 						{
-							case 'P' -> this.iNbPierre;
-							case 'A' -> this.iNbBois;
-							case 'E' -> this.iNbEau;
-							case 'C' -> this.iNbBle;
-							case 'M' -> this.iNbPiece;
+							case 'P' -> this.nbPierre;
+							case 'A' -> this.nbBois;
+							case 'E' -> this.nbEau;
+							case 'C' -> this.nbBle;
+							case 'M' -> this.nbPiece;
 							default -> 99;
 						};
 	}
@@ -54,11 +52,11 @@ public class Banque
 	{
 		switch(rsc)
 		{
-			case 'P' -> this.iNbPierre += nb;
-			case 'A' -> this.iNbBois   += nb;
-			case 'E' -> this.iNbEau    += nb;
-			case 'C' -> this.iNbBle    += nb;
-			case 'M' -> this.iNbPiece  += nb;
+			case 'P' -> this.nbPierre += nb;
+			case 'A' -> this.nbBois   += nb;
+			case 'E' -> this.nbEau    += nb;
+			case 'C' -> this.nbBle    += nb;
+			case 'M' -> this.nbPiece  += nb;
 		}	
 	}
 
@@ -90,11 +88,11 @@ public class Banque
 
 	public String toString ()
 {
-    return "Nombre de Pierre : " + this.iNbPierre + "\n" +
-           "Nombre de bois   : " + this.iNbBois   + "\n" +
-           "Nombre d'eau     : " + this.iNbEau    + "\n" +
-           "Nombre de Ble    : " + this.iNbBle    + "\n" +
-           "Nombre de Piece  : " + this.iNbPiece  + "\n" +
+    return "Nombre de bois   : " + this.nbBois   + "\n" +
+           "Nombre de Ble    : " + this.nbBle    + "\n" +
+           "Nombre d'eau     : " + this.nbEau    + "\n" +
+           "Nombre de Pierre : " + this.nbPierre + "\n" +
+           "Nombre de Piece  : " + this.nbPiece  + "\n" +
            "Nombre de Point  : " + this.iScore    ;
 }
 

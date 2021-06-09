@@ -1,17 +1,17 @@
 public class Ouvrier
 {
-	private int iPosLigne;
-	private int iPosColonne;
+	private int posLigne;
+	private int posColonne;
 
-	public Ouvrier ( int iPosLigne, int iPosColonne )
+	public Ouvrier ( int posLigne, int posColonne )
 	{
-		this.iPosLigne   = iPosLigne;
-    	this.iPosColonne = iPosColonne;
+		this.posLigne   = posLigne;
+    this.posColonne = posColonne;
 	}
 
 	public void resetOuvrier() // Pour replacer ouvrier a la fin du tour
 	{
-		this.iPosLigne   = -1; 
-		this.iPosColonne = -1;
+		this.posLigne = -1; 
+		this.posColonne = -1;
 	}
 }

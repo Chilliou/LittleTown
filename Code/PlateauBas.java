@@ -6,18 +6,11 @@ import java.util.Collections;
 public class PlateauBas
 {
 	private Tuile[][] plateauBas;
-<<<<<<< HEAD
-
-    private int iNbBle;
-    private int iNbConstru1;
-    private int iNbConstru2;
-=======
     private int       iNbBle;
     private int       iNbConstru1;
     private int       iNbConstru2;
 
     private ArrayList<Batiment> ensBatiment;
->>>>>>> 4726f7a9c214b0313d849ed0aae1c5ae88989d33
 
     public PlateauBas()
     {
@@ -48,9 +41,6 @@ public class PlateauBas
 
     }
 
-<<<<<<< HEAD
-    public Batiment getBatiment( int x, int y )
-=======
     private void initTuile()
     {
         this.ensBatiment = new ArrayList<Batiment>();
@@ -76,23 +66,36 @@ public class PlateauBas
 
 
     public Batiment getBatiment(int x, int y)
->>>>>>> 4726f7a9c214b0313d849ed0aae1c5ae88989d33
     {
         return (Batiment) this.plateauBas[x-6][y-2];
     }
 
-    public void setTuile( int x, int y, Tuile tuile )
+    public void setTuile(int x, int y, Tuile tuile)
     {
       this.plateauBas[x-6][y-2] = tuile;
+    }
+
+    public void addOuvrier(int numJoueur)
+    {
+        if (numJoueur+1 == 1) this.iNbConstru1++;
+
+        if (numJoueur+1 == 2) this.iNbConstru2++;
+        
+    }
+
+    public void clearOuvrier()
+    {
+        this.iNbConstru1 = 0;
+        this.iNbConstru2 = 0;
     }
 
 
     public String toString()
     {
-		String sRet = "";
+		String sRet="";
+        int iNumLigne = 7;
 
-        for (int i = 0; i < this.plateauBas[0].length + 1; i++) 
-            sRet+= "+----";
+        for (int i = 0; i < this.plateauBas[0].length + 1; i++) sRet+= "+----";
 
         sRet += "+----+\n";
 
@@ -106,16 +109,18 @@ public class PlateauBas
 
                 if (i == 1 && y == 0)
                     sRet += "| " + this.iNbConstru1 + "  | " + this.iNbConstru2 + "  ";
-
                 sRet += "| " + this.plateauBas[i][y].toString() + "  ";
 
             }
-
-            sRet+= "|\n";
+            sRet+= "| " + iNumLigne + "\n";
+            iNumLigne++;
             for (int cpt = 0; cpt < this.plateauBas[0].length + 1; cpt++) sRet+= "+----";
 
             sRet += "+----+\n";
         }
+
+
+
 
 		return sRet;
     }

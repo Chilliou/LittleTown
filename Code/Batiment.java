@@ -2,66 +2,73 @@ import java.util.ArrayList;
 
 public class Batiment extends Tuile
 {
-
-	private Joueur jProprietaire;
+  private Joueur proprietaire;
 	
-	private String sCout;
-	private String sCoutProduction;
-	private String sRevientProduction;
+	private String cout;
+	private String coutProduction;
+	private String revientProduction;
 	
-	private int iScore;
+	private int score;
 
-	public Batiment ( String sNom,String sCout,String sCoutProduction,String sRevientProduction, int iScore)
+  public Batiment ( String nom,String cout,String coutProduction,String revientProduction, int score)
 	{
-		super(sNom);
+		super(nom);
 		
-		this.sCout              = sCout;
-		this.sCoutProduction    = sCoutProduction;
-		this.sRevientProduction = sRevientProduction;
+		this.cout              = cout;
+		this.coutProduction    = coutProduction;
+		this.revientProduction = revientProduction;
 
-		this.jProprietaire = null;
+		this.proprietaire = null;
 		
-		this.iScore = iScore;
+		this.score = score;
 	}
 
-	public Batiment(String sNom)
+  public Batiment(String nom)
+  {
+
+    this(nom,"","","",0);
+  }
+
+  public String getCout(){ return this.cout;}
+  public String getCoutProd(){ return this.coutProduction;}
+  public String getRevientProd(){ return this.revientProduction;}
+  public int   getScore(){ return this.score;}
+
+	public Joueur getProprietaire()
 	{
-		this( sNom, "", "", "", 0 );
+		return this.proprietaire;
 	}
+  public Ouvrier getOuvrier()
+  {
+    return null;
+  }
 
-	public String getCout         () { return this.sCout;              }
-	public String getCoutProd     () { return this.sCoutProduction;    }
-	public String getRevientProd  () { return this.sRevientProduction; }
-	public int    getScore        () { return this.iScore;             }
-	public Joueur getProprietaire () { return this.jProprietaire;      }
-	public Ouvrier getOuvrier     () { return null;                    }
-
-
-	public void setProprietaire(Joueur jProprietaire)
+	public void setProprietaire(Joueur proprietaire)
 	{
-		this.jProprietaire = jProprietaire;
+		this.proprietaire = proprietaire;
 	}
-
 
 	public String infoBatiment()
 	{
 		String sRet="\n";
 
-		sRet +=	"Nom du batiment    : " + super.getNom()          + "\n" +
-				"Cout               : " + this.sCout              + "\n" +
-				"Cout de Production : " + this.sCoutProduction    + "\n" +
-				"Revient Production : " + this.sRevientProduction + "\n" +
-				"Gain de score      : " + this.iScore  ;
+		sRet += "Nom du batiment    : " + super.getNom()   + "\n" +
+            "Cout               : " + this.cout    + "\n" +
+            "Cout de Production : " + this.coutProduction    + "\n" +
+            "Revient Production : " + this.revientProduction + "\n" +
+            "Gain de score      : " + this.score  ;
+
+
 
 		return sRet;
 	}
 
 
-	public String toString()
-	{
-		if(this.jProprietaire != null)
-			return super.toString() + this.jProprietaire.getNumJoueur();
-		else
-			return super.toString();
-	}
+  public String toString()
+  {
+    if(this.proprietaire != null)
+      return super.toString() + this.proprietaire.getNumJoueur();
+    else
+      return super.toString();
+  }
 }

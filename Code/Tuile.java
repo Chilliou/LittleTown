@@ -4,20 +4,20 @@ import java.util.ArrayList;
 public abstract class Tuile
 {
 	private boolean bActive;
-	private String  sNom;
+	private String nom;
 
-	public Tuile ( String sNom)  
+	public Tuile ( String nom)  
 	{
-		this.sNom     = sNom;
+		this.nom     = nom;
 		this.bActive = true;
 	}
 
 	public abstract Ouvrier getOuvrier();
 	public abstract Joueur getProprietaire();
 
-	public void setActivation(boolean bStatus)
+	public void setActivation(boolean status)
 	{
-		this.bActive = bStatus;
+		this.bActive = status;
 	}
 
 	public boolean isActivable()
@@ -27,11 +27,11 @@ public abstract class Tuile
 
 	public String getNom()
 	{
-		return this.sNom;
+		return this.nom;
 	}
 
 	public String toString()
 	{
-		return this.sNom.charAt(0) + "";
+		return this.nom.charAt(0)+"";
 	}
 }

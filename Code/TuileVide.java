@@ -4,6 +4,7 @@ public class TuileVide extends Tuile
 
   public TuileVide ()
   {
+
     super( "Vide" );
     this.ouvrier = null;
   }

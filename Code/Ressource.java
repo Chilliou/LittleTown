@@ -1,9 +1,9 @@
 public class Ressource
 {
-	private String sNom;
+	private String nom;
 
-	public Ressource(String sNom)
+	public Ressource(String nom)
 	{
-		this.sNom = sNom;
+		this.nom = nom;
 	}
 }

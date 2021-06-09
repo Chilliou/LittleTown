@@ -8,8 +8,8 @@ public class IhmCUI
 
     public IhmCUI()
     {
-    this.plateau    = new Plateau(2,1);
-    this.plateauBas = new PlateauBas();
+        this.plateau    = new Plateau(2,1);
+        this.plateauBas = new PlateauBas();
     }
 
     public void afficher()
@@ -23,44 +23,49 @@ public class IhmCUI
 
     public Tuile getTuile(int x, int y)
     {
-        return this.plateau.getTuile( x, y );
+        return this.plateau.getTuile(x,y);
     }
-
 
     public TuileVide getTuileVide ( int x, int y )
     {
-      return this.plateau.getTuileVide( x, y );
+      return this.plateau.getTuileVide(x,y);
     }
-
 
     public Batiment getBatiment( int x, int y)
     {
         if(x <= 5)
-            return this.plateau.getBatiment( x, y );
+            return this.plateau.getBatiment(x,y);
         else
-            return this.plateauBas.getBatiment( x, y );
+            return this.plateauBas.getBatiment(x,y);
     }
-
 
     public void setTuile(int x, int y, Tuile tuile)
     {
         if(x <= 5)
-            this.plateau.setTuile( x, y, tuile );
+            this.plateau.setTuile(x,y,tuile);
         else
-            this.plateauBas.setTuile( x, y, tuile );
+            this.plateauBas.setTuile(x,y,tuile);
     }
-
 
     public void setTuileVide (int x, int y, TuileVide tuile)
     {
-        this.plateau.setTuile( x, y, tuile );
+      this.plateau.setTuile(x,y,tuile);
     }
 
+    public void clearOuvrier()
+    {
+        this.plateauBas.clearOuvrier();
+    }
+
+    public void addOuvrier(int numJoueur)
+    {
+        this.plateauBas.addOuvrier(numJoueur);
+    }
 
     public int getChoix()
     {
         String sChoix;
-        int    iChoix;
+        int iChoix;
 
         sChoix  = "+-----------------------------------------------+\n";
         sChoix += "| > Action possibles:                           |\n";
@@ -72,8 +77,8 @@ public class IhmCUI
         sChoix += "| 6 - Fin de tour                               |\n";
         sChoix += "+-----------------------------------------------+\n";
 
-       System.out.println( sChoix);
-    	 
+		System.out.println( sChoix);
+		 
         Scanner sc = new Scanner( System.in );
         
         System.out.print( "Faites votre choix : " );
@@ -85,11 +90,11 @@ public class IhmCUI
 
     public String getSaisiePos()
     {
-        Scanner sc = new Scanner( System.in );
-        System.out.print( "Entrez la position : " );
+      Scanner sc = new Scanner( System.in );
+      System.out.print( "Entrez la position : " );
 
-        String saisie = sc.nextLine();
-        return saisie;
+      String saisie = sc.nextLine();
+      return saisie;
         
     }
 }
