@@ -1,7 +1,7 @@
 public class Joueur extends Banque
 {
 	// Attributs
-	private static int nbJoueur = 0;
+	private static int iNbJoueur = 0;
 
 	private int iScore;
 	private String sCouleur;
@@ -17,14 +17,14 @@ public class Joueur extends Banque
 		this.sCouleur    = sCouleur;
 		this.ensBatiment = new Tuile[5]; // Pour le futur c'est forcement le nombre de maison dispo  a la base
 		this.ensOuvrier  = new Ouvrier[3]; // Depend toujours du nbJoueurs
-		this.iNumJoueur  = ++ Joueur.nbJoueur;
+		this.iNumJoueur  = ++ Joueur.iNbJoueur;
 		this.bAJouer     = false;
 	}
 
-	public void echangerRscJoueurVBanque(Banque b,char rsc,int nb)
+	public void echangerRscJoueurVBanque(Banque b,char rsc,int iNb)
 	{
-		b.ajouterEnlever(rsc, nb);
-		this.ajouterEnlever(rsc,-nb);
+		b.ajouterEnlever(rsc, iNb);
+		this.ajouterEnlever(rsc,-iNb);
 	}
 
 	public String getCouleur() { return this.sCouleur; }
@@ -41,7 +41,7 @@ public class Joueur extends Banque
 	{
 		String sRet = "Joueur n°" + this.iNumJoueur + ", " +  " couleur : " + this.sCouleur+ "\n";
 		sRet+=super.toString();
-		return sRet;	
+		return sRet;
 
 	}
 }
