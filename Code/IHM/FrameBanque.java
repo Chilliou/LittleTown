@@ -6,15 +6,20 @@ import java.awt.Toolkit;
 public class FrameBanque extends JFrame
 {
 	PanelBanque   panelBanque;
+	private Controleur ctrl;
 
 	public FrameBanque ( Controleur ctrl)
 	{
-
+		this.ctrl = ctrl; 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int height = screenSize.height;
+
+		int screenHeight = screenSize.height;
+		int screenWidth = screenSize.width;
+
 
 		this.setTitle    ( "Banque" );
-		this.setSize(200, height-100);
+		this.setSize(200, screenHeight-100);
+		this.setLocation(screenWidth / 2 + 500 + 10, 50);
         this.setResizable(false);
 
 		// Organisation du LayoutManager

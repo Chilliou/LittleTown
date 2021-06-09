@@ -2,6 +2,7 @@ import javax.swing.*;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.BorderLayout;
 
 public class FrameJoueur extends JFrame
 {
@@ -11,11 +12,14 @@ public class FrameJoueur extends JFrame
 	{
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int height = screenSize.height;
+
+		int screenHeight = screenSize.height;
+		int screenWidth = screenSize.width;
 
 		this.setTitle    ( "Joueur 1" );
-		this.setSize(200,height-100);
+		this.setSize(200,screenHeight-100);
         this.setResizable(false);
+		this.setLocation(screenWidth / 2 - 500 - 210, 50);
 
 		// Organisation du LayoutManager
 

@@ -9,7 +9,8 @@ import java.awt.image.BufferedImage;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-public class FramePlateau extends JFrame {
+public class FramePlateau extends JFrame
+{
 	PanelPlateau panelPlateau;
 
 	Controleur ctrl;
@@ -18,7 +19,8 @@ public class FramePlateau extends JFrame {
 	
 	JMenuItem i1, i2, i3, i4, i5;  
 
-	public FramePlateau(Controleur ctrl) {
+	public FramePlateau(Controleur ctrl)
+	{
 
 		this.ctrl = ctrl;
 
@@ -28,19 +30,30 @@ public class FramePlateau extends JFrame {
 		int screenWidth = screenSize.width;
 
 		this.setTitle("Plateau de jeu");
-		this.setSize(screenWidth-440, screenHeight - 100);
+		this.setSize(1000, screenHeight-100);
 		this.setResizable(false);
+		this.setLocation( screenWidth / 2 - 500, 50);
 
-		// Création des Panels
+		/******************************/
+		/* Créations des panels       */
+		/******************************/
+
 		this.panelPlateau = new PanelPlateau(ctrl);
 
-		// Positionnement des Panels
+		/***********************************/
+		/* Positionnement des panels       */
+		/***********************************/
+
 		this.add(this.panelPlateau);
 
 		BufferedImage img = null;
-		try {
+
+		try
+		{
 			img = ImageIO.read(new File("../../img/plateau_1.png"));
-		} catch (IOException e) {
+		}
+		catch (IOException e)
+		{
 			e.printStackTrace();
 		}
 
@@ -50,21 +63,20 @@ public class FramePlateau extends JFrame {
 
 		JMenuBar mb = new JMenuBar();
 		menu = new JMenu("Partie");
-		i1 = new JMenuItem("Nouvelle partie");
-		i2 = new JMenuItem("Quitter");
+		i1   = new JMenuItem("Nouvelle partie");
+		i2   = new JMenuItem("Quitter");
 		menu.add(i1);
 		menu.add(i2);
 		mb.add(menu);
 		this.setJMenuBar(mb);
 
-		// On centre le plateau
-		this.setLocationRelativeTo(null);
 
-		// Activation de la fenetre
+		// Rendre la fenetre visible
 		this.setVisible(true);
 	}
 
-	public void fermerFrame() {
+	public void fermerFrame()
+	{
 		this.dispose();
 	}
 }

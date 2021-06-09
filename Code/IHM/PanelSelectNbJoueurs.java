@@ -38,7 +38,7 @@ public class PanelSelectNbJoueurs extends JPanel implements ActionListener
         this.txtNbJoueurs = new JTextField();
         this.txtNbJoueurs.setEditable(false);
         this.txtNbJoueurs.setHorizontalAlignment(JTextField.CENTER);
-        this.txtNbJoueurs.setText("" + this.ctrl.getVal());
+        this.txtNbJoueurs.setText("" + this.ctrl.getNbJoueur());
 
         this.cbPlateau = new JComboBox<>(this.plateaux);
 
@@ -68,7 +68,7 @@ public class PanelSelectNbJoueurs extends JPanel implements ActionListener
 	{
 		super.paintComponent(g);
 
-		this.txtNbJoueurs.setText ( "" + this.ctrl.getVal() );
+		this.txtNbJoueurs.setText ( "" + this.ctrl.getNbJoueur() );
 	}
 
     public void actionPerformed(ActionEvent e) {

@@ -19,7 +19,7 @@ public class Controleur implements ComponentListener
 
 	public  Controleur ()
 	{
-        this.metier = new Metier();
+        this.metier  = new Metier();
 		this.menu    = new FrameMenu  (this);
 	}
 
@@ -36,28 +36,25 @@ public class Controleur implements ComponentListener
 	public void appelFramePlateau()
     {
         this.framePlateau = new FramePlateau(this);
-        this.frameBanque = new FrameBanque(this);
-		this.frameJoueur = new FrameJoueur(this);
+        this.frameBanque  = new FrameBanque (this);
+		this.frameJoueur  = new FrameJoueur (this);
 
         this.selectNbJoueurs.closeFrame();
 
         this.framePlateau.addComponentListener(this);
-        this.frameBanque.addComponentListener(this);
-        this.frameJoueur.addComponentListener(this);
+        this.frameBanque.addComponentListener (this);
+        this.frameJoueur.addComponentListener (this);
     }
 
     public void action ( int numAction )
 	{
-		if ( numAction == 1 ) this.metier.augmenter();
-		if ( numAction == 2 ) this.metier.diminuer ();
+		if ( numAction == 1 ) this.metier.augmenterNbJoueur();
+		if ( numAction == 2 ) this.metier.diminuerNbJoueur();
 
 		this.selectNbJoueurs.majIHM();
 	}
 
-	public int getVal()
-	{
-		return metier.getVal();
-	}
+	public int getNbJoueur() { return metier.getNbJoueur();}
 
 	public void majFramePlateau(int x, int y)
     {
@@ -74,15 +71,12 @@ public class Controleur implements ComponentListener
         this.frameBanque.setLocation(x, y);
     }
 
-	public void componentResized(ComponentEvent e) {}
 
 	public void componentMoved(ComponentEvent e) 
     {
-
-
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int screenHeight = screenSize.height;
-        int screenWidth = screenSize.width;
+		int screenHeight     = screenSize.height;
+        int screenWidth      = screenSize.width;
 
         if (e.getSource() == this.framePlateau )
         {
@@ -97,6 +91,7 @@ public class Controleur implements ComponentListener
             this.frameJoueur.setLocation(p);
             this.frameBanque.setLocation(p2);
         }
+        /*
         if (e.getSource() == this.frameJoueur )
         {
             Point p;
@@ -111,10 +106,11 @@ public class Controleur implements ComponentListener
             p.setLocation(p.getX()-1010, p.getY());
             this.framePlateau.setLocation(p);
         }
+        */
     }
 
 	public void componentShown(ComponentEvent e) {}
-
+	public void componentResized(ComponentEvent e) {}
 	public void componentHidden(ComponentEvent e) {}
 
 	public static void main(String[] a)
