@@ -27,7 +27,7 @@ public class Batiment extends Tuile
   public Batiment(String nom)
   {
 
-    this(nom,"","","",0);
+    this(nom,"","", nom.charAt(0) + "1" ,0);
   }
 
   public String getCout()        { return this.cout;              }
