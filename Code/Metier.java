@@ -133,14 +133,12 @@ public class Metier
                     this.tabJoueurs[numJoueurActif].echangerRscJoueurVBanque(this.banque,bat.getCout().charAt(i),Integer.parseInt(bat.getCout().charAt(i+1)+""));
 
                 this.ctrl.getIhm().setTuile(x,y,bat);
-                this.ctrl.getIhm().setTuile(lig,col,terrain);
+                if ( ! bat.getNom().equals( "Blé" ) )
+                    this.ctrl.getIhm().setTuile(lig,col,terrain);
                 this.ctrl.getIhm().addOuvrier(this.numJoueurActif);
                 this.tabJoueurs[numJoueurActif].changeScore(bat.getScore());
                 bat.setProprietaire(this.tabJoueurs[numJoueurActif]);
                 this.tabJoueurs[numJoueurActif].setAction(true);
-
-                
-
 
                 return true;
 
@@ -181,18 +179,18 @@ public class Metier
             int yTuile   =  coorTuile.charAt(0) - (int) ('A');
             int xTuile   = (Integer.parseInt(coorTuile.charAt(1)+"")-1);
 
-
             // Vérifiaction des coordonnées de la tuile
             if ((xTuile == xOuvrier - 1 || xTuile == xOuvrier + 1 || xTuile == xOuvrier)
              && (yTuile == yOuvrier - 1 || yTuile == yOuvrier + 1 || yTuile == yOuvrier))
             {
-                
+
                 // Vérification que la tuile n'a pas deja était activée.
                 if (this.ctrl.getIhm().getTuile(xTuile, yTuile).isActivable())
                 {
+
                     System.out.println("> Activation de la tuile : " + this.ctrl.getIhm().getTuile(xTuile, yTuile).getNom());
                     this.banque.echangerRscBanqueVJoueur(this.tabJoueurs[numJoueurActif],
-                                                         this.ctrl.getIhm().getTuile(xTuile, yTuile).toString().charAt(0),
+                                                         this.ctrl.getIhm().getBatiment(xTuile, yTuile).getRevientProd().charAt(0),
                                                          Integer.parseInt( this.ctrl.getIhm().getBatiment(xTuile, yTuile).getRevientProd().charAt(1) + "" ) );
                     this.ctrl.getIhm().getTuile(xTuile, yTuile).setActivation(false);
                 }

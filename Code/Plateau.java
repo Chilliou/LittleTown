@@ -27,13 +27,13 @@ public class Plateau
 				for(Character c : sc.nextLine().toCharArray())
 				{
 					if(c == 'P')  // Pierre
-						this.terrainDeJeu[ligne][colone] = new Batiment("Pierre");
+						this.terrainDeJeu[ligne][colone] = new Batiment( "Pierre" );
 					if(c == 'V')  // Vide
 						this.terrainDeJeu[ligne][colone] = new TuileVide();
 					if(c == 'E')  // Eau
-						this.terrainDeJeu[ligne][colone] = new Batiment("Eau");
+						this.terrainDeJeu[ligne][colone] = new Batiment( "Eau" );
 					if(c == 'A')  // Arbre
-						this.terrainDeJeu[ligne][colone] = new Batiment("Arbre");
+						this.terrainDeJeu[ligne][colone] = new Batiment( "Arbre" );
 
 					colone++;
 				}

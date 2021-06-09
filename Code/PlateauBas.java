@@ -23,6 +23,14 @@ public class PlateauBas
         
     }
 
+    public boolean enleverBle ()
+    {
+        if ( this.iNbBle < 1 )
+            return false;
+
+        this.iNbBle--;
+        return true;
+    }
 
     private void initPlateauBas()
     {
