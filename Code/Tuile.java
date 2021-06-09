@@ -4,16 +4,16 @@ import java.util.ArrayList;
 public abstract class Tuile
 {
 	private boolean bActive;
-	private String nom;
+	private String  nom;
 
-	public Tuile ( String nom)  
+	public Tuile ( String nom )  
 	{
-		this.nom     = nom;
-		this.bActive = true;
+		this.nom          = nom;
+		this.bActive      = true;
 	}
 
 	public abstract Ouvrier getOuvrier();
-	public abstract Joueur getProprietaire();
+	public abstract Joueur  getProprietaire();
 
 	public void setActivation(boolean status)
 	{

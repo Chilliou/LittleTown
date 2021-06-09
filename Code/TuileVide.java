@@ -21,13 +21,15 @@ public class TuileVide extends Tuile
 
   public Joueur getProprietaire()
   { 
-    return null;
+    if ( this.ouvrier == null ) return null;
+
+    return this.ouvrier.getProprietaire();
   }
 
   public String toString ()
   {
     if ( this.ouvrier != null )
-      return "O";
+      return "O"+this.getProprietaire().getNumJoueur();
     else
       return " ";
   }

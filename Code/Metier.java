@@ -71,7 +71,7 @@ public class Metier
     
               if ( terrain.getNom().equals( "Vide" ) && terrain.getOuvrier() == null )
               {
-                terrain.setOuvrier( new Ouvrier ( x, y ) );
+                terrain.setOuvrier( new Ouvrier ( x, y, this.getJoueurActif()) );
                 this.ctrl.getIhm().setTuileVide ( x, y, terrain );
                 this.dernierOuvrierPos = sCoordOuvrier;
     
