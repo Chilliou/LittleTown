@@ -189,6 +189,16 @@ public class Metier
                 {
 
                     System.out.println("> Activation de la tuile : " + this.ctrl.getIhm().getTuile(xTuile, yTuile).getNom());
+
+                    if ( this.ctrl.getIhm().getBatiment(xTuile, yTuile).getProprietaire() != this.tabJoueurs[this.numJoueurActif] )
+                    {
+                        if ( this.tabJoueurs[this.numJoueurActif].getRsc( 'M' ) > 0 )
+                            this.tabJoueurs[this.numJoueurActif].echangerRscJoueurVBanque ( this.ctrl.getIhm().getBatiment(xTuile, yTuile).getProprietaire(), 'M', 1 );
+                        else
+                            return;
+
+                    }
+
                     this.banque.echangerRscBanqueVJoueur(this.tabJoueurs[numJoueurActif],
                                                          this.ctrl.getIhm().getBatiment(xTuile, yTuile).getRevientProd().charAt(0),
                                                          Integer.parseInt( this.ctrl.getIhm().getBatiment(xTuile, yTuile).getRevientProd().charAt(1) + "" ) );
