@@ -10,7 +10,6 @@ public class Joueur extends Banque
 	private int iNumJoueur;
 	private boolean bAJouer;
 
-
 	public Joueur(String sCouleur)
 	{
 		super(3);
@@ -24,32 +23,19 @@ public class Joueur extends Banque
 
 	public void echangerRscJoueurVBanque(Banque b,char rsc,int nb)
 	{
-		
-		
 		b.ajouterEnlever(rsc, nb);
 		this.ajouterEnlever(rsc,-nb);
-
-	} 
-
-	public int getNumJoueur()
-	{
-		return this.iNumJoueur;
 	}
 
-	public void setAction(boolean bJouer)
-	{
-		this.bAJouer = bJouer;
-	}
+	public String getCouleur() { return this.sCouleur; }
 
-	public boolean aJouer()
-	{
-		return this.bAJouer;
-	}
+	public int getNumJoueur() { return this.iNumJoueur; }
 
-	public void majScore(int i)
-	{
-		this.iScore+= i;
-	}
+	public void setAction(boolean bJouer) { this.bAJouer = bJouer; }
+
+	public boolean aJouer() { return this.bAJouer; }
+
+	public void majScore(int i) { this.iScore+= i; }
 
 	public String toString()
 	{
