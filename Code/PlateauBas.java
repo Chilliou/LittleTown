@@ -1,31 +1,69 @@
+import java.util.ArrayList;
+import java.io.FileInputStream;
+import java.util.Scanner;
+import java.util.Collections;
 
 public class PlateauBas
 {
 	private Tuile[][] plateauBas;
-    private int     iNbBle;
-    private int     iNbConstru1;
-    private int     iNbConstru2;
+    private int       iNbBle;
+    private int       iNbConstru1;
+    private int       iNbConstru2;
+
+    private ArrayList<Batiment> ensBatiment;
 
     public PlateauBas()
     {
-        this.plateauBas   = new Tuile[2][3];
+        this.plateauBas   = new Tuile[2][6];
         this.iNbBle       = 5;
         this.iNbConstru1  = 0;
         this.iNbConstru2  = 0;
+        this.initTuile();
         this.initPlateauBas();
+        
     }
 
 
     private void initPlateauBas()
     {
-        this.plateauBas[0][0] = new Batiment("Bar", "P2C2", "", "S3", 7);
-        this.plateauBas[0][1] = new Batiment("Librairie", "P4", "","M3", 8);
-        this.plateauBas[0][2] = new Batiment("Mine", "A1P1", "", "M2", 4);
 
-        this.plateauBas[1][0] = new Batiment("Puits", "A1P1", "", "S2", 4);
-        this.plateauBas[1][1] = new Batiment("Zonton", "A3", "", "E2", 5);
-        this.plateauBas[1][2] = new Batiment("Satue", "P4", "", "", 10);
+        int iNbTuile = 0;
+        for (int i = 0; i < this.plateauBas.length; i++)
+        {
+            for (int y = 0; y < this.plateauBas[0].length; y++)
+            {
+                this.plateauBas[i][y] = this.ensBatiment.get(iNbTuile);
+                iNbTuile++;
+            }
+        }
+
+                
+
     }
+
+    private void initTuile()
+    {
+        this.ensBatiment = new ArrayList<Batiment>();
+
+        try
+		{
+			Scanner sc = new Scanner ( new FileInputStream ( "tuile.data" ) );
+
+			while ( sc.hasNextLine() )
+			{
+                String[] parts = sc.nextLine().split("/");
+                ensBatiment.add( new Batiment(parts[0], parts[1], parts[2], parts[3], Integer.parseInt(parts[4])) );
+			}
+
+			sc.close();
+		}
+		catch (Exception e)
+		{ e.printStackTrace(); }
+
+        // On mélange l'ArrayList
+        Collections.shuffle(this.ensBatiment);
+    }
+
 
     public Batiment getBatiment(int x, int y)
     {
