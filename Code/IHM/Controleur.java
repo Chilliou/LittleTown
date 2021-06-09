@@ -80,10 +80,10 @@ public class Controleur implements ComponentListener
             Point p, p2;
             
             p2 = this.framePlateau.getLocation();
-            p2.setLocation(p2.getX(), p2.getY()-110);
+            p2.setLocation(p2.getX()-210, p2.getY());
 
             p = this.framePlateau.getLocation();
-            p.setLocation(p.getX(), p.getY()+590);
+            p.setLocation(p.getX()+1010, p.getY());
             
             this.frameJoueur.setLocation(p);
             this.frameBanque.setLocation(p2);
@@ -92,14 +92,14 @@ public class Controleur implements ComponentListener
         {
             Point p;
             p = this.frameJoueur.getLocation();
-            p.setLocation(p.getX(), p.getY()-590);
+            p.setLocation(p.getX()-1010, p.getY());
             this.framePlateau.setLocation(p);
         }
         if (e.getSource() == this.frameBanque )
         {
             Point p;
             p = this.frameBanque.getLocation();
-            p.setLocation(p.getX(), p.getY()+110);
+            p.setLocation(p.getX()+210, p.getY());
             this.framePlateau.setLocation(p);
         }
     }

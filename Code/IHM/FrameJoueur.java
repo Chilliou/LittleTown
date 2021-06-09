@@ -1,5 +1,8 @@
 import javax.swing.*;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 public class FrameJoueur extends JFrame
 {
 	PanelJoueur   panelJoueur;
@@ -7,8 +10,11 @@ public class FrameJoueur extends JFrame
 	public FrameJoueur ( Controleur ctrl)
 	{
 
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int height = screenSize.height;
+
 		this.setTitle    ( "Joueur 1" );
-		this.setSize(1000,100);
+		this.setSize(200,height-100);
         this.setResizable(false);
 
 		// Organisation du LayoutManager
