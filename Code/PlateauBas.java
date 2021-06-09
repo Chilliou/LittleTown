@@ -112,7 +112,7 @@ public class PlateauBas
                 sRet += "| " + this.plateauBas[i][y].toString() + "  ";
 
             }
-            sRet+= "| " + iNumLigne + "\n";
+            sRet+= "|      " + iNumLigne + "\n";
             iNumLigne++;
             for (int cpt = 0; cpt < this.plateauBas[0].length + 1; cpt++) sRet+= "+----";
 
