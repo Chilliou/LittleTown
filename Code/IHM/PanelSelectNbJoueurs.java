@@ -86,7 +86,6 @@ public class PanelSelectNbJoueurs extends JPanel implements ActionListener
         if(e.getSource() == this.btnCommencer)
         {
             this.ctrl.appelFramePlateau();
-            this.frameSelectNbJoueurs.setVisible(false);
         }
         
     }
