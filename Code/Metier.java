@@ -110,7 +110,12 @@ public class Metier
 
             try
             {
-                Batiment bat = this.ctrl.getIhm().getBatiment( lig, col ) ;
+                Batiment bat;
+                if ( lig == 6 && col == 1)
+                    bat = new Batiment ( "Blé", "A1", "", "C1", 3 );
+                else
+                    bat = this.ctrl.getIhm().getBatiment( lig, col ) ;
+
                 TuileVide terrain = this.ctrl.getIhm().getTuileVide( x, y );
 
                 if(!terrain.getNom().equals( "Vide" ) )
@@ -119,6 +124,9 @@ public class Metier
                 for(int i=0;i<bat.getCout().length();i+=2)
                     if(this.tabJoueurs[numJoueurActif].getRsc(bat.getCout().charAt(i))<Integer.parseInt(bat.getCout().charAt(i+1)+""))
                         return false;
+
+                if ( bat.getNom().equals( "Blé" ) && this.ctrl.getIhm().enleverBle() )
+
 
                 //DU coup on peut ajouter le batiment 
                 for(int i=0;i<bat.getCout().length();i+=2)
@@ -130,6 +138,10 @@ public class Metier
                 this.tabJoueurs[numJoueurActif].changeScore(bat.getScore());
                 bat.setProprietaire(this.tabJoueurs[numJoueurActif]);
                 this.tabJoueurs[numJoueurActif].setAction(true);
+
+                
+
+
                 return true;
 
             }

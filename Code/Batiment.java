@@ -12,9 +12,8 @@ public class Batiment extends Tuile
 	private int score;
 
   public Batiment ( String nom,String cout,String coutProduction,String revientProduction, int score)
-	{
-		super(nom);
-		
+	{		
+		super ( nom );
 		this.cout              = cout;
 		this.coutProduction    = coutProduction;
 		this.revientProduction = revientProduction;

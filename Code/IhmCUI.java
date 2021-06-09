@@ -20,6 +20,10 @@ public class IhmCUI
 
     }
 
+    public boolean enleverBle ()
+    {
+        return this.plateauBas.enleverBle();
+    }
 
     public Tuile getTuile(int x, int y)
     {
