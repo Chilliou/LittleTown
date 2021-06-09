@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 
 public class FrameMenu extends JFrame
 {
@@ -15,7 +14,7 @@ public class FrameMenu extends JFrame
         
 
 
-		// CrÃ©ation des Panels
+		// Création des Panels
 		this.panelMenu   = new PanelMenu   ( ctrl );
 
 		// Positionnement des Panels
@@ -24,7 +23,7 @@ public class FrameMenu extends JFrame
 		// On centre la fenêtre au millieu de l'écran
 		this.setLocationRelativeTo(null);
 
-		// Activation de la fenÃªtre
+		// Activation de la fenetre
 		this.setVisible ( true );
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}

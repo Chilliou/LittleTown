@@ -12,19 +12,20 @@ public class FrameJoueur extends JFrame
         this.setResizable(false);
 
 		// Organisation du LayoutManager
-	
 
-		// CrÃ©ation des Panels
+		// Création des Panels
 		this.panelJoueur   = new PanelJoueur   ( ctrl );
-
 
 		// Positionnement des Panels
 		this.add ( this.panelJoueur   );
 
-		// Activation de la fenÃªtre
+		// Fenetre en premier plan
+		this.toFront();
+		this.setAlwaysOnTop(true);
+
+		// Activation de la fenetre
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setVisible ( true );
 	}
-	
-
 
 }

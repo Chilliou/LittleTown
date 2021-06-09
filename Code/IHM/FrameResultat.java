@@ -17,17 +17,16 @@ public class FrameResultat extends JFrame
         
 		this.setResizable(false);
 		this.setSize(820,150);
+
 		// Organisation du LayoutManager
-        
 
-
-		// CrÃ©ation des Panels
+		// Création des Panels
 		this.panelResultat   = new PanelResultat   ( ctrl );
 
 		// Positionnement des Panels
 		this.add ( this.panelResultat   );
 
-		// Activation de la fenÃªtre
+		// Activation de la fenetre
 		this.setVisible ( true );
 	}
 

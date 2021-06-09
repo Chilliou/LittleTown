@@ -6,13 +6,13 @@ public class Controleur implements ComponentListener
 
     private Metier metier;
 
-	private FrameMenu   menu;
-    private FrameResultat   resultat;
-    private FrameSelectNbJoueurs selectNbJoueurs;
+	private FrameMenu               menu;
+    private FrameResultat           resultat;
+    private FrameSelectNbJoueurs    selectNbJoueurs;
 
-    private FrameBanque frameBanque;
-	private FramePlateau framePlateau;
-	private FrameJoueur frameJoueur;
+    private FrameBanque             frameBanque;
+	private FramePlateau            framePlateau;
+	private FrameJoueur             frameJoueur;
 
 	public  Controleur ()
 	{
@@ -74,7 +74,7 @@ public class Controleur implements ComponentListener
 	public void componentResized(ComponentEvent e) {}
 
 	public void componentMoved(ComponentEvent e) 
-    { 
+    {
         if (e.getSource() == this.framePlateau )
         {
             Point p, p2;
