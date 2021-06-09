@@ -91,6 +91,15 @@ public class PlateauBas
         
     }
 
+    public boolean enleverBle()
+    {
+        if(this.iNbBle <= 0)
+            return false;
+        else
+            this.iNbBle--;
+            return true;
+    }
+
     public void clearOuvrier()
     {
         this.iNbConstru1 = 0;
