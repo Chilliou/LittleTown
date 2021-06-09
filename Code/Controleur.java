@@ -17,7 +17,7 @@ public class Controleur
 
 	private void lancerJeu()
 	{
-		int action;
+		int iAction;
 
 		while ( this.metier.getTour() <= 4 )
 		{
@@ -32,19 +32,21 @@ public class Controleur
 				
 					System.out.println(this.metier.getJoueurActif().toString());
 					
-					action = this.ihm.getChoix();	
+					iAction = this.ihm.getChoix();	
 					
-					switch ( action )
+					switch ( iAction )
 					{
-						case 1 -> this.metier.placerOuvrier     (  );
-						case 2 -> this.metier.construireBatiment     (  );
-						case 3 -> this.metier.activerTuile     (  );
-						case 4 -> this.metier.getInfoBatiment     ( );
-						case 5 -> this.metier.echangerPiece     (  );
+						case 1 -> this.metier.placerOuvrier      ();
+						case 2 -> this.metier.construireBatiment ();
+						case 3 -> this.metier.activerTuile       ();
+						case 4 -> this.metier.getInfoBatiment    ();
+						case 5 -> this.metier.echangerPiece      ();
 						case 6 ->
 						{
-							if (this.metier.getJoueurActif().aJouer()) bTour = true;
-							else System.out.println("Merci d'effectuer une action !");
+							if (this.metier.getJoueurActif().aJouer()) 
+								bTour = true;
+							else 
+								System.out.println("Merci d'effectuer une action !");
 						}
 						
 	
@@ -65,7 +67,6 @@ public class Controleur
 		}
 	}
 
-  
 
 	public IhmCUI getIhm ()
 	{

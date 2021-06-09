@@ -6,19 +6,19 @@ public class Plateau
 	private Tuile[][] terrainDeJeu;
 	private Joueur[]   joueurActif ; 
 
-	public Plateau(int nbJoueur,int choixPlateau) // possiblement passer par un factory
-	{											  // Pour check le nbJoueur et choixPlateau
+	public Plateau(int iNbJoueur,int iChoixPlateau) // possiblement passer par un factory
+	{											    // Pour check le nbJoueur et choixPlateau
 		this.terrainDeJeu = new Tuile[6][9];
-		this.joueurActif  = new Joueur[nbJoueur];
+		this.joueurActif  = new Joueur[iNbJoueur];
 
-		this.initTerrain(choixPlateau);
+		this.initTerrain(iChoixPlateau);
 	}
 
-	private void initTerrain(int choixPlateau)
+	private void initTerrain(int iChoixPlateau)
 	{
 		try
 		{
-			Scanner sc = new Scanner ( new FileInputStream ( "plateau"+choixPlateau+".data" ) );
+			Scanner sc = new Scanner ( new FileInputStream ( "plateau" + iChoixPlateau + ".data" ) );
 
 			int ligne = 0;
 			while ( sc.hasNextLine() )
@@ -80,14 +80,14 @@ public class Plateau
 
         // LIGNE HAUTE
 
-        for (int cpt = 0; (cpt < this.terrainDeJeu[0].length); cpt++)
-		{
-			sRet+="  " + (char)('A'+cpt) + "  ";
-		}
+        for ( int cpt = 0; cpt < this.terrainDeJeu[0].length; cpt++ )
+			sRet += "  " + (char) ('A'+cpt) + "  ";
 
-		sRet+="\n";
+		sRet += "\n";
 
-		for (int cpt = 0; (cpt < this.terrainDeJeu[0].length -1); cpt++) sRet += "+----";
+		for ( int cpt = 0; cpt < this.terrainDeJeu[0].length -1; cpt++ ) 
+			sRet += "+----";
+
 		sRet+="+----+\n";
 		
 		for(int i=0; i < this.terrainDeJeu.length;i++)
@@ -111,12 +111,16 @@ public class Plateau
 					sRet+= "|    ";
 				}
 
-				if ( y == this.terrainDeJeu[0].length -1) sRet += "|";
+				if ( y == this.terrainDeJeu[0].length -1) 
+					sRet += "|";
 			}
-			sRet +=  " " + (i+1) ;
-			sRet+="\n";
 
-			for (int cpt = 0; (cpt < this.terrainDeJeu[0].length -1 ); cpt++) sRet += "+----";
+			sRet +=  " " + (i+1) ;
+			sRet += "\n";
+
+			for ( int cpt = 0; cpt < this.terrainDeJeu[0].length -1; cpt++ ) 
+				sRet += "+----";
+
 			sRet+="+----+\n";
 
 		}
@@ -124,10 +128,4 @@ public class Plateau
 		return sRet;
 	}
 
-    public static void main(String[] args)
-    {
-		System.out.println();
-		Plateau p  = new Plateau(4,1);
-		System.out.println(p);
-    }
 }
