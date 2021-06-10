@@ -9,15 +9,23 @@ import java.awt.image.BufferedImage;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+import java.awt.MediaTracker;
+
+
+import java.awt.Graphics;
+
+import java.awt.image.*;
+import java.awt.Insets;
+
+import java.awt.event.*;
+
 public class FramePlateau extends JFrame
 {
 	PanelPlateau panelPlateau;
+	private Image imgGrille;
 
 	Controleur ctrl;
 
-	JMenu menu, submenu;  
-	
-	JMenuItem i1, i2, i3, i4, i5;  
 
 	public FramePlateau(Controleur ctrl)
 	{
@@ -61,22 +69,40 @@ public class FramePlateau extends JFrame
 		ImageIcon imageIcon = new ImageIcon(dimg);
 		setContentPane(new JLabel(imageIcon));
 
-		JMenuBar mb = new JMenuBar();
-		menu = new JMenu("Partie");
-		i1   = new JMenuItem("Nouvelle partie");
-		i2   = new JMenuItem("Quitter");
-		menu.add(i1);
-		menu.add(i2);
-		mb.add(menu);
-		this.setJMenuBar(mb);
+		try {
+			img = ImageIO.read(new File("../../img/grille.png"));
+		} catch (Exception e) {
+			//TODO: handle exception
+		}
+		imgGrille = img.getScaledInstance(1000, screenHeight - 100, Image.SCALE_DEFAULT);
+		MediaTracker track = new MediaTracker(this);
 
+		// 0 est l'identifiant de l'image a charger
+		track.addImage(imgGrille, 0);
 
 		// Rendre la fenetre visible
 		this.setVisible(true);
+
+		this.addMouseListener ( new GereSouris() );
 	}
 
 	public void fermerFrame()
 	{
 		this.dispose();
 	}
+
+	public class GereSouris extends MouseAdapter
+	{
+		public void mousePressed ( MouseEvent e )
+		{
+			System.out.println ( e.getX() + "," + e.getY() );
+		}
+	}
+
+    public void paint (Graphics g)
+    {
+        super.paint(g);
+		g.drawImage( imgGrille, 0, 11, null);
+
+    }
 }
