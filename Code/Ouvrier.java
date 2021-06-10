@@ -1,24 +1,24 @@
 public class Ouvrier
 {
-	private int    posLigne;
-	private int    posColonne;
-	private Joueur proprietaire;
+	private int    iPosLigne;
+	private int    iPosColonne;
+	private Joueur jProprietaire;
 
-	public Ouvrier ( int posLigne, int posColonne, Joueur proprietaire )
+	public Ouvrier ( int iPosLigne, int iPosColonne, Joueur jProprietaire )
 	{
-		this.posLigne     = posLigne;
-        this.posColonne   = posColonne;
-		this.proprietaire = proprietaire;
+		this.iPosLigne     = iPosLigne;
+		this.iPosColonne   = iPosColonne;
+		this.jProprietaire = jProprietaire;
 	}
 
 	public Joueur getProprietaire()
 	{
-		return this.proprietaire;
+		return this.jProprietaire;
 	}
 
 	public void resetOuvrier() // Pour replacer ouvrier a la fin du tour
 	{
-		this.posLigne   = -1; 
-		this.posColonne = -1;
+		this.iPosLigne   = -1; 
+		this.iPosColonne = -1;
 	}
 }

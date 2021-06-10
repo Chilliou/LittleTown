@@ -1,7 +1,7 @@
 public class Joueur extends Banque
 {
 	// Attributs
-	private static int nbJoueur = 0;
+	private static int iNbJoueur = 0;
 
 	private int iScore;
 	private String sCouleur;
@@ -10,7 +10,6 @@ public class Joueur extends Banque
 	private int iNumJoueur;
 	private boolean bAJouer;
 
-
 	public Joueur(String sCouleur)
 	{
 		super(3);
@@ -18,55 +17,31 @@ public class Joueur extends Banque
 		this.sCouleur    = sCouleur;
 		this.ensBatiment = new Tuile[5]; // Pour le futur c'est forcement le nombre de maison dispo  a la base
 		this.ensOuvrier  = new Ouvrier[3]; // Depend toujours du nbJoueurs
-		this.iNumJoueur  = ++ Joueur.nbJoueur;
+		this.iNumJoueur  = ++ Joueur.iNbJoueur;
 		this.bAJouer     = false;
 	}
 
-	public void echangerRscJoueurVBanque(Banque b,char rsc,int nb)
+	public void echangerRscJoueurVBanque(Banque b,char rsc,int iNb)
 	{
-		
-		
-		b.ajouterEnlever(rsc, nb);
-		this.ajouterEnlever(rsc,-nb);
-
-	} 
-
-	public int getNumJoueur()
-	{
-		return this.iNumJoueur;
+		b.ajouterEnlever(rsc, iNb);
+		this.ajouterEnlever(rsc,-iNb);
 	}
 
-	public void setAction(boolean bJouer)
-	{
-		this.bAJouer = bJouer;
-	}
+	public String getCouleur() { return this.sCouleur; }
 
-	public boolean aJouer()
-	{
-		return this.bAJouer;
-	}
+	public int getNumJoueur() { return this.iNumJoueur; }
 
-	public void majScore(int i)
-	{
-		this.iScore+= i;
-	}
+	public void setAction(boolean bJouer) { this.bAJouer = bJouer; }
+
+	public boolean aJouer() { return this.bAJouer; }
+
+	public void majScore(int i) { this.iScore+= i; }
 
 	public String toString()
 	{
 		String sRet = "Joueur n°" + this.iNumJoueur + ", " +  " couleur : " + this.sCouleur+ "\n";
 		sRet+=super.toString();
-		return sRet;	
-
-	}
-
-	public static void main(String[] args)
-	{
-		Joueur j1 = new Joueur("Rouge");
-		Joueur j2 = new Joueur("Bleu");
-		j1.echangerRscJoueurVBanque(j2,'A',5);
-
-		System.out.println(j1);
-		System.out.println(j2);
+		return sRet;
 
 	}
 }

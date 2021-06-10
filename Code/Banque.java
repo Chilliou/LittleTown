@@ -1,67 +1,72 @@
 public class Banque
 {
-	private int nbPierre;
-	private int nbBois;
-	private int nbEau;
-	private int nbBle;
+	private int iNbPierre;
+	private int iNbBois;
+	private int iNbEau;
+	private int iNbBle;
 
-	private int nbPiece;
+	private int iNbPiece;
 
 	private int iScore;
 
 	public Banque()
 	{
-		this.nbPierre = 15;
-		this.nbBois   = 15;
-		this.nbEau    = 15;
-		this.nbBle    = 15;
+		this.iNbPierre = 15;
+		this.iNbBois   = 15;
+		this.iNbEau    = 15;
+		this.iNbBle    = 15;
+		
+		this.iNbPiece = 40;
+		
+		this.iScore   = 0;
+		
+	}
+
+	// Constructeur de la banque du joueur
+	public Banque(int iNbPiece)
+	{
+		this.iNbPierre = 10;
+		this.iNbBois   = 10;
+		this.iNbEau    = 10;
+		this.iNbBle    = 10;
+
+		this.iNbPiece = iNbPiece;
 		
 		this.iScore   = 0;
 
-		this.nbPiece = 40;
+		
 	}
-
-	public Banque(int nbPiece)
+	
+	public int getRsc( char rsc )
 	{
-		this.nbPierre = 10;
-		this.nbBois   = 10;
-		this.nbEau    = 10;
-		this.nbBle    = 10;
+		int iNombre = 0;
 
-		this.iScore   = 0;
-
-		this.nbPiece = nbPiece;
-	}
-
-	public int getRsc(char rsc)
-	{
-		int nombre=0;
-
-		return nombre = switch(rsc)
+		return iNombre = switch(rsc)
 						{
-							case 'P' -> this.nbPierre;
-							case 'A' -> this.nbBois;
-							case 'E' -> this.nbEau;
-							case 'C' -> this.nbBle;
-							case 'M' -> this.nbPiece;
+							case 'P' -> this.iNbPierre;
+							case 'A' -> this.iNbBois;
+							case 'E' -> this.iNbEau;
+							case 'C' -> this.iNbBle;
+							case 'M' -> this.iNbPiece;
 							default -> 99;
 						};
 	}
 
-	public void ajouterEnlever(char rsc,int nb)
+	//Cette méthode sert à enlever et ajouter une ressources donner
+	public void ajouterEnlever( char rsc, int iNb )
 	{
 		switch(rsc)
 		{
-			case 'P' -> this.nbPierre += nb;
-			case 'A' -> this.nbBois   += nb;
-			case 'E' -> this.nbEau    += nb;
-			case 'C' -> this.nbBle    += nb;
-			case 'M' -> this.nbPiece  += nb;
-		}	
+			case 'P' -> this.iNbPierre += iNb;
+			case 'A' -> this.iNbBois   += iNb;
+			case 'E' -> this.iNbEau    += iNb;
+			case 'C' -> this.iNbBle    += iNb;
+			case 'M' -> this.iNbPiece  += iNb;
+		}
 	}
 
 	// Cette méthode peut retirer ou ajouter du score
-	public void changeScore(int iScore)
+	public void changeScore( int iScore )
 	{
 		this.iScore += iScore;
 	}
@@ -70,38 +75,33 @@ public class Banque
 	{
 		return this.iScore;
 	}
-	
-	public boolean echangerRscBanqueVJoueur(Joueur j,char rsc,int nb)
+
+	//Cette méthode sert à echangé une ressource entre la banque et le joueur
+	public boolean echangerRscBanqueVJoueur( Joueur j,char rsc,int iNb )
 	{
 		
-		if(this.getRsc(rsc) < j.getRsc(rsc))
+		if( this.getRsc( rsc ) < j.getRsc( rsc ) )
+		{
 			return false;
+		}
 		else
 		{
-			j.ajouterEnlever(rsc, nb);
-			this.ajouterEnlever(rsc,-nb);
+			j.ajouterEnlever(rsc, iNb);
+			this.ajouterEnlever(rsc,-iNb);
 			return true;
 		}
 
 	}
-	
+
 
 	public String toString ()
-{
-    return "Nombre de bois   : " + this.nbBois   + "\n" +
-           "Nombre de Ble    : " + this.nbBle    + "\n" +
-           "Nombre d'eau     : " + this.nbEau    + "\n" +
-           "Nombre de Pierre : " + this.nbPierre + "\n" +
-           "Nombre de Piece  : " + this.nbPiece  + "\n" +
-           "Nombre de Point  : " + this.iScore    ;
-}
-
-	public static void main(String[] args)
 	{
-		Banque b = new Banque();
-		System.out.println(b);
-
-		b.ajouterEnlever('B',-4);
-		System.out.println(b);
+		return  "Nombre de Pierre : " + this.iNbPierre + "\n" +
+		        "Nombre de bois   : " + this.iNbBois   + "\n" +
+		        "Nombre d'eau     : " + this.iNbEau    + "\n" +
+		        "Nombre de Ble    : " + this.iNbBle    + "\n" +
+		        "Nombre de Piece  : " + this.iNbPiece  + "\n" +
+		        "Nombre de Point  : " + this.iScore    ;
 	}
+
 }

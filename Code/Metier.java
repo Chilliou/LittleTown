@@ -133,14 +133,12 @@ public class Metier
                     this.tabJoueurs[numJoueurActif].echangerRscJoueurVBanque(this.banque,bat.getCout().charAt(i),Integer.parseInt(bat.getCout().charAt(i+1)+""));
 
                 this.ctrl.getIhm().setTuile(x,y,bat);
-                this.ctrl.getIhm().setTuile(lig,col,terrain);
+                if ( ! bat.getNom().equals( "Blé" ) )
+                    this.ctrl.getIhm().setTuile(lig,col,terrain);
                 this.ctrl.getIhm().addOuvrier(this.numJoueurActif);
                 this.tabJoueurs[numJoueurActif].changeScore(bat.getScore());
                 bat.setProprietaire(this.tabJoueurs[numJoueurActif]);
                 this.tabJoueurs[numJoueurActif].setAction(true);
-
-                
-
 
                 return true;
 
@@ -181,19 +179,29 @@ public class Metier
             int yTuile   =  coorTuile.charAt(0) - (int) ('A');
             int xTuile   = (Integer.parseInt(coorTuile.charAt(1)+"")-1);
 
-
             // Vérifiaction des coordonnées de la tuile
             if ((xTuile == xOuvrier - 1 || xTuile == xOuvrier + 1 || xTuile == xOuvrier)
              && (yTuile == yOuvrier - 1 || yTuile == yOuvrier + 1 || yTuile == yOuvrier))
             {
-                
+
                 // Vérification que la tuile n'a pas deja était activée.
                 if (this.ctrl.getIhm().getTuile(xTuile, yTuile).isActivable())
                 {
+
                     System.out.println("> Activation de la tuile : " + this.ctrl.getIhm().getTuile(xTuile, yTuile).getNom());
+
+                    if ( this.ctrl.getIhm().getBatiment(xTuile, yTuile).getProprietaire() != this.tabJoueurs[this.numJoueurActif] )
+                    {
+                        if ( this.tabJoueurs[this.numJoueurActif].getRsc( 'M' ) > 0 )
+                            this.tabJoueurs[this.numJoueurActif].echangerRscJoueurVBanque ( this.ctrl.getIhm().getBatiment(xTuile, yTuile).getProprietaire(), 'M', 1 );
+                        else
+                            return;
+
+                    }
+
                     this.banque.echangerRscBanqueVJoueur(this.tabJoueurs[numJoueurActif],
-                                                         this.ctrl.getIhm().getTuile(xTuile, yTuile).toString().charAt(0),
-                                                         Integer.parseInt( (this.ctrl.getIhm().getBatiment(xTuile, yTuile).getRevientProd().charAt(1)) + "" ) );
+                                                         this.ctrl.getIhm().getBatiment(xTuile, yTuile).getRevientProd().charAt(0),
+                                                         Integer.parseInt( this.ctrl.getIhm().getBatiment(xTuile, yTuile).getRevientProd().charAt(1) + "" ) );
                     this.ctrl.getIhm().getTuile(xTuile, yTuile).setActivation(false);
                 }
                 else { System.out.println("Vous avez deja était activé cette tuile !"); }
@@ -205,68 +213,41 @@ public class Metier
 
     }
 
-
     public void nourrirOuvrier()
     {
-        int iOuvrierNourri = 0;
-        int iSaisi;
-        Scanner kb = new Scanner(System.in);
+        int iOuvrierNourri      = 0;
+        int nbRessourceConsomme = 0;
 
-        System.out.println("<=======> A table !!!! <=======>\n");
         for (Joueur j : this.tabJoueurs)
         {
-            System.out.println(j.toString());
-            System.out.println("Vous devez maintenant nourrir vos ouvriers...");
-            System.out.println("Vous pouvez utiliser votre eau, votre blé ou 3 pièces par nourriture manquante.");
-            System.out.println("En cas de nourriture manquante, vous recevez -3 de score par ouvrier non nourri.");
+            // Affichage des infos
+            this.ctrl.getIhm().nourrirOuvrierInfo(j);
 
-            System.out.println();
-            if (j.getRsc('C') != 0  && iOuvrierNourri < this.NB_OUVRIERS)
-            {
-                System.out.println("Il vous reste " +  (this.NB_OUVRIERS - iOuvrierNourri) + " ouvrier(s) à nourrir.");
-                System.out.println("Combien de votre blé voulez vous utiliser ? : ");
-                iSaisi = kb.nextInt();
-                iOuvrierNourri += iSaisi;
+            // Blé
+            iOuvrierNourri      = this.ctrl.getIhm().nourrirOuvrier ('C', iOuvrierNourri, this.NB_OUVRIERS, j);
+            nbRessourceConsomme = iOuvrierNourri;
+            j.echangerRscJoueurVBanque(this.banque,'C',nbRessourceConsomme);
+            
+            // Eau
+            nbRessourceConsomme = this.ctrl.getIhm().nourrirOuvrier('E', iOuvrierNourri, this.NB_OUVRIERS, j);
+            iOuvrierNourri      += nbRessourceConsomme;
+            j.echangerRscJoueurVBanque(this.banque,'E',nbRessourceConsomme);
 
-                
-            }
-            if (j.getRsc('E') != 0 && iOuvrierNourri < this.NB_OUVRIERS)
-            {
-                System.out.println("Il vous reste " +  (this.NB_OUVRIERS - iOuvrierNourri) + " ouvrier(s) à nourrir.");
-                System.out.println("Combien de votre eau voulez vous utiliser ? : ");
-                iSaisi = kb.nextInt();
-                iOuvrierNourri += iSaisi;
+            // Pièces
+            nbRessourceConsomme = this.ctrl.getIhm().nourrirOuvrier('M', iOuvrierNourri, this.NB_OUVRIERS, j);
+            if (nbRessourceConsomme != 0 ) nbRessourceConsomme+= 2;
 
-            }
-            if (j.getRsc('M') != 0 && iOuvrierNourri < this.NB_OUVRIERS)
-            {
-                System.out.println("Il vous reste " +  (this.NB_OUVRIERS - iOuvrierNourri) + " ouvrier(s) à nourrir.");
-                System.out.println("Combien de vos pièces voulez vous utiliser ? (3 pièces / ouvrier): ");
-                iSaisi = kb.nextInt();
-
-                while (iSaisi >= 3)
-                {
-                    iSaisi -= 3;
-                    iOuvrierNourri+=1;
-                }
-
-            }
-
-            if (iOuvrierNourri < this.NB_OUVRIERS)
-            {
-                System.out.println("Vous n'avez pas nourri " +  (this.NB_OUVRIERS - iOuvrierNourri) + " ouvrier(s)");
-                System.out.println("Vous allez recevoir -" + (this.NB_OUVRIERS - iOuvrierNourri)*3 + " de score.");
-                j.changeScore(-(this.NB_OUVRIERS - iOuvrierNourri)*3);
-                System.out.println("Joueur n°" + j.getNumJoueur() + ", votre score est maintenant de : " + j.getScore());
-            }
-            else
-            {
-                System.out.println("Féliciation joueur n°" + j.getNumJoueur() + ", vous avez nourri tous vos ouvriers");
-            }
-
-            System.out.println("\n");
-
+            iOuvrierNourri      += nbRessourceConsomme;
+            j.echangerRscJoueurVBanque(this.banque,'M',nbRessourceConsomme);
+            
+            // On affiche si le joueurs perd du score ou non.
+            this.ctrl.getIhm().finNourrir(iOuvrierNourri, this.NB_OUVRIERS, j);
+            
+            // On recommence à 0 pour les autres joueurs
+            iOuvrierNourri = 0;
+            
         }
+
     }
 
     public void getInfoBatiment( )
