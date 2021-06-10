@@ -11,7 +11,7 @@ public class Batiment extends Tuile
 	
 	private int iScore;
 
-	public Batiment ( String sNom,String sCout,String cCoutProduction,String cRevientProduction, int iScore )
+	public Batiment ( String sNom,String sCout,String sCoutProduction,String sRevientProduction, int iScore )
 	{		
 		super ( sNom );
 		this.sCout              = sCout;
