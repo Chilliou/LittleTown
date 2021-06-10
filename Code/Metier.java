@@ -108,13 +108,13 @@ public class Metier
             int col =  sCordBatiment.charAt(0) - (int) ('A');
             int lig = (Integer.parseInt(sCordBatiment.charAt(1)+"")-1) ;
 
+            if(lig <= 6 ) return false;
+
             String sCoordPlacement ;
             sCoordPlacement = this.ctrl.getSaisiePosVide();
             int y =  sCoordPlacement.charAt(0) - (int) ('A');
             int x = (Integer.parseInt(sCoordPlacement.charAt(1)+"")-1) ;
-
             
-
             try
             {
                 Batiment bat;
