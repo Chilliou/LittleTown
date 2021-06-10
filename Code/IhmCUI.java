@@ -213,13 +213,79 @@ public class IhmCUI
 	//Méthode pour éviter les répétitions de demande de pos
 	public String getSaisiePos()
 	{
+		String saisie="";
+		boolean saisieEstVide = true;
 		Scanner sc = new Scanner( System.in );
-		
-		System.out.print( "Entrez la position : " );
 
-		String saisie = sc.nextLine();
-		
+		try
+		{
+			do
+			{
+				if(!saisieEstVide) 	System.out.println( "\n"+"Cette tuile n'est pas vide" );
+				System.out.println( "Une position est constituer d'une lettre  entre 'A' et 'I' et un chiffre entre 1 et 6" );
+				System.out.print( "Entrez la position : " );
+				saisie = sc.next();
+				saisieEstVide = this.testTuileVide(saisie);
+			}while(!saisie.matches("^([A-I])+([1-6])$") || !saisieEstVide);
+		} catch (Exception e) 
+		{
+			System.out.println( "Saisie de position invalide" );
+
+		}
 		return saisie;
 		
 	}
+
+	public String getSaisiePosBtm()
+	{
+		String saisie="";
+		boolean saisieEstVide = true;
+		Scanner sc = new Scanner( System.in );
+
+		try
+		{
+			do
+			{
+				if(!saisieEstVide) 	System.out.println( "\n"+"Cette tuile n'est pas un batiment" );
+				System.out.println( "Une position est constituer d'une lettre  entre 'A' et 'I' et un chiffre entre 1 et 8" );
+				System.out.print( "Entrez la position : " );
+				saisie = sc.nextLine();
+				saisieEstVide = this.testBatiment(saisie);
+			}while(!saisie.matches("((?=^[I])([I])+([1-6])|^([A-H])+([1-8]))" ) && !saisieEstVide  );
+		} catch (Exception e) 
+		{
+			System.out.println( "Saisie de position invalide" );
+
+		}
+		return saisie;
+		
+	}
+
+	public boolean testBatiment(String pos)
+	{
+		int y =  pos.charAt(0) - (int) ('A');
+        int x = (Integer.parseInt(pos.charAt(1)+"")-1) ; 
+		Tuile tester = this.getTuile(x,y);
+		
+		System.out.println( tester.getClass() == new Batiment("Useless").getClass() );
+		return tester.getClass() == new Batiment("Useless").getClass();
+		
+		 //return tester.getClass().equals(new Batiment("Useless"));
+		
+	}
+
+	
+	public boolean testTuileVide(String pos)
+	{
+		int y =  pos.charAt(0) - (int) ('A');
+        int x = (Integer.parseInt(pos.charAt(1)+"")-1) ; 
+		Tuile tester = this.getTuile(x,y);
+		
+		System.out.println( tester.getClass() == new TuileVide().getClass() );
+		return tester.getClass() == new TuileVide().getClass();
+		
+		 //return tester.getClass().equals(new Batiment("Useless"));
+		
+	}
+	
 }
