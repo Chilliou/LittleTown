@@ -27,15 +27,12 @@ public class Joueur extends Banque
 		this.ajouterEnlever(rsc,-iNb);
 	}
 
-	public String getCouleur() { return this.sCouleur; }
-
-	public int getNumJoueur() { return this.iNumJoueur; }
-
+	public String getCouleur()   { return this.sCouleur; }
+	public int    getNumJoueur() { return this.iNumJoueur; }
+	
 	public void setAction(boolean bJouer) { this.bAJouer = bJouer; }
-
-	public boolean aJouer() { return this.bAJouer; }
-
 	public void majScore(int i) { this.iScore+= i; }
+	public boolean aJouer() { return this.bAJouer; }
 
 	public String toString()
 	{

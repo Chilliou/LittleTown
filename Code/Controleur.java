@@ -68,30 +68,14 @@ public class Controleur
 		}
 	}
 
-	public Tuile getTuile( int x, int y )
-	{
-		return this.ihm.getTuile( x, y );
-	} 
+	public Tuile getTuile         ( int x, int y ) { return this.ihm.getTuile( x, y );     }
+	public TuileVide getTuileVide ( int x, int y ) { return this.ihm.getTuileVide( x, y ); }
+	public Batiment getBatiment   ( int x, int y ) { return this.ihm.getBatiment( x, y );  }
 
-	public TuileVide getTuileVide ( int x, int y )
-	{
-		return this.ihm.getTuileVide( x, y );
-	}
 
-	public Batiment getBatiment( int x, int y )
-	{
-		return this.ihm.getBatiment( x, y );
-	}
+	public void setTuile     ( int x, int y, Tuile tuile )     { this.ihm.setTuile( x, y, tuile ); }
+	public void setTuileVide ( int x, int y, TuileVide tuile ) { this.ihm.setTuile( x, y, tuile ); }
 
-	public void setTuile( int x, int y, Tuile tuile )
-	{
-		this.ihm.setTuile( x, y, tuile );
-	}
-
-	public void setTuileVide ( int x, int y, TuileVide tuile )
-	{
-		this.ihm.setTuile( x, y, tuile );
-	}
 
 	public void addOuvrier(int iNumJoueur)
 	{
@@ -103,14 +87,14 @@ public class Controleur
 		this.ihm.nourrirOuvrierInfo(j);
 	}
 
-	public int nourrirOuvrier(char ressource, int iOuvrierNourri, int nbOuvrierTotint, Joueur j)
+	public int nourrirOuvrier(char ressource, int iOuvrierNourri, int iNbOuvrierTotint, Joueur j)
 	{
-		return this.ihm.nourrirOuvrier (ressource, iOuvrierNourri, nbOuvrierTotint, j);
+		return this.ihm.nourrirOuvrier (ressource, iOuvrierNourri, iNbOuvrierTotint, j);
 	}
 
-	public void finNourrir(int iOuvrierNourri, int nbOuvrierTot, Joueur j)
+	public void finNourrir( int iOuvrierNourri, int iNbOuvrierTot, Joueur j )
 	{
-		this.ihm.finNourrir(iOuvrierNourri, nbOuvrierTot, j);
+		this.ihm.finNourrir(iOuvrierNourri, iNbOuvrierTot, j);
 	}
 
 	public boolean enleverBle ()
