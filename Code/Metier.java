@@ -108,7 +108,7 @@ public class Metier
             int col =  sCordBatiment.charAt(0) - (int) ('A');
             int lig = (Integer.parseInt(sCordBatiment.charAt(1)+"")-1) ;
 
-            if(lig <= 6 ) return false;
+            if(lig <= 5 ) return false;
 
             String sCoordPlacement ;
             sCoordPlacement = this.ctrl.getSaisiePosVide();
