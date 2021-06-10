@@ -65,7 +65,7 @@ public class FramePlateau extends JFrame
 			e.printStackTrace();
 		}
 
-		Image dimg = img.getScaledInstance(1000, screenHeight - 100, Image.SCALE_DEFAULT);
+		Image dimg = img.getScaledInstance(1000, 1000, Image.SCALE_DEFAULT);
 		ImageIcon imageIcon = new ImageIcon(dimg);
 		setContentPane(new JLabel(imageIcon));
 
@@ -74,7 +74,7 @@ public class FramePlateau extends JFrame
 		} catch (Exception e) {
 			//TODO: handle exception
 		}
-		imgGrille = img.getScaledInstance(1000, screenHeight - 100, Image.SCALE_DEFAULT);
+		imgGrille = img.getScaledInstance(1000, 1000, Image.SCALE_DEFAULT);
 		MediaTracker track = new MediaTracker(this);
 
 		// 0 est l'identifiant de l'image a charger
@@ -93,16 +93,57 @@ public class FramePlateau extends JFrame
 
 	public class GereSouris extends MouseAdapter
 	{
+		private final int DIMENSION_TUILE_X = 102; // Largeur tuile
+		private final int DIMENSION_TUILE_Y = 107; // Largeur tuile
+
 		public void mousePressed ( MouseEvent e )
 		{
-			System.out.println ( e.getX() + "," + e.getY() );
+			// Plateau haut
+
+			// On vérifie que le cursor ce situe bien dans le plateau haut.
+			if ( (e.getX() >=  42 && e.getY() >= 46) && (e.getX() <= 942 && e.getY() <= 656))
+			{
+				char x = 'A';
+				int y;
+				x += (int)  ((  e.getX()-42) / this.DIMENSION_TUILE_X );
+				y  = (int)  ((  e.getY()-46) / this.DIMENSION_TUILE_Y );
+				System.out.println("Coordonées : " + x + "," + y);
+			}
+
+			
+			// Plateau Bas
+
+			// On vérifie que le cursor ce trouve dans le plateau bas.
+			if ( (e.getX() >=  335 && e.getY() >= 727) && (e.getX() <=  944 && e.getY() <= 928 ) ) 
+			{
+				char x = 'A';
+				int  y;
+				x += (int)  ((  e.getX()-42) / this.DIMENSION_TUILE_X );
+				y  = (int)  ((  e.getY()-46) / this.DIMENSION_TUILE_Y );
+				System.out.println("Coordonées : " + x + "," + y);
+			}
+			
+
+			// Case blé
+			if ( (e.getX() >= 335 - this.DIMENSION_TUILE_X) && (e.getY() >= 727 + this.DIMENSION_TUILE_Y)
+			&&   (e.getX() <= 335 && e.getY() <= 727 + (this.DIMENSION_TUILE_Y * 2)))
+			{
+				char x = 'A';
+				int  y;
+				x += (int)  ((  e.getX()-42) / this.DIMENSION_TUILE_X );
+				y  = (int)  ((  e.getY()-46) / this.DIMENSION_TUILE_Y );
+				System.out.println("Coordonées : " + x + "," + y);
+			}
+
+			
+
 		}
 	}
 
     public void paint (Graphics g)
     {
         super.paint(g);
-		g.drawImage( imgGrille, 0, 11, null);
+		g.drawImage( imgGrille, 0, 8, null);
 
     }
 }
