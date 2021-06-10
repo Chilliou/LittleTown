@@ -64,13 +64,47 @@ public class Controleur
 			this.metier.plus1Tour();
 
 			// Clear Ouvrier
-			this.getIhm().clearOuvrier();
+			this.ihm.clearOuvrier();
 		}
 	}
 
-	public IhmCUI getIhm ()
+	public Tuile getTuile         ( int x, int y ) { return this.ihm.getTuile( x, y );     }
+	public TuileVide getTuileVide ( int x, int y ) { return this.ihm.getTuileVide( x, y ); }
+	public Batiment getBatiment   ( int x, int y ) { return this.ihm.getBatiment( x, y );  }
+
+
+	public void setTuile     ( int x, int y, Tuile tuile )     { this.ihm.setTuile( x, y, tuile ); }
+	public void setTuileVide ( int x, int y, TuileVide tuile ) { this.ihm.setTuile( x, y, tuile ); }
+
+
+	public void addOuvrier(int iNumJoueur)
 	{
-		return this.ihm;
+		this.ihm.addOuvrier( iNumJoueur );
+	}
+
+	public void nourrirOuvrierInfo(Joueur j)
+	{
+		this.ihm.nourrirOuvrierInfo(j);
+	}
+
+	public int nourrirOuvrier(char ressource, int iOuvrierNourri, int iNbOuvrierTotint, Joueur j)
+	{
+		return this.ihm.nourrirOuvrier (ressource, iOuvrierNourri, iNbOuvrierTotint, j);
+	}
+
+	public void finNourrir( int iOuvrierNourri, int iNbOuvrierTot, Joueur j )
+	{
+		this.ihm.finNourrir(iOuvrierNourri, iNbOuvrierTot, j);
+	}
+
+	public boolean enleverBle ()
+	{
+		return this.ihm.enleverBle();
+	}
+
+	public String getSaisiePos()
+	{
+		return this.ihm.getSaisiePos	();
 	}
 
 	public static void main(String[] a)
