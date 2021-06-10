@@ -6,28 +6,40 @@ import java.awt.BorderLayout;
 
 public class FrameJoueur extends JFrame
 {
-	PanelJoueur   panelJoueur;
+	PanelHautJoueur    panelHautJoueur;
+	PanelCentreJoueur  panelCentreJoueur;
+	PanelBasJoueurs     panelBasJoueur;
 
 	public FrameJoueur ( Controleur ctrl)
 	{
-
+		// Positionnement et dimensionnement
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
 		int screenHeight = screenSize.height;
 		int screenWidth = screenSize.width;
 
+		// Infos de la frame
 		this.setTitle    ( "Joueur 1" );
 		this.setSize(200,screenHeight-100);
         this.setResizable(false);
 		this.setLocation(screenWidth / 2 - 500 - 210, 50);
 
-		// Organisation du LayoutManager
 
-		// Création des Panels
-		this.panelJoueur   = new PanelJoueur   ( ctrl );
+		/**************************/
+		/*  Création des panels   */
+		/**************************/
+		this.panelHautJoueur     = new PanelHautJoueur  (ctrl);
+		this.panelCentreJoueur   = new PanelCentreJoueur(ctrl);
+		this.panelBasJoueur      = new PanelBasJoueurs   (ctrl);
 
-		// Positionnement des Panels
-		this.add ( this.panelJoueur   );
+
+		/********************************/
+		/*  Positionnement des panels   */
+		/********************************/
+		this.add ( this.panelHautJoueur,   BorderLayout.NORTH   );
+		this.add ( this.panelCentreJoueur, BorderLayout.CENTER  );
+		this.add ( this.panelBasJoueur,    BorderLayout.SOUTH   );
+
+
 
 		// Fenetre en premier plan
 		this.toFront();
