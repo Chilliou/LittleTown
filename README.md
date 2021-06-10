@@ -37,13 +37,13 @@ Après **quatre manches**, le joueur ayant cumulé **le plus de points de victoi
 
 La racine du projet, c'est-à-dire le répertoire "Code", contiendra toutes nos classes utiles au bon fonctionnement de notre jeu. Le "Controleur.java" lancera la version CUI du projet. Ces classes seront réutilisées pour la version IHM depuis le répertoire "IHM". 
 
-## Version interface console (CLI)
+### Version interface console (CLI)
 
 Comme dit précédemment, le "Controleur.java", présent dans la racine du projet, permettra de lancer la version CLI du projet qui devrait ressembler à ceci :
 
 ![CUI](https://i.ibb.co/4ft1Wc2/Capture-d-e-cran-2021-06-10-a-23-49-48.png)
 
-## Version interface homme-machine (IHM)
+### Version interface homme-machine (IHM)
 
 La version GUI (IHM), pourra quant à elle être lancé directement depuis le répertoire "IHM" présent dans le répertoire "Code". Ce qui devrait ressembler à ceci :
 
@@ -51,7 +51,7 @@ La version GUI (IHM), pourra quant à elle être lancé directement depuis le r�
 
 ## Mise en route
 
-**ATTENTION : Une version de récente Java peut être nécessaire pour le bon fonctionnement du programme**
+**ATTENTION : Une version de récente de Java peut être nécessaire pour le bon fonctionnement du programme**
 
 ### Version CLI
 
