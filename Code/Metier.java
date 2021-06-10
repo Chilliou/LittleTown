@@ -181,8 +181,11 @@ public class Metier
 
                     System.out.println("> Activation de la tuile : " + this.ctrl.getTuile(xTuile, yTuile).getNom());
 
-                    if ( this.ctrl.getBatiment(xTuile, yTuile).getProprietaire() != this.tabJoueurs[this.numJoueurActif] )
+                    //Si  le batiment n'appartient aucun jouer et que le Proprietaire est différence du genre actuel
+                    if ( this.ctrl.getBatiment(xTuile, yTuile).getProprietaire() != null && 
+                         this.ctrl.getBatiment(xTuile, yTuile).getProprietaire() != this.tabJoueurs[this.numJoueurActif] )
                     {
+                        //Si le jouer actif a moins d'1 coins
                         if ( this.tabJoueurs[this.numJoueurActif].getRsc( 'M' ) > 0 )
                             this.tabJoueurs[this.numJoueurActif].echangerRscJoueurVBanque ( this.ctrl.getBatiment(xTuile, yTuile).getProprietaire(), 'M', 1 );
                         else
