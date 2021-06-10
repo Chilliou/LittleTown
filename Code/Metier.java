@@ -226,7 +226,7 @@ public class Metier
 
             // Pièces
             nbRessourceConsomme = this.ctrl.nourrirOuvrier('M', iOuvrierNourri, this.NB_OUVRIERS, j);
-            if (nbRessourceConsomme != 0 ) nbRessourceConsomme+= 2;
+            if (nbRessourceConsomme != 0 ) nbRessourceConsomme+= 2 * nbRessourceConsomme;
 
             iOuvrierNourri      += nbRessourceConsomme;
             j.echangerRscJoueurVBanque(this.banque,'M',nbRessourceConsomme);
