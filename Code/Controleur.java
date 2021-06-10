@@ -102,10 +102,16 @@ public class Controleur
 		return this.ihm.enleverBle();
 	}
 
-	public String getSaisiePos()
+	public String getSaisiePosVide()
 	{
-		return this.ihm.getSaisiePos	();
+		return this.ihm.getSaisiePosVide	();
 	}
+
+	public String getSaisiePosBtm()
+	{
+		return this.ihm.getSaisiePosBtm	();
+	}
+
 
 	public static void main(String[] a)
 	{

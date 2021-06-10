@@ -211,7 +211,7 @@ public class IhmCUI
 	}
 	
 	//Méthode pour éviter les répétitions de demande de pos
-	public String getSaisiePos()
+	public String getSaisiePosVide()
 	{
 		String saisie="";
 		boolean saisieEstVide = true;

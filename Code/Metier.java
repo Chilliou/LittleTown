@@ -61,7 +61,7 @@ public class Metier
         if (! this.tabJoueurs[numJoueurActif].aJouer())
         {
             String sCoordOuvrier ;
-            sCoordOuvrier = this.getSaisie();
+            sCoordOuvrier = this.ctrl.getSaisiePosVide();
             int y =  sCoordOuvrier.charAt(0) - (int) ('A');
             int x = (Integer.parseInt(sCoordOuvrier.charAt(1)+"")-1) ;
             
@@ -97,12 +97,12 @@ public class Metier
         {
 
             String sCordBatiment ;
-            sCordBatiment = this.getSaisie();
+            sCordBatiment = this.ctrl.getSaisiePosBtm();
             int col =  sCordBatiment.charAt(0) - (int) ('A');
             int lig = (Integer.parseInt(sCordBatiment.charAt(1)+"")-1) ;
 
             String sCoordPlacement ;
-            sCoordPlacement = this.getSaisie();
+            sCoordPlacement = this.ctrl.getSaisiePosVide();
             int y =  sCoordPlacement.charAt(0) - (int) ('A');
             int x = (Integer.parseInt(sCoordPlacement.charAt(1)+"")-1) ;
 
@@ -157,22 +157,13 @@ public class Metier
     }
 
 
-
-    public String getSaisie()
-    {
-      String saisie;
-      saisie = this.ctrl.getSaisiePos();
-      return saisie;
-    }
-
-
     public void activerTuile()
     {
 
         if (this.dernierOuvrierPos != null)
         {
             String coorTuile = "";
-            coorTuile = this.getSaisie();
+            coorTuile = this.ctrl.getSaisiePosBtm();
             int yOuvrier =  this.dernierOuvrierPos.charAt(0) - (int) ('A');
             int xOuvrier = (Integer.parseInt(this.dernierOuvrierPos.charAt(1)+"")-1);
 
@@ -253,7 +244,7 @@ public class Metier
     public void getInfoBatiment( )
     {
       
-       String saisie = this.ctrl.getSaisiePos();
+       String saisie = this.ctrl.getSaisiePosBtm();
         int y =  saisie.charAt(0) - (int) ('A');
         int x = (Integer.parseInt(saisie.charAt(1)+"")-1) ;
 
