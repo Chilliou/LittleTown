@@ -3,6 +3,8 @@ import javax.swing.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+import java.awt.BorderLayout;
+
 public class FrameJoueur extends JFrame
 {
 	PanelHautJoueur    panelHautJoueur;
