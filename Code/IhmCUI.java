@@ -28,12 +28,18 @@ public class IhmCUI
 
 	public Tuile getTuile( int x, int y )
 	{
-		return this.plateau.getTuile( x, y );
+		if( x <= 5 )
+			return this.plateau.getTuile( x, y );
+		else
+			return this.plateauBas.getTuile( x, y );
 	}
 
 	public TuileVide getTuileVide ( int x, int y )
 	{
-		return this.plateau.getTuileVide( x, y );
+		if( x <= 5 )
+			return this.plateau.getTuileVide( x, y );
+		else
+			return this.plateauBas.getTuileVide( x, y );
 	}
 
 	public Batiment getBatiment( int x, int y )
@@ -221,15 +227,21 @@ public class IhmCUI
 		{
 			do
 			{
-				if(!saisieEstVide) 	System.out.println( "\n"+"Cette tuile n'est pas vide" );
-				System.out.println( "Une position est constituer d'une lettre  entre 'A' et 'I' et un chiffre entre 1 et 6" );
-				System.out.print( "Entrez la position : " );
-				saisie = sc.next();
-				saisieEstVide = this.testTuileVide(saisie);
-			}while(!saisie.matches("^([A-I])+([1-6])$") || !saisieEstVide);
+				do
+				{
+					if(!saisieEstVide) 	System.out.println( "\n"+"Cette tuile n'est pas vide" );
+
+					System.out.println( "Une position est constituer d'une lettre  entre 'A' et 'I' et un chiffre entre 1 et 6" );
+					System.out.print( "Entrez la position : " );
+					
+					saisie = sc.next();
+					
+				}while(!saisie.matches("^([A-I])+([1-6])$") );
+			}while(!this.testTuileVide(saisie));
+
 		} catch (Exception e) 
 		{
-			System.out.println( "Saisie de position invalide" );
+			System.out.println( e );
 
 		}
 		return saisie;
@@ -240,23 +252,32 @@ public class IhmCUI
 	{
 		String saisie="";
 		boolean saisieEstVide = true;
+		boolean regex;
 		Scanner sc = new Scanner( System.in );
 
 		try
 		{
 			do
 			{
-				if(!saisieEstVide) 	System.out.println( "\n"+"Cette tuile n'est pas un batiment" );
-				System.out.println( "Une position est constituer d'une lettre  entre 'A' et 'I' et un chiffre entre 1 et 8" );
-				System.out.print( "Entrez la position : " );
-				saisie = sc.nextLine();
-				saisieEstVide = this.testBatiment(saisie);
-			}while(!saisie.matches("((?=^[I])([I])+([1-6])|^([A-H])+([1-8]))" ) && !saisieEstVide  );
+
+
+				do
+				{
+					if(!saisieEstVide) 	System.out.println( "\n"+"Cette tuile n'est pas un batiment" );
+
+					System.out.println( "Une position est constituer d'une lettre  entre 'A' et 'I' et un chiffre entre 1 et 8" );
+					System.out.print( "Entrez la position : " );
+
+					saisie = sc.nextLine();
+
+				}while(!saisie.matches("((?=^[I])([I])+([1-6])$|^([A-H])+([1-8])$)") );
+			}while(!this.testBatiment(saisie));
 		} catch (Exception e) 
 		{
 			System.out.println( "Saisie de position invalide" );
 
 		}
+		System.out.println( "SZinzin de l'espace" );
 		return saisie;
 		
 	}
@@ -264,14 +285,11 @@ public class IhmCUI
 	public boolean testBatiment(String pos)
 	{
 		int y =  pos.charAt(0) - (int) ('A');
-        int x = (Integer.parseInt(pos.charAt(1)+"")-1) ; 
+        int x = (Integer.parseInt(pos.charAt(1)+"")-1) ;
+
 		Tuile tester = this.getTuile(x,y);
 		
-		System.out.println( tester.getClass() == new Batiment("Useless").getClass() );
 		return tester.getClass() == new Batiment("Useless").getClass();
-		
-		 //return tester.getClass().equals(new Batiment("Useless"));
-		
 	}
 
 	
@@ -279,13 +297,10 @@ public class IhmCUI
 	{
 		int y =  pos.charAt(0) - (int) ('A');
         int x = (Integer.parseInt(pos.charAt(1)+"")-1) ; 
+
 		Tuile tester = this.getTuile(x,y);
-		
-		System.out.println( tester.getClass() == new TuileVide().getClass() );
-		return tester.getClass() == new TuileVide().getClass();
-		
-		 //return tester.getClass().equals(new Batiment("Useless"));
-		
+
+		return tester.getClass() == new TuileVide().getClass();		
 	}
 	
 }
