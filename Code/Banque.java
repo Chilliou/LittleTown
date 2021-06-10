@@ -102,8 +102,7 @@ public class Banque
 		        "Nombre de bois   : " + this.iNbBois   + "\n" +
 		        "Nombre d'eau     : " + this.iNbEau    + "\n" +
 		        "Nombre de Ble    : " + this.iNbBle    + "\n" +
-		        "Nombre de Piece  : " + this.iNbPiece  + "\n" +
-		        "Nombre de Point  : " + this.iScore    ;
+		        "Nombre de Piece  : " + this.iNbPiece   ;
 	}
 
 }

@@ -346,6 +346,11 @@ public class Metier
         return this.tourActuel;
     }
 
+    public Banque getBanque()
+    {
+        return this.banque;
+    }
+
     public void plus1Tour()
     {
         this.tourActuel++;

@@ -28,6 +28,7 @@ public class Controleur
 				{
 					this.ihm.afficher();
 
+					System.out.println( "Banque" +"\n" + this.metier.getBanque()+"\n");
 					System.out.println( this.metier.getJoueurActif().toString() );
 					
 					iAction = this.ihm.getChoix();

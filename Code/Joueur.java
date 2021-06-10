@@ -41,6 +41,7 @@ public class Joueur extends Banque
 	{
 		String sRet = "Joueur n°" + this.iNumJoueur + ", " +  " couleur : " + this.sCouleur+ "\n";
 		sRet+=super.toString();
+		sRet+= "\n" +"Nombre de Point  : " + this.iScore  ; 
 		return sRet;
 
 	}
