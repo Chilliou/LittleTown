@@ -1,8 +1,4 @@
-import java.awt.Graphics;
-
 import javax.swing.*;
-
-import java.awt.Image;
 
 public class PanelJoueur extends JPanel
 {

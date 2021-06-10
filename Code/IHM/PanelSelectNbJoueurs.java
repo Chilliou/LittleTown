@@ -5,9 +5,7 @@ import java.awt.event.*;
 
 public class PanelSelectNbJoueurs extends JPanel implements ActionListener, FocusListener
 {
-	Controleur ctrl;
-
-    FrameSelectNbJoueurs frameSelectNbJoueurs;
+	private Controleur ctrl;
 
     private JButton btnMoins;
     private JButton btnPlus;

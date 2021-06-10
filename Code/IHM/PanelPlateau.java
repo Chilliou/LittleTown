@@ -6,8 +6,8 @@ import java.awt.Image;
 public class PanelPlateau extends JPanel
 {
 
-    Controleur ctrl;
-    Image fond;
+    private Controleur ctrl;
+    private Image fond;
 
     public PanelPlateau(Controleur ctrl) 
     {

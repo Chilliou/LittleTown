@@ -3,9 +3,9 @@ import javax.swing.*;
 public class FrameSelectNbJoueurs extends JFrame
 {
     
-    Controleur ctrl;
+    private Controleur ctrl;
 
-    PanelSelectNbJoueurs panelSelectNbJoueurs;
+    private PanelSelectNbJoueurs panelSelectNbJoueurs;
 
     public FrameSelectNbJoueurs(Controleur ctrl)
     {

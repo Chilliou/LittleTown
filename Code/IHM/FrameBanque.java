@@ -3,14 +3,19 @@ import javax.swing.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+import java.awt.BorderLayout;
+
 public class FrameBanque extends JFrame
 {
-	PanelBanque   panelBanque;
+
+	private PanelBanqueNorth panelBanqueNorth;
+	private PanelBanqueSouth panelBanqueSouth;
+
 	private Controleur ctrl;
 
-	public FrameBanque ( Controleur ctrl)
+	public FrameBanque ( Controleur ctrl )
 	{
-		this.ctrl = ctrl; 
+		this.ctrl = ctrl;
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
 		int screenHeight = screenSize.height;
@@ -25,10 +30,12 @@ public class FrameBanque extends JFrame
 		// Organisation du LayoutManager
 
 		// Création des Panels
-		this.panelBanque   = new PanelBanque   ( ctrl );
+		this.panelBanqueNorth  = new PanelBanqueNorth ( ctrl );
+		this.panelBanqueSouth   = new PanelBanqueSouth( ctrl );
 
 		// Positionnement des Panels
-		this.add ( this.panelBanque   );
+		this.add ( this.panelBanqueNorth, BorderLayout.NORTH );
+		this.add ( this.panelBanqueSouth, BorderLayout.SOUTH );
 
 		// Fenetre en premier plan
 		this.toFront();
