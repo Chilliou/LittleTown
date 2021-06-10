@@ -3,9 +3,9 @@ import javax.swing.*;
 public class FrameSelectNbJoueurs extends JFrame
 {
     
-    Controleur ctrl;
+    private Controleur ctrl;
 
-    PanelSelectNbJoueurs panelSelectNbJoueurs;
+    private PanelSelectNbJoueurs panelSelectNbJoueurs;
 
     public FrameSelectNbJoueurs(Controleur ctrl)
     {
@@ -13,7 +13,7 @@ public class FrameSelectNbJoueurs extends JFrame
         this.ctrl = ctrl;
 
         this.setTitle("Joueurs");
-        this.setSize(250,150);
+        //this.setSize(250,150);
         this.setResizable(false);
 
         // Création des panels
@@ -26,6 +26,7 @@ public class FrameSelectNbJoueurs extends JFrame
 		this.setLocationRelativeTo(null);
 
         // Activation de la fenêtre
+        this.pack();
         this.setVisible(true);
     }
 

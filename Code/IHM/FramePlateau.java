@@ -1,31 +1,78 @@
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 public class FramePlateau extends JFrame
 {
-	PanelPlateau   panelPlateau;
+	PanelPlateau panelPlateau;
 
 	Controleur ctrl;
 
-	public FramePlateau ( Controleur ctrl)
+	JMenu menu, submenu;  
+	
+	JMenuItem i1, i2, i3, i4, i5;  
+
+	public FramePlateau(Controleur ctrl)
 	{
 
 		this.ctrl = ctrl;
 
-		this.setTitle    ( "Plateau de jeu" );
-		this.setSize(1000,580);
-        this.setResizable(false);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-		// CrÃ©ation des Panels
-		this.panelPlateau   = new PanelPlateau   ( ctrl );
+		int screenHeight = screenSize.height;
+		int screenWidth = screenSize.width;
 
-		// Positionnement des Panels
-		this.add ( this.panelPlateau   );
+		this.setTitle("Plateau de jeu");
+		this.setSize(1000, screenHeight-100);
+		this.setResizable(false);
+		this.setLocation( screenWidth / 2 - 500, 50);
 
-		// On centre le plateau
-		this.setLocationRelativeTo(null);
+		/******************************/
+		/* Créations des panels       */
+		/******************************/
 
-		// Activation de la fenetre
-		this.setVisible ( true );
+		this.panelPlateau = new PanelPlateau(ctrl);
+
+		/***********************************/
+		/* Positionnement des panels       */
+		/***********************************/
+
+		this.add(this.panelPlateau);
+
+		BufferedImage img = null;
+
+		try
+		{
+			img = ImageIO.read(new File("../../img/plateau_1.png"));
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		Image dimg = img.getScaledInstance(1000, screenHeight - 100, Image.SCALE_DEFAULT);
+		ImageIcon imageIcon = new ImageIcon(dimg);
+		setContentPane(new JLabel(imageIcon));
+
+		JMenuBar mb = new JMenuBar();
+		menu = new JMenu("Partie");
+		i1   = new JMenuItem("Nouvelle partie");
+		i2   = new JMenuItem("Quitter");
+		menu.add(i1);
+		menu.add(i2);
+		mb.add(menu);
+		this.setJMenuBar(mb);
+
+
+		// Rendre la fenetre visible
+		this.setVisible(true);
 	}
 
 	public void fermerFrame()

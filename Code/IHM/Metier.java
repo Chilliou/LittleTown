@@ -1,25 +1,23 @@
 public class Metier 
 {
-    private int val;
+    private int nbJoueur;
 
 	public Metier()
 	{
-		this.val = 2;
+		this.nbJoueur = 2;
 	}
 
-	public void augmenter()
+	public void augmenterNbJoueur()
 	{
-		this.val++;
-
-		if ( this.val > 4 ) this.val = 2;
+		this.nbJoueur++;
+		if ( this.nbJoueur > 4 ) this.nbJoueur = 2;
 	}
 
-	public void diminuer()
+	public void diminuerNbJoueur()
 	{
-		this.val--;
-
-		if ( this.val < 2 ) this.val = 4;
+		this.nbJoueur--;
+		if ( this.nbJoueur < 2 ) this.nbJoueur = 4;
 	}
 
-	public int getVal(){ return this.val; }    
+	public int getNbJoueur(){ return this.nbJoueur; }    
 }

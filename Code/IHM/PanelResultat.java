@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class PanelResultat extends JPanel
 {
-	Controleur ctrl;
+	private Controleur ctrl;
 
 	public PanelResultat( Controleur ctrl)
 	{
