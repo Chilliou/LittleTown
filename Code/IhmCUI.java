@@ -79,6 +79,7 @@ public class IhmCUI
 	{
 		String sChoix;
 		int iChoix;
+		String saisieChoix="";
 
 		sChoix  = "+-----------------------------------------------+\n";
 		sChoix += "| > Action possibles:                           |\n";
@@ -93,9 +94,19 @@ public class IhmCUI
 		System.out.println( sChoix);
 
 		Scanner sc = new Scanner( System.in );
+		try
+		{
+			do
+			{
+				System.out.print( "Faites votre choix : " );
+				saisieChoix = sc.nextLine();
+
+			}while(!saisieChoix.matches("^[1-6])"));
+		}catch(Exception e)
+		{
+		}
 		
-		System.out.print( "Faites votre choix : " );
-		iChoix = sc.nextInt();
+		iChoix = Integer.parseInt(saisieChoix);
 
 		return iChoix;
 	}
@@ -233,7 +244,7 @@ public class IhmCUI
 
 					System.out.println( "Une position est constituer d'une lettre  entre 'A' et 'I' et un chiffre entre 1 et 6" );
 					System.out.print( "Entrez la position : " );
-					
+
 					saisie = sc.next();
 					
 				}while(!saisie.matches("^([A-I])+([1-6])$") );
@@ -259,8 +270,6 @@ public class IhmCUI
 		{
 			do
 			{
-
-
 				do
 				{
 					if(!saisieEstVide) 	System.out.println( "\n"+"Cette tuile n'est pas un batiment" );
@@ -270,14 +279,13 @@ public class IhmCUI
 
 					saisie = sc.nextLine();
 
-				}while(!saisie.matches("((?=^[I])([I])+([1-6])$|^([A-H])+([1-8])$)") );
+				}while(!saisie.matches("((?=^[AI]|[B])([AI])+([1-6])|([B])+([1-7]{2})|^([C-H])+([1-8]))") );
 			}while(!this.testBatiment(saisie));
 		} catch (Exception e) 
 		{
 			System.out.println( "Saisie de position invalide" );
 
 		}
-		System.out.println( "SZinzin de l'espace" );
 		return saisie;
 		
 	}
@@ -302,5 +310,6 @@ public class IhmCUI
 
 		return tester.getClass() == new TuileVide().getClass();		
 	}
+
 	
 }
