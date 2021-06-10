@@ -134,9 +134,6 @@ public class Metier
                     if(this.tabJoueurs[numJoueurActif].getRsc(bat.getCout().charAt(i))<Integer.parseInt(bat.getCout().charAt(i+1)+""))
                         return false;
 
-                if ( bat.getNom().equals( "Blé" ) && this.ctrl.enleverBle() )
-
-
                 //DU coup on peut ajouter le batiment 
                 for(int i=0;i<bat.getCout().length();i+=2)
                     this.tabJoueurs[numJoueurActif].echangerRscJoueurVBanque(this.banque,bat.getCout().charAt(i),Integer.parseInt(bat.getCout().charAt(i+1)+""));
