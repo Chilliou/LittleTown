@@ -1,15 +1,13 @@
 import javax.swing.*;
 
 import java.awt.GridLayout;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
 
-public class PanelBasJoueurs extends JPanel
+import java.awt.event.*;
+
+public class PanelBasJoueurs extends JPanel implements ActionListener
 {
     // Attributs
-    private Controleur ctrl;
+    Controleur ctrl;
 
     private JButton    btnAide;
     private JButton    btnEchangerPiece;
@@ -18,6 +16,9 @@ public class PanelBasJoueurs extends JPanel
 
     public PanelBasJoueurs(Controleur ctrl)
     {
+
+        this.ctrl = ctrl;
+
         this.setLayout( new GridLayout(3, 1));
 
         /************************************/
@@ -37,5 +38,23 @@ public class PanelBasJoueurs extends JPanel
         this.add(btnEchangerPiece);
         this.add(btnAide);
 
+        // Activation des composants
+
+        this.btnAide.addActionListener(this);
+
     }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) 
+    {
+
+        if(e.getSource() == this.btnAide)
+        {
+            this.ctrl.appelFrameHelp();
+        }
+        
+    }
+
+    
 }

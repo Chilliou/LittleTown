@@ -1,8 +1,6 @@
 import java.awt.event.*;
 import java.awt.Point;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 
 public class Controleur implements ComponentListener
 {
@@ -16,6 +14,8 @@ public class Controleur implements ComponentListener
     private FrameBanque             frameBanque;
 	private FramePlateau            framePlateau;
 	private FrameJoueur             frameJoueur;
+
+    private FrameHelp               frameHelp;
 
 	public  Controleur ()
 	{
@@ -31,6 +31,11 @@ public class Controleur implements ComponentListener
     public void appelFrameSelectNbJoueur()
     {
         this.selectNbJoueurs = new FrameSelectNbJoueurs(this);
+    }
+
+    public void appelFrameHelp()
+    {
+        this.frameHelp = new FrameHelp(this);
     }
 
 	public void appelFramePlateau()
@@ -74,10 +79,6 @@ public class Controleur implements ComponentListener
 
 	public void componentMoved(ComponentEvent e) 
     {
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int screenHeight     = screenSize.height;
-        int screenWidth      = screenSize.width;
-
         if (e.getSource() == this.framePlateau )
         {
             Point p, p2;

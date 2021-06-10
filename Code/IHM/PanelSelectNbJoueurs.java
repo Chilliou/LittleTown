@@ -21,6 +21,8 @@ public class PanelSelectNbJoueurs extends JPanel implements ActionListener, Focu
 
     private String plateaux[] = { "Plateau 1", "Plateau 2" };
 
+    private Color[] coulTxt = new Color[] { Color.RED, Color.BLUE, Color.GREEN, Color.ORANGE };
+
     private JTextField txtNomJoueurs[];
 
 	public PanelSelectNbJoueurs( Controleur ctrl )
@@ -52,6 +54,7 @@ public class PanelSelectNbJoueurs extends JPanel implements ActionListener, Focu
         {
             this.txtNomJoueurs[i] = new JTextField(20);
             this.txtNomJoueurs[i].setText("Nom du joueur " + (i+1));
+            this.txtNomJoueurs[i].setForeground(this.coulTxt[i]);
         }
 
         this.panelTempNomsJoueurs = new JPanel(new GridLayout(5,0));
@@ -98,16 +101,22 @@ public class PanelSelectNbJoueurs extends JPanel implements ActionListener, Focu
 
 		this.txtNbJoueurs.setText ( "" + this.ctrl.getNbJoueur() );
 
+
         if (this.ctrl.getNbJoueur() == 2)
         {
             this.txtNomJoueurs[2].setVisible(false);
             this.txtNomJoueurs[3].setVisible(false);
+
+            this.txtNomJoueurs[2].setText("");
+            this.txtNomJoueurs[3].setText("");
         }
 
         if (this.ctrl.getNbJoueur() == 3)
         {
             this.txtNomJoueurs[2].setVisible(true);
             this.txtNomJoueurs[3].setVisible(false);
+
+            this.txtNomJoueurs[3].setText("");
         }
 
         if (this.ctrl.getNbJoueur() == 4)
@@ -138,19 +147,34 @@ public class PanelSelectNbJoueurs extends JPanel implements ActionListener, Focu
         
     }
 
-    public void focusGained(FocusEvent e) {  
-        for (int i = 0; i < this.txtNomJoueurs.length; i++) {
+    public void focusGained(FocusEvent e)
+    {  
+        for (int i = 0; i < this.txtNomJoueurs.length; i++)
+        {
             if(e.getSource() == this.txtNomJoueurs[i])
             {
-                this.txtNomJoueurs[i].setText("");  
+                String[] parts = this.txtNomJoueurs[i].getText().split(" ");
+                try
+                {
+                    if (parts[0].equals("Nom"))this.txtNomJoueurs[i].setText(""); 
+                    System.out.println("Test");
+                }
+                catch (Exception re)
+                {
+                    //TODO: handle exception
+                }
+
             }
         }
     }  
 
-    public void focusLost(FocusEvent e) { 
+    public void focusLost(FocusEvent e)
+    { 
 
-        for (int i = 0; i < this.txtNomJoueurs.length; i++) {
-            if (this.txtNomJoueurs[i].getText().length() == 0) {  
+        for (int i = 0; i < this.txtNomJoueurs.length; i++)
+        {
+            if (this.txtNomJoueurs[i].getText().length() == 0)
+            {  
                 this.txtNomJoueurs[i].setText("Nom du joueur " + (i+1));
             }
         }
