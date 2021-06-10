@@ -290,7 +290,7 @@ public class IhmCUI
 	public boolean testBatiment(String pos)
 	{
 		int y =  pos.charAt(0) - (int) ('A');
-        int x = (Integer.parseInt(pos.charAt(1)+"")-1) ;
+		int x = (Integer.parseInt(pos.charAt(1)+"")-1) ;
 
 		if(pos.equals("B7")) return true;
 
@@ -303,11 +303,24 @@ public class IhmCUI
 	public boolean testTuileVide(String pos)
 	{
 		int y =  pos.charAt(0) - (int) ('A');
-        int x = (Integer.parseInt(pos.charAt(1)+"")-1) ; 
+		int x = (Integer.parseInt(pos.charAt(1)+"")-1) ; 
 
 		Tuile tester = this.getTuile(x,y);
 
 		return tester.getClass() == new TuileVide().getClass();		
+	}
+
+	public void getInfoBatiment()
+	{
+		String saisie = this.getSaisiePosBtm();
+
+		int y =  saisie.charAt(0) - (int) ('A');
+		int x = (Integer.parseInt(saisie.charAt(1)+"")-1) ;
+
+		if(saisie.equals("B7")) 
+			System.out.println(new Batiment ( "Blé", "A1", "", "C1", 3 ).infoBatiment());
+		else
+			System.out.println(this.getBatiment(x,y).infoBatiment()); 
 	}
 
 	

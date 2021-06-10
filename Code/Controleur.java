@@ -113,6 +113,11 @@ public class Controleur
 		return this.ihm.getSaisiePosBtm	();
 	}
 
+	public void getInfoBatiment()
+	{
+		this.ihm.getInfoBatiment();
+	}
+
 
 	public static void main(String[] a)
 	{
