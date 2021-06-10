@@ -67,6 +67,7 @@ public class IhmCUI
 	public void clearOuvrier()
 	{
 		this.plateauBas.clearOuvrier();
+		this.plateau   .clearOuvrier();
 	}
 
 	public void addOuvrier(int iNumJoueur)

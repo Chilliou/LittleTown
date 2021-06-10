@@ -124,6 +124,25 @@ public class Plateau
 		return sRet;
 	}
 
+	public void clearOuvrier ()
+	{
+
+		for ( int x = 0; x < this.terrainDeJeu.length; x++ )
+		{
+			for ( int y = 0; y < this.terrainDeJeu[x].length; y++ )
+			{
+				Tuile t = terrainDeJeu[x][y];
+
+				if ( t.getClass() == new TuileVide().getClass() )
+					if ( t.getOuvrier() != null )
+					{
+						TuileVide tOuvrier = this.getTuileVide( x, y );
+						tOuvrier.setOuvrier( null );
+					}
+			}
+		}
+	}
+
     public static void main(String[] args)
     {
 		System.out.println();
