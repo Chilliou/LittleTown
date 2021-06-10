@@ -18,7 +18,7 @@ public class Banque
 		
 		this.iNbPiece = 40;
 		
-		this.iScore   = 0;
+		this.iScore   = 9999;
 		
 	}
 
@@ -48,6 +48,7 @@ public class Banque
 							case 'E' -> this.iNbEau;
 							case 'C' -> this.iNbBle;
 							case 'M' -> this.iNbPiece;
+							case 'S' -> this.iScore;
 							default -> 99;
 						};
 	}
@@ -62,6 +63,7 @@ public class Banque
 			case 'E' -> this.iNbEau    += iNb;
 			case 'C' -> this.iNbBle    += iNb;
 			case 'M' -> this.iNbPiece  += iNb;
+			case 'S' -> this.iScore    += iNb;
 		}
 	}
 
