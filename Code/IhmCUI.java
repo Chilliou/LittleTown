@@ -213,12 +213,20 @@ public class IhmCUI
 	//Méthode pour éviter les répétitions de demande de pos
 	public String getSaisiePos()
 	{
-		Scanner sc = new Scanner( System.in );
-		
-		System.out.print( "Entrez la position : " );
+		String saisie="";
+		try( Scanner sc = new Scanner( System.in ))
+		{
+			do
+			{
+				System.out.println( "Une position est constituer d'une lettre  entre 'A' et 'I' et un chiffre entre 1 et 8" );
+				System.out.print( "Entrez la position : " );
+				saisie = sc.nextLine();
+			}while(!saisie.matches("^([A-I])+([1-8])$"));
+		} catch (Exception e) 
+		{
+			System.out.println( "Saisie de position invalide" );
 
-		String saisie = sc.nextLine();
-		
+		}
 		return saisie;
 		
 	}

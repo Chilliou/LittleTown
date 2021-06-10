@@ -4,21 +4,21 @@ import java.io.FileInputStream;
 public class Plateau 
 {
 	private Tuile[][] terrainDeJeu;
-	private Joueur[]   joueurActif ; 
+	private Joueur[]  jJoueurActif; 
 
-	public Plateau(int nbJoueur,int choixPlateau) // possiblement passer par un factory
-	{											  // Pour check le nbJoueur et choixPlateau
+	public Plateau( int iNbJoueur,int iChoixPlateau )
+	{
 		this.terrainDeJeu = new Tuile[6][9];
-		this.joueurActif  = new Joueur[nbJoueur];
+		this.jJoueurActif = new Joueur[iNbJoueur];
 
-		this.initTerrain(choixPlateau);
+		this.initTerrain(iChoixPlateau);
 	}
 
-	private void initTerrain(int choixPlateau)
+	private void initTerrain( int iChoixPlateau )
 	{
 		try
 		{
-			Scanner sc = new Scanner ( new FileInputStream ( "plateau"+choixPlateau+".data" ) );
+			Scanner sc = new Scanner ( new FileInputStream ( "plateau" + iChoixPlateau + ".data" ) );
 
 			int ligne = 0;
 			while ( sc.hasNextLine() )
@@ -38,40 +38,39 @@ public class Plateau
 					colone++;
 				}
 
-				ligne++;	
+				ligne++;
 			}
 
 			sc.close();
 		}
-		catch (Exception e)
-		{ e.printStackTrace(); }
+		catch (Exception e) { e.printStackTrace(); }
 		
 	}
 
-    public Tuile getTuile(int x, int y)
-    {
-        return this.terrainDeJeu[x][y];
-    }
+	public Tuile getTuile( int x, int y )
+	{
+		return this.terrainDeJeu[x][y];
+	}
 
-    public TuileVide getTuileVide ( int x, int y )
-    {
-      return (TuileVide) this.terrainDeJeu[x][y];
-    }
+	public TuileVide getTuileVide ( int x, int y )
+	{
+		return (TuileVide) this.terrainDeJeu[x][y];
+	}
 
-    public Batiment getBatiment(int x, int y)
-    {
-    	return (Batiment) this.terrainDeJeu[x][y];
-    }
+	public Batiment getBatiment(int x, int y)
+	{
+		return (Batiment) this.terrainDeJeu[x][y];
+	}
 
-    public void setTuile(int x, int y, Tuile tuile)
-    {
-      this.terrainDeJeu[x][y] = tuile;
-    }
+	public void setTuile(int x, int y, Tuile tuile)
+	{
+		this.terrainDeJeu[x][y] = tuile;
+	}
 
-    public void setTuileVide (int x, int y, TuileVide tuile)
-    {
-      this.terrainDeJeu[x][y] = tuile;
-    }
+	public void setTuileVide (int x, int y, TuileVide tuile)
+	{
+		this.terrainDeJeu[x][y] = tuile;
+	}
 
 
 	public String toString()
@@ -80,7 +79,7 @@ public class Plateau
 
         // LIGNE HAUTE
 
-        for (int cpt = 0; (cpt < this.terrainDeJeu[0].length); cpt++)
+		for (int cpt = 0; (cpt < this.terrainDeJeu[0].length); cpt++)
 		{
 			sRet+="  " + (char)('A'+cpt) + "  ";
 		}
@@ -124,10 +123,4 @@ public class Plateau
 		return sRet;
 	}
 
-    public static void main(String[] args)
-    {
-		System.out.println();
-		Plateau p  = new Plateau(4,1);
-		System.out.println(p);
-    }
 }
