@@ -16,7 +16,7 @@ public class Ouvrier
 		return this.jProprietaire;
 	}
 
-	public void resetOuvrier() // Pour replacer ouvrier a la fin du tour
+	public void resetOuvrier() // Pour replacer ouvrier a la fin de chaque manche
 	{
 		this.iPosLigne   = -1; 
 		this.iPosColonne = -1;

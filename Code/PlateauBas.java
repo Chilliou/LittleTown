@@ -70,7 +70,6 @@ public class PlateauBas
 		
 	}
 
-
 	public Batiment getBatiment( int x, int y )
 	{
 		return (Batiment) this.plateauBas[x-6][y-2];
