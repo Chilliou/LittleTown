@@ -102,7 +102,7 @@ public class IhmCUI
 				System.out.print( "Faites votre choix : " );
 				saisieChoix = sc.nextLine();
 
-			}while(!saisieChoix.matches("^[1-6])"));
+			}while(!saisieChoix.matches("^([1-6]{1})"));
 		}catch(Exception e)
 		{
 		}

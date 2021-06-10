@@ -75,17 +75,17 @@ public class PlateauBas
 	
 	public Tuile getTuile( int x, int y )
 	{
-		return this.plateauBas[x][y];
+		return this.plateauBas[x-6][y-2];
 	}
 
 	public TuileVide getTuileVide ( int x, int y )
 	{
-		return (TuileVide) this.plateauBas[x][y];
+		return (TuileVide) this.plateauBas[x-6][y-2];
 	}
 
 	public Batiment getBatiment(int x, int y)
 	{
-		return (Batiment) this.plateauBas[x][y];
+		return (Batiment) this.plateauBas[x-6][y-2];
 	}
 
 	public void setTuile(int x, int y, Tuile tuile)
