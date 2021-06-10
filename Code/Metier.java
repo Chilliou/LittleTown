@@ -119,7 +119,9 @@ public class Metier
             {
                 Batiment bat;
                 if ( lig == 6 && col == 1)
+                {
                     bat = new Batiment ( "Blé", "A1", "", "C1", 3 );
+                }
                 else
                     bat = this.ctrl.getBatiment( lig, col ) ;
 
@@ -201,10 +203,13 @@ public class Metier
                         {
                             for(int i=0;i<bat.getCoutProd().length();i+=2)
                             {
-                                this.tabJoueurs[numJoueurActif].echangerRscJoueurVBanque(this.banque,bat.getCoutProd().charAt(i),Integer.parseInt(bat.getCoutProd().charAt(i+1)+""));
-                                 this.banque.echangerRscBanqueVJoueur(this.tabJoueurs[numJoueurActif],
-                                                            bat.getRevientProd().charAt(i),
-                                                             Integer.parseInt( bat.getRevientProd().charAt(i+1) + "" ) );
+                                 this.tabJoueurs[numJoueurActif].echangerRscJoueurVBanque(this.banque,bat.getCoutProd().charAt(i),Integer.parseInt(bat.getCoutProd().charAt(i+1)+""));
+                            }
+                            for(int i=0;i<bat.getRevientProd().length();i+=2)
+                            {
+                                this.banque.echangerRscBanqueVJoueur(this.tabJoueurs[numJoueurActif],
+                                                        bat.getRevientProd().charAt(i),
+                                                         Integer.parseInt( bat.getRevientProd().charAt(i+1) + "" ) );
                             }
 
                         }
@@ -216,10 +221,14 @@ public class Metier
                                 for(int i=0;i<bat.getCoutProd().length();i+=2)
                                 {
                                      this.tabJoueurs[numJoueurActif].echangerRscJoueurVBanque(this.banque,bat.getCoutProd().charAt(i),Integer.parseInt(bat.getCoutProd().charAt(i+1)+""));
-                                     this.banque.echangerRscBanqueVJoueur(this.tabJoueurs[numJoueurActif],
+                                }
+                                for(int i=0;i<bat.getRevientProd().length();i+=2)
+                                {
+                                    this.banque.echangerRscBanqueVJoueur(this.tabJoueurs[numJoueurActif],
                                                             bat.getRevientProd().charAt(i),
                                                              Integer.parseInt( bat.getRevientProd().charAt(i+1) + "" ) );
                                 }
+
                              }
                         }
                         //Si le jouer actif a moins d'1 coins

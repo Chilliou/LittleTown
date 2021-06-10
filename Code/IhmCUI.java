@@ -292,6 +292,8 @@ public class IhmCUI
 		int y =  pos.charAt(0) - (int) ('A');
         int x = (Integer.parseInt(pos.charAt(1)+"")-1) ;
 
+		if(pos.equals("B7")) return true;
+
 		Tuile tester = this.getTuile(x,y);
 		
 		return tester.getClass() == new Batiment("Useless").getClass();
