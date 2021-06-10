@@ -246,6 +246,8 @@ public class IhmCUI
 					System.out.print( "Entrez la position : " );
 
 					saisie = sc.next();
+					saisie = saisie.toUpperCase();
+
 					
 				}while(!saisie.matches("^([A-I])+([1-6])$") );
 			}while(!this.testTuileVide(saisie));
@@ -278,8 +280,9 @@ public class IhmCUI
 					System.out.print( "Entrez la position : " );
 
 					saisie = sc.nextLine();
+					saisie = saisie.toUpperCase();
 
-				}while(!saisie.matches("((?=^[AI]|[B])([AI])+([1-6])|([B])+([1-7]{2})|^([C-H])+([1-8]))") );
+				}while(!saisie.matches("((?=^[AI]|[B])([AI])+([1-6])|([B])+([1-7])|^([C-H])+([1-8]))") );
 			}while(!this.testBatiment(saisie));
 		} catch (Exception e) 
 		{
