@@ -295,8 +295,10 @@ public class Metier
        String saisie = this.ctrl.getSaisiePosBtm();
         int y =  saisie.charAt(0) - (int) ('A');
         int x = (Integer.parseInt(saisie.charAt(1)+"")-1) ;
-
-      System.out.println(this.ctrl.getBatiment(x,y).infoBatiment()); 
+        if(saisie.equals("B7")) 
+            System.out.println(new Batiment ( "Blé", "A1", "", "C1", 3 ).infoBatiment());
+        else
+         System.out.println(this.ctrl.getBatiment(x,y).infoBatiment()); 
     }
 
     public boolean echangerPiece()
