@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Metier
 {
@@ -17,6 +18,8 @@ public class Metier
 
     private String dernierOuvrierPos;
 
+    private ArrayList<Batiment> ensBatimentActiver;
+
     public Metier(Controleur ctrl)
     {
         this.banque = new Banque();
@@ -27,6 +30,8 @@ public class Metier
         this.tourActuel        = 1;
         this.tabJoueurs        = new Joueur[2];
         this.dernierOuvrierPos = null;
+
+        this.ensBatimentActiver = new ArrayList<Batiment>();
 
         this.initJoueur();
     }
@@ -50,6 +55,8 @@ public class Metier
 
     public void changementJoueur()
     {
+        this.resetBatimentActivation();
+
         if (this.numJoueurActif == this.tabJoueurs.length -1)
             this.numJoueurActif = 0;
         else
@@ -178,25 +185,57 @@ public class Metier
                 // Vérification que la tuile n'a pas deja était activée.
                 if (this.ctrl.getTuile(xTuile, yTuile).isActivable())
                 {
-
+                    Batiment bat = this.ctrl.getBatiment(xTuile, yTuile);
                     System.out.println("> Activation de la tuile : " + this.ctrl.getTuile(xTuile, yTuile).getNom());
 
-                    //Si  le batiment n'appartient aucun jouer et que le Proprietaire est différence du genre actuel
-                    if ( this.ctrl.getBatiment(xTuile, yTuile).getProprietaire() != null && 
-                         this.ctrl.getBatiment(xTuile, yTuile).getProprietaire() != this.tabJoueurs[this.numJoueurActif] )
+                    //Si  le batiment n'appartient aucun jouer 
+                    if ( bat.getProprietaire() != null  )
                     {
-                        //Si le jouer actif a moins d'1 coins
-                        if ( this.tabJoueurs[this.numJoueurActif].getRsc( 'M' ) > 0 )
-                            this.tabJoueurs[this.numJoueurActif].echangerRscJoueurVBanque ( this.ctrl.getBatiment(xTuile, yTuile).getProprietaire(), 'M', 1 );
+                        //Verif si il a les ressources néccésaire
+                        for(int i=0;i<bat.getCoutProd().length();i+=2)
+                             if(this.tabJoueurs[numJoueurActif].getRsc(bat.getCoutProd().charAt(i))<Integer.parseInt(bat.getCoutProd().charAt(i+1)+""))
+                                return ;
+
+                        //si le Proprietaire est différence du genre actuel
+                        if(bat.getProprietaire() == this.tabJoueurs[this.numJoueurActif])
+                        {
+                            for(int i=0;i<bat.getCoutProd().length();i+=2)
+                            {
+                                this.tabJoueurs[numJoueurActif].echangerRscJoueurVBanque(this.banque,bat.getCoutProd().charAt(i),Integer.parseInt(bat.getCoutProd().charAt(i+1)+""));
+                                 this.banque.echangerRscBanqueVJoueur(this.tabJoueurs[numJoueurActif],
+                                                            bat.getRevientProd().charAt(i),
+                                                             Integer.parseInt( bat.getRevientProd().charAt(i+1) + "" ) );
+                            }
+
+                        }
                         else
-                            return;
+                        {
+                             if ( this.tabJoueurs[this.numJoueurActif].getRsc( 'M' ) > 0  )
+                             {
+                                this.tabJoueurs[this.numJoueurActif].echangerRscJoueurVBanque ( bat.getProprietaire(), 'M', 1 );
+                                for(int i=0;i<bat.getCoutProd().length();i+=2)
+                                {
+                                     this.tabJoueurs[numJoueurActif].echangerRscJoueurVBanque(this.banque,bat.getCoutProd().charAt(i),Integer.parseInt(bat.getCoutProd().charAt(i+1)+""));
+                                     this.banque.echangerRscBanqueVJoueur(this.tabJoueurs[numJoueurActif],
+                                                            bat.getRevientProd().charAt(i),
+                                                             Integer.parseInt( bat.getRevientProd().charAt(i+1) + "" ) );
+                                }
+                             }
+                        }
+                        //Si le jouer actif a moins d'1 coins
+                       
 
                     }
+                    else
+                    {
+                        this.banque.echangerRscBanqueVJoueur(this.tabJoueurs[numJoueurActif],
+                                                            bat.getRevientProd().charAt(0),
+                                                             Integer.parseInt( bat.getRevientProd().charAt(1) + "" ) );
+                    }
+                    
 
-                    this.banque.echangerRscBanqueVJoueur(this.tabJoueurs[numJoueurActif],
-                                                         this.ctrl.getBatiment(xTuile, yTuile).getRevientProd().charAt(0),
-                                                         Integer.parseInt( this.ctrl.getBatiment(xTuile, yTuile).getRevientProd().charAt(1) + "" ) );
-                    this.ctrl.getTuile(xTuile, yTuile).setActivation(false);
+                    bat.setActivation(false);
+                    this.ensBatimentActiver.add(bat);
                 }
                 else { System.out.println("Vous avez deja était activé cette tuile !"); }
             }
@@ -285,6 +324,13 @@ public class Metier
         catch (Exception e){ System.out.println( "Ressource Inconnu" ); }
 
         return false;
+    }
+
+    public void resetBatimentActivation()
+    {
+        for(Batiment b: this.ensBatimentActiver)
+            b.setActivation(true);
+        this.ensBatimentActiver.clear();
     }
 
     public int getTour()
