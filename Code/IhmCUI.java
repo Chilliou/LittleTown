@@ -232,7 +232,6 @@ public class IhmCUI
 	public String getSaisiePosVide()
 	{
 		String saisie="";
-		boolean saisieEstVide = true;
 		Scanner sc = new Scanner( System.in );
 
 		try
@@ -241,8 +240,6 @@ public class IhmCUI
 			{
 				do
 				{
-					if(!saisieEstVide) 	System.out.println( "\n"+"Cette tuile n'est pas vide" );
-
 					System.out.println( "Une position est constituer d'une lettre  entre 'A' et 'I' et un chiffre entre 1 et 6" );
 					System.out.print( "Entrez la position : " );
 
@@ -265,8 +262,6 @@ public class IhmCUI
 	public String getSaisiePosBtm()
 	{
 		String saisie="";
-		boolean saisieEstVide = true;
-		boolean regex;
 		Scanner sc = new Scanner( System.in );
 
 		try
@@ -275,8 +270,6 @@ public class IhmCUI
 			{
 				do
 				{
-					if(!saisieEstVide) 	System.out.println( "\n"+"Cette tuile n'est pas un batiment" );
-
 					System.out.println( "Une position est constituer d'une lettre  entre 'A' et 'I' et un chiffre entre 1 et 8" );
 					System.out.print( "Entrez la position : " );
 
