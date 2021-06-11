@@ -1,5 +1,10 @@
 package littletown.ihm;
 
+
+import littletown.IhmCUI;
+import littletown.Tuile;
+
+
 import java.awt.event.*;
 import java.awt.Point;
 
@@ -19,10 +24,14 @@ public class Controleur implements ComponentListener
 
     private FrameHelp               frameHelp;
 
+    //private IhmCUI ihm;
+
 	public  Controleur ()
 	{
         this.metier  = new Metier();
 		this.menu    = new FrameMenu  (this);
+
+        //this.ihm    = new IhmCUI();
 	}
 
     public void appelFrameResultat()
@@ -77,6 +86,9 @@ public class Controleur implements ComponentListener
     {
         this.frameBanque.setLocation(x, y);
     }
+
+	// Utilisé pour initialiser le plateau bas de l'IHM.
+	//public Tuile[] getTuileIHM() { return this.ihm.getTuileIHM(); }
 
 
 	public void componentMoved(ComponentEvent e) 

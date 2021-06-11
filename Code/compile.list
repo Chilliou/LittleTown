@@ -1,17 +1,17 @@
 -encoding utf8
 
-./Controleur.java
-./Banque.java
-./Batiment.java
-./Joueur.java
-./IhmCUI.java
-./Metier.java
-./Ouvrier.java
-./Plateau.java
-./PlateauBas.java
-./Ressource.java
-./Tuile.java
-./TuileVide.java
+./cui/Controleur.java
+./cui/Banque.java
+./cui/Batiment.java
+./cui/Joueur.java
+./cui/IhmCUI.java
+./cui/Metier.java
+./cui/Ouvrier.java
+./cui/Plateau.java
+./cui/PlateauBas.java
+./cui/Ressource.java
+./cui/Tuile.java
+./cui/TuileVide.java
 
 ./ihm/Controleur.java
 ./ihm/FrameBanque.java
