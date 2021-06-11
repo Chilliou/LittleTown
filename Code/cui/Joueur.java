@@ -31,6 +31,9 @@ public class Joueur extends Banque
 		this.ajouterEnlever(rsc,-iNb);
 	}
 
+	public void changeScore( int iScore ) { this.iScore += iScore; }
+
+	
 	public String getCouleur() { return this.sCouleur; }
 
 	public int getScore () { return this.iScore; }
