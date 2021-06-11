@@ -241,7 +241,7 @@ public class IhmCUI
 				do
 				{
 					System.out.println( "Une position est constituer d'une lettre  entre 'A' et 'I' et un chiffre entre 1 et 6" );
-					System.out.print( "Entrez la position : " );
+					System.out.print( "Entrez la position de la tuile vide : " );
 
 					saisie = sc.next();
 					saisie = saisie.toUpperCase();
@@ -271,7 +271,7 @@ public class IhmCUI
 				do
 				{
 					System.out.println( "Une position est constituer d'une lettre  entre 'A' et 'I' et un chiffre entre 1 et 8" );
-					System.out.print( "Entrez la position : " );
+					System.out.print( "Entrez la position du batiment : " );
 
 					saisie = sc.nextLine();
 					saisie = saisie.toUpperCase();
