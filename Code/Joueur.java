@@ -1,3 +1,6 @@
+package littletown;
+
+
 public class Joueur extends Banque
 {
 	// Attributs
