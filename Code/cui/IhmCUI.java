@@ -18,10 +18,32 @@ public class IhmCUI
 	//Affichage des deux plateau
 	public void afficher()
 	{
-		System.out.println("Plateau actuel : ");
+		System.out.println("> Plateau actuel : ");
 		System.out.println( this.plateau);
 		System.out.println( this.plateauBas);
 
+	}
+
+	public int saisienbJoueur()
+	{
+		Scanner sc = new Scanner( System.in );
+		String  iSaisieNbJoueurs = "";
+		int     iNbJoueurs = 0;
+
+        try
+        {
+            do
+            {
+                System.out.print( "Combien de joueurs voulez vous choisir : " );
+                iSaisieNbJoueurs = sc.nextLine();
+
+            } while(! iSaisieNbJoueurs.matches("^([2-4]{1})") );
+        }
+		catch(Exception e) { System.out.println(e);}
+
+        iNbJoueurs = Integer.parseInt(iSaisieNbJoueurs);
+
+        return iNbJoueurs;
 	}
 
 	public boolean enleverBle ()

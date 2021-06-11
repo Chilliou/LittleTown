@@ -3,13 +3,15 @@ package littletown.cui;
 
 
 import java.util.Scanner;
+
 import java.util.ArrayList;
 
 
 public class Metier
 {
 
-    private final int NB_OUVRIERS = 5;
+    private int nbMaxOuvriers;
+    private int nbMaxBatiment;
     
     private Controleur ctrl;
 
@@ -30,11 +32,8 @@ public class Metier
         this.banque = new Banque();
 
         this.ctrl              = ctrl;
-        this.nbJoueurs         = 2;
-        this.numJoueurActif    = 0;
-        this.tourActuel        = 1;
-        this.tabJoueurs        = new Joueur[2];
         this.dernierOuvrierPos = null;
+        this.tourActuel        = 1;
 
         this.ensBatimentActiver = new ArrayList<Batiment>();
 
@@ -49,13 +48,45 @@ public class Metier
 
     public int getNbJoueur() { return this.nbJoueurs; }
 
-    public int getNbOuvrier() { return this.NB_OUVRIERS; }
+    public int getNbOuvrier() { return this.nbMaxOuvriers; }
 
 
     private void initJoueur()
     {
-        this.tabJoueurs[0] = new Joueur("Rouge");
-        this.tabJoueurs[1] = new Joueur("Bleu");
+        int nbJoueursInit;
+        String[] sCoulJoueurs = new String[] {"Rouge", "Bleu", "Vert", "Orange"};
+
+        
+        nbJoueursInit          = this.ctrl.getInitNbJoueurs();
+        this.nbJoueurs         = nbJoueursInit;
+        this.tabJoueurs        = new Joueur[this.nbJoueurs];
+        this.numJoueurActif    = 0;
+
+        switch ( this.nbJoueurs )
+        {
+            case 2 ->
+            {
+                this.nbMaxOuvriers = 5;
+                this.nbMaxBatiment = 7;
+            }
+
+            case 3 ->
+            {
+                this.nbMaxOuvriers = 4;
+                this.nbMaxBatiment = 6;
+            }
+
+            case 4 ->
+            {
+                this.nbMaxOuvriers = 3;
+                this.nbMaxBatiment = 6;
+            }
+        }
+
+        for (int i = 0; i < this.tabJoueurs.length; i++)
+            this.tabJoueurs[i] = new Joueur(sCoulJoueurs[i]);
+        
+
     }
 
     public void changementJoueur()
@@ -272,17 +303,17 @@ public class Metier
             this.ctrl.nourrirOuvrierInfo(j);
 
             // Blé
-            iOuvrierNourri      = this.ctrl.nourrirOuvrier ('C', iOuvrierNourri, this.NB_OUVRIERS, j);
+            iOuvrierNourri      = this.ctrl.nourrirOuvrier ('C', iOuvrierNourri, this.nbMaxOuvriers, j);
             nbRessourceConsomme = iOuvrierNourri;
             j.echangerRscJoueurVBanque(this.banque,'C',nbRessourceConsomme);
             
             // Eau
-            nbRessourceConsomme = this.ctrl.nourrirOuvrier('E', iOuvrierNourri, this.NB_OUVRIERS, j);
+            nbRessourceConsomme = this.ctrl.nourrirOuvrier('E', iOuvrierNourri, this.nbMaxOuvriers, j);
             iOuvrierNourri      += nbRessourceConsomme;
             j.echangerRscJoueurVBanque(this.banque,'E',nbRessourceConsomme);
 
             // Pièces
-            nbRessourceConsomme = this.ctrl.nourrirOuvrier('M', iOuvrierNourri, this.NB_OUVRIERS, j);
+            nbRessourceConsomme = this.ctrl.nourrirOuvrier('M', iOuvrierNourri, this.nbMaxOuvriers, j);
 
             if (nbRessourceConsomme != 0 ) nbRessourceConsomme+= 2 * nbRessourceConsomme;
 
@@ -292,7 +323,7 @@ public class Metier
             j.echangerRscJoueurVBanque(this.banque,'M',nbRessourceConsomme);
             
             // On affiche si le joueurs perd du score ou non.
-            this.ctrl.finNourrir(iOuvrierNourri, this.NB_OUVRIERS, j);
+            this.ctrl.finNourrir(iOuvrierNourri, this.nbMaxOuvriers, j);
             
             // On recommence à 0 pour les autres joueurs
             iOuvrierNourri = 0;

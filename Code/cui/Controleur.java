@@ -9,8 +9,8 @@ public class Controleur
 
 	public Controleur()
 	{
-		this.metier = new Metier(this);
-		this.ihm    = new IhmCUI();
+		this.ihm     = new IhmCUI();
+		this.metier  = new Metier(this);
 		this.lancerJeu();
 	}
 
@@ -80,6 +80,8 @@ public class Controleur
 
 	public void setTuile     ( int x, int y, Tuile tuile )     { this.ihm.setTuile( x, y, tuile ); }
 	public void setTuileVide ( int x, int y, TuileVide tuile ) { this.ihm.setTuile( x, y, tuile ); }
+
+	public int getInitNbJoueurs()  { return this.ihm.saisienbJoueur(); }
 
 
 	public void addOuvrier(int iNumJoueur)
