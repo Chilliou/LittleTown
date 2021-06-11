@@ -145,6 +145,8 @@ public class Metier
                 this.ctrl.setTuile(x,y,bat);
                 if ( ! bat.getNom().equals( "Blé" ) )
                     this.ctrl.setTuile(lig,col,terrain);
+                else
+                    this.ctrl.enleverBle();
                 this.ctrl.addOuvrier(this.numJoueurActif);
                 this.tabJoueurs[numJoueurActif].majScore(bat.getScore());
                 bat.setProprietaire(this.tabJoueurs[numJoueurActif]);
