@@ -142,7 +142,7 @@ public class Metier
                 if ( ! bat.getNom().equals( "Blé" ) )
                     this.ctrl.setTuile(lig,col,terrain);
                 this.ctrl.addOuvrier(this.numJoueurActif);
-                this.tabJoueurs[numJoueurActif].changeScore(bat.getScore());
+                this.tabJoueurs[numJoueurActif].majScore(bat.getScore());
                 bat.setProprietaire(this.tabJoueurs[numJoueurActif]);
                 this.tabJoueurs[numJoueurActif].setAction(true);
 
