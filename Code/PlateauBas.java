@@ -1,7 +1,10 @@
+package littletown;
+
 import java.util.ArrayList;
 import java.io.FileInputStream;
 import java.util.Scanner;
 import java.util.Collections;
+
 
 public class PlateauBas
 {

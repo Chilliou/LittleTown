@@ -1,3 +1,6 @@
+package littletown;
+
+
 import java.util.ArrayList;
 
 public class Batiment extends Tuile

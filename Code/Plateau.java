@@ -1,5 +1,9 @@
+package littletown;
+
+
 import java.util.Scanner;
 import java.io.FileInputStream;
+
 
 public class Plateau 
 {

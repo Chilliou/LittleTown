@@ -1,3 +1,5 @@
+package littletown;
+
 public class Ressource
 {
 	private String nom;

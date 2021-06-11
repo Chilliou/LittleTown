@@ -1,3 +1,6 @@
+package littletown;
+
+
 public class Ouvrier
 {
 	private int    iPosLigne;

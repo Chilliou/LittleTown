@@ -1,3 +1,5 @@
+package littletown;
+
 public class TuileVide extends Tuile
 {
   private Ouvrier ouvrier;

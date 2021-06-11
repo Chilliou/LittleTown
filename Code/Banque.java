@@ -1,3 +1,6 @@
+package littletown;
+
+
 public class Banque
 {
 	private int iNbPierre;
