@@ -28,10 +28,10 @@ public class Banque
 	// Constructeur de la banque du joueur
 	public Banque(int iNbPiece)
 	{
-		this.iNbPierre = 10;
-		this.iNbBois   = 10;
-		this.iNbEau    = 10;
-		this.iNbBle    = 10;
+		this.iNbPierre = 0;
+		this.iNbBois   = 0;
+		this.iNbEau    = 0;
+		this.iNbBle    = 0;
 
 		this.iNbPiece = iNbPiece;
 		

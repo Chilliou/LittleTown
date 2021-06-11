@@ -19,7 +19,7 @@ public class Controleur
 	{
 		int iAction;
 
-		while ( this.metier.getTour() <= 1 )
+		while ( this.metier.getTour() <= 4 )
 		{
 
 			for( int iTour = 0; iTour < this.metier.getNbOuvrier() * 2; iTour++ )

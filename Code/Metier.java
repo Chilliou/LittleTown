@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Metier
 {
 
-    private final int NB_OUVRIERS = 1;
+    private final int NB_OUVRIERS = 5;
     
     private Controleur ctrl;
 
