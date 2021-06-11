@@ -283,9 +283,12 @@ public class Metier
 
             // Pièces
             nbRessourceConsomme = this.ctrl.nourrirOuvrier('M', iOuvrierNourri, this.NB_OUVRIERS, j);
+
             if (nbRessourceConsomme != 0 ) nbRessourceConsomme+= 2 * nbRessourceConsomme;
 
-            iOuvrierNourri      += nbRessourceConsomme;
+            if (nbRessourceConsomme >= 3) iOuvrierNourri      += nbRessourceConsomme -2;
+            else iOuvrierNourri += nbRessourceConsomme;
+
             j.echangerRscJoueurVBanque(this.banque,'M',nbRessourceConsomme);
             
             // On affiche si le joueurs perd du score ou non.
