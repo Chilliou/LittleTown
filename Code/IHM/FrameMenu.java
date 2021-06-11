@@ -1,3 +1,6 @@
+package littletown.ihm;
+
+
 import javax.swing.*;
 
 public class FrameMenu extends JFrame

@@ -1,3 +1,7 @@
+
+package littletown.ihm;
+
+
 import javax.swing.*;
 
 import java.awt.Dimension;

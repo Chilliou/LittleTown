@@ -1,3 +1,6 @@
+package littletown.ihm;
+
+
 import javax.swing.*;
 
 import java.awt.Dimension;
@@ -9,7 +12,7 @@ public class FrameJoueur extends JFrame
 {
 	PanelHautJoueur    panelHautJoueur;
 	PanelCentreJoueur  panelCentreJoueur;
-	PanelBasJoueurs     panelBasJoueur;
+	PanelBasJoueur     panelBasJoueur;
 
 	public FrameJoueur ( Controleur ctrl)
 	{
@@ -30,7 +33,7 @@ public class FrameJoueur extends JFrame
 		/**************************/
 		this.panelHautJoueur     = new PanelHautJoueur  (ctrl);
 		this.panelCentreJoueur   = new PanelCentreJoueur(ctrl);
-		this.panelBasJoueur      = new PanelBasJoueurs   (ctrl);
+		this.panelBasJoueur      = new PanelBasJoueur   (ctrl);
 
 
 		/********************************/

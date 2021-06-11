@@ -1,3 +1,6 @@
+package littletown.ihm;
+
+
 import java.awt.Color;
 
 import javax.swing.*;

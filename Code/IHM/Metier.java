@@ -1,3 +1,6 @@
+package littletown.ihm;
+
+
 public class Metier 
 {
     private int nbJoueur;
