@@ -17,7 +17,7 @@ public class Controleur
 	{
 		int iAction;
 
-		while ( this.metier.getTour() <= 4 )
+		while ( this.metier.getTour() <= 1 )
 		{
 
 			for( int iTour = 0; iTour < this.metier.getNbOuvrier() * 2; iTour++ )
@@ -67,6 +67,8 @@ public class Controleur
 			// Clear Ouvrier
 			this.ihm.clearOuvrier();
 		}
+
+		this.metier.finDePartie();
 	}
 
 	public Tuile getTuile         ( int x, int y ) { return this.ihm.getTuile( x, y );     }
@@ -116,6 +118,11 @@ public class Controleur
 	public void getInfoBatiment()
 	{
 		this.ihm.getInfoBatiment();
+	}
+
+	public void afficherFinDePartie( Joueur[] tab )
+	{
+		this.ihm.afficherFinDePartie(tab);
 	}
 
 

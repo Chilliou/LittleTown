@@ -29,6 +29,8 @@ public class Joueur extends Banque
 
 	public String getCouleur() { return this.sCouleur; }
 
+	public int getScore () { return this.iScore; }
+
 	public int getNumJoueur() { return this.iNumJoueur; }
 
 	public void setAction(boolean bJouer) { this.bAJouer = bJouer; }

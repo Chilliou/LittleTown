@@ -323,5 +323,17 @@ public class IhmCUI
 			System.out.println(this.getBatiment(x,y).infoBatiment()); 
 	}
 
-	
+	public void afficherFinDePartie( Joueur[] tab )
+	{
+		System.out.println( "\nPartie Terminé\n");
+		System.out.println( "Tableau des score : ");
+
+		int place = 1;
+		for ( int cpt = tab.length - 1; cpt >= 0; cpt-- )
+		{
+			System.out.println( place + ": Joueur numéro " + tab[cpt].getNumJoueur() );
+			place++;
+		}
+	}
+
 }

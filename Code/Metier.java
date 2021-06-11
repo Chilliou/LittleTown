@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Metier
 {
 
-    private final int NB_OUVRIERS = 5;
+    private final int NB_OUVRIERS = 1;
     
     private Controleur ctrl;
 
@@ -349,5 +349,46 @@ public class Metier
         this.tourActuel++;
     }
 
+    public void finDePartie ()
+    {
+        Joueur[] tabTmp = new Joueur[this.nbJoueurs];
+
+        tabTmp = this.tabJoueurs;
+
+        int cpt = 0;
+        while ( ! this.estTrier(tabTmp) && cpt < tabTmp.length )
+        {
+
+            int taille = tabTmp.length - 1 - cpt;
+
+            for ( int i = 0; i < taille; i++ )
+            {
+
+                if ( tabTmp[i].getScore() > tabTmp[i+1].getScore() )
+                {
+                    Joueur tmp;
+
+                    tmp         = tabTmp[i];
+                    tabTmp[i]   = tabTmp[i+1];
+                    tabTmp[i+1] = tmp;
+
+                    System.out.println(tabTmp[i]);
+                }
+            }
+
+            cpt++;
+        }
+
+        this.ctrl.afficherFinDePartie(tabTmp);
+    }
+
+    public boolean estTrier ( Joueur[] tab )
+    {
+        for ( int cpt = 0; cpt < tab.length - 1; cpt++ )
+            if ( tab[cpt].getScore() > tab[cpt+1].getScore() )
+                return false;
+
+        return true;
+    }
 
 }
