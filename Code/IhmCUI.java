@@ -1,3 +1,5 @@
+package littletown;
+
 import java.util.Scanner;
 
 public class IhmCUI
