@@ -128,8 +128,10 @@ public class Metier
                     bat = this.ctrl.getBatiment( lig, col ) ;
 
                 TuileVide terrain = this.ctrl.getTuileVide( x, y );
-
-                if(!terrain.getNom().equals( "Vide" ) )
+				
+				System.out.println( terrain.getOuvrier() );
+				
+                if( terrain.getOuvrier() != null )
                     return false;
 
                 for(int i=0;i<bat.getCout().length();i+=2)
