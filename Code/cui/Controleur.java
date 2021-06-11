@@ -58,6 +58,7 @@ public class Controleur
 				//Rénitialisation de l'action du joueur et changement du joueur
 				this.metier.getJoueurActif().setAction(false);
 				this.metier.changementJoueur();
+				this.metier.resetDernierOuvrier();
 	
 			}
 

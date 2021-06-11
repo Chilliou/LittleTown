@@ -343,6 +343,11 @@ public class Metier
         this.ensBatimentActiver.clear();
     }
 
+    public void resetDernierOuvrier ()
+    {
+        this.dernierOuvrierPos = null;
+    }
+
     public int getTour()
     {
         return this.tourActuel;
