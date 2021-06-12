@@ -26,12 +26,10 @@
 ./ihm/PanelBanqueHeader.java
 ./ihm/PanelBanqueNorth.java
 ./ihm/PanelBanqueRessources.java
-./ihm/PanelBanqueSouth.java
 ./ihm/PanelBasJoueur.java
 ./ihm/PanelCentreJoueur.java
 ./ihm/PanelHautJoueur.java
 ./ihm/PanelHelp.java
-./ihm/PanelJoueur.java
 ./ihm/PanelPlateau.java
 ./ihm/PanelHelp.java
 ./ihm/PanelMenu.java
