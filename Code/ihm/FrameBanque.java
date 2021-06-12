@@ -1,4 +1,3 @@
-
 package littletown.ihm;
 
 
@@ -13,7 +12,6 @@ public class FrameBanque extends JFrame
 {
 
 	private PanelBanqueNorth panelBanqueNorth;
-	private PanelBanqueSouth panelBanqueSouth;
 
 	private Controleur ctrl;
 
@@ -35,11 +33,10 @@ public class FrameBanque extends JFrame
 
 		// Création des Panels
 		this.panelBanqueNorth  = new PanelBanqueNorth ( ctrl );
-		this.panelBanqueSouth   = new PanelBanqueSouth( ctrl );
 
 		// Positionnement des Panels
 		this.add ( this.panelBanqueNorth, BorderLayout.NORTH );
-		this.add ( this.panelBanqueSouth, BorderLayout.SOUTH );
+		//this.add ( this.panelBanqueSouth, BorderLayout.SOUTH );
 
 		// Fenetre en premier plan
 		this.toFront();
