@@ -44,14 +44,22 @@ public class FrameJoueur extends JFrame
 		this.add ( this.panelBasJoueur,    BorderLayout.SOUTH   );
 
 
-
 		// Fenetre en premier plan
 		this.toFront();
 		this.setAlwaysOnTop(true);
+
+		// Suppression des boutons de fermetures
+		this.setUndecorated(true);
+		this.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 
 		// Activation de la fenetre
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setVisible ( true );
 	}
+
+	public void closeFrame()
+    {
+        this.dispose();
+    }
 
 }

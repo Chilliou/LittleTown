@@ -70,6 +70,12 @@ public class Controleur implements ComponentListener
 		this.selectNbJoueurs.majIHM();
 	}
 
+    public void fermerFramesPlateau()
+    {
+        this.frameBanque.closeFrame();
+        this.frameJoueur.closeFrame();
+    }
+
 	public int getNbJoueur() { return metier.getNbJoueur();}
 
 	public void majFramePlateau(int x, int y)

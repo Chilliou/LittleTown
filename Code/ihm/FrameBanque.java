@@ -45,11 +45,20 @@ public class FrameBanque extends JFrame
 		this.toFront();
 		this.setAlwaysOnTop(true);
 
+		// Suppression des boutons de fermetures
+		this.setUndecorated(true);
+		this.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+
 		// Activation de la fenetre
+
+
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setVisible ( true );
 	}
 	
-
+	public void closeFrame()
+    {
+        this.dispose();
+    }
 
 }

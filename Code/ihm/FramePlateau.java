@@ -29,6 +29,9 @@ public class FramePlateau extends JFrame
 
 	Controleur ctrl;
 
+	FrameBanque frameBanque;
+	FrameJoueur frameJoueur;
+
 
 	public FramePlateau(Controleur ctrl)
 	{
@@ -86,12 +89,8 @@ public class FramePlateau extends JFrame
 		// Rendre la fenetre visible
 		this.setVisible(true);
 
+		this.addWindowListener( new GererFenetre() );
 		this.addMouseListener ( new GereSouris() );
-	}
-
-	public void fermerFrame()
-	{
-		this.dispose();
 	}
 
 	public class GereSouris extends MouseAdapter
@@ -147,6 +146,14 @@ public class FramePlateau extends JFrame
     {
         super.paint(g);
 		g.drawImage( imgGrille, 0, 8, null);
-
     }
+
+	// Fermeture des frames joueurs et banque dès la fermeture de du frame plateau
+	public class GererFenetre extends WindowAdapter
+	{
+		public void windowClosing(WindowEvent e) 
+		{
+			ctrl.fermerFramesPlateau();
+		}
+	}
 }
