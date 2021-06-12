@@ -1,8 +1,8 @@
 package littletown.ihm;
 
 
-import littletown.IhmCUI;
-import littletown.Tuile;
+import littletown.cui.IhmCUI;
+import littletown.cui.Tuile;
 
 
 import java.awt.event.*;
