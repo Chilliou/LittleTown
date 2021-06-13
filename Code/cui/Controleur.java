@@ -81,7 +81,8 @@ public class Controleur
 	public void setTuile     ( int x, int y, Tuile tuile )     { this.ihm.setTuile( x, y, tuile ); }
 	public void setTuileVide ( int x, int y, TuileVide tuile ) { this.ihm.setTuile( x, y, tuile ); }
 
-	public int getInitNbJoueurs()  { return this.ihm.saisienbJoueur(); }
+	public int getInitNbJoueurs()   { return this.ihm.saisienbJoueur();  }
+	public String saisieNomJoueur(int numJoueur) { return this.ihm.saisieNomJoueur(numJoueur); }
 
 
 	public void addOuvrier(int iNumJoueur)

@@ -46,6 +46,20 @@ public class IhmCUI
         return iNbJoueurs;
 	}
 
+	public String saisieNomJoueur(int numJoueur)
+	{
+		Scanner sc = new Scanner( System.in );
+		String  sNomJoueur = "";
+        try
+        {
+                System.out.print( "Joueur n°" + (numJoueur+1) + " quel est votre nom ? : " );
+                sNomJoueur = sc.nextLine();
+        }
+		catch(Exception e) { System.out.println(e);}
+
+        return sNomJoueur;
+	}
+
 	public boolean enleverBle ()
 	{
 		return this.plateauBas.enleverBle();

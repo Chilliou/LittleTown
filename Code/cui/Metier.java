@@ -84,7 +84,7 @@ public class Metier
         }
 
         for (int i = 0; i < this.tabJoueurs.length; i++)
-            this.tabJoueurs[i] = new Joueur(sCoulJoueurs[i]);
+            this.tabJoueurs[i] = new Joueur(sCoulJoueurs[i], this.ctrl.saisieNomJoueur(i) );
         
 
     }
