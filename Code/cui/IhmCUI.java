@@ -11,7 +11,7 @@ public class IhmCUI
 
 	public IhmCUI()
 	{
-		this.plateau    = new Plateau(2,1);
+		this.plateau    = new Plateau(2,this.getNumeroPlateau());
 		this.plateauBas = new PlateauBas();
 	}
 	
@@ -44,6 +44,28 @@ public class IhmCUI
         iNbJoueurs = Integer.parseInt(iSaisieNbJoueurs);
 
         return iNbJoueurs;
+	}
+
+
+	public int getNumeroPlateau()
+	{
+		Scanner sc = new Scanner( System.in );
+		String  iSaisieNumPlateau = "";
+		int     iNumPlateau = 0;
+
+        try
+        {
+            do
+            {
+                System.out.print( "Sur quel platau voulez vous jouer ? [1 ou 2] : " );
+                iSaisieNumPlateau = sc.nextLine();
+
+            } while(! iSaisieNumPlateau.matches("^([1-2]{1})") );
+        }
+		catch(Exception e) { System.out.println(e);}
+
+        iNumPlateau = Integer.parseInt(iSaisieNumPlateau);
+        return iNumPlateau;
 	}
 
 	public String saisieNomJoueur(int numJoueur)

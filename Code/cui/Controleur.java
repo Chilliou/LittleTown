@@ -84,16 +84,9 @@ public class Controleur
 	public int getInitNbJoueurs()   { return this.ihm.saisienbJoueur();  }
 	public String saisieNomJoueur(int numJoueur) { return this.ihm.saisieNomJoueur(numJoueur); }
 
+	public void addOuvrier(int iNumJoueur) { this.ihm.addOuvrier( iNumJoueur ); }
 
-	public void addOuvrier(int iNumJoueur)
-	{
-		this.ihm.addOuvrier( iNumJoueur );
-	}
-
-	public void nourrirOuvrierInfo(Joueur j)
-	{
-		this.ihm.nourrirOuvrierInfo(j);
-	}
+	public void nourrirOuvrierInfo(Joueur j) { this.ihm.nourrirOuvrierInfo(j); }
 
 	public int nourrirOuvrier(char ressource, int iOuvrierNourri, int iNbOuvrierTotint, Joueur j)
 	{
