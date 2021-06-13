@@ -4,6 +4,13 @@ package littletown.cui;
 
 import java.util.Scanner;
 
+import java.io.PrintWriter;
+import java.io.FileOutputStream;
+
+import java.util.GregorianCalendar;
+import java.util.Calendar;
+
+
 import java.util.ArrayList;
 
 
@@ -427,6 +434,7 @@ public class Metier
             cpt++;
         }
 
+        this.sauvergardeScore(tabTmp);
         this.ctrl.afficherFinDePartie(tabTmp);
     }
 
@@ -437,6 +445,35 @@ public class Metier
                 return false;
 
         return true;
+    }
+
+    public void sauvergardeScore(Joueur[] tab)
+    {
+        GregorianCalendar date = new GregorianCalendar();
+
+        String mois[] = { "Janv", "Fevr", "Mars", "Avr",
+                           "Mai", "Juin", "Juill", "Aout",
+                           "Sept", "Oct", "Nov", "Dec" };
+
+        String classement[] = { "Premier", "Deuxieme", "Troisieme", "Quatrieme"};       
+
+        try
+        {
+            PrintWriter pw = new PrintWriter( new FileOutputStream("Score.txt",true) );
+
+
+            pw.println ("\n" +"Parti du "+ mois[date.get(Calendar.MONTH)] + " "
+                                    + date.get(Calendar.DATE) + ", "
+                                    + date.get(Calendar.YEAR) + "\n");
+
+            for(int i=0;i<tab.length;i++)
+            {
+                 pw.println(classement[i] + " : "+ tab[i].getNom()+"\n");    
+            }
+
+            pw.close();
+        }
+        catch (Exception e){ e.printStackTrace(); }
     }
 
 }
