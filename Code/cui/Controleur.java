@@ -21,7 +21,7 @@ public class Controleur
 		while ( this.metier.getTour() <= 4 )
 		{
 
-			for( int iTour = 0; iTour < this.metier.getNbOuvrier() * 2; iTour++ )
+			for( int iTour = 0; iTour < this.metier.getNbOuvrier() * this.getNbJoueur(); iTour++ )
 			{
 				boolean bTour = false;
 
@@ -82,8 +82,9 @@ public class Controleur
 	public void setTuile     ( int x, int y, Tuile tuile )     { this.ihm.setTuile( x, y, tuile ); }
 	public void setTuileVide ( int x, int y, TuileVide tuile ) { this.ihm.setTuile( x, y, tuile ); }
 
-	public int getInitNbJoueurs()   { return this.ihm.saisieNbJoueur();  }
+	public int getInitNbJoueurs()                { return this.ihm.saisieNbJoueur();           }
 	public String saisieNomJoueur(int numJoueur) { return this.ihm.saisieNomJoueur(numJoueur); }
+	public int getNbJoueur()                     { return this.metier.getNbJoueur();          }
 
 	public void addOuvrier(int iNumJoueur) { this.ihm.addOuvrier( iNumJoueur ); }
 
