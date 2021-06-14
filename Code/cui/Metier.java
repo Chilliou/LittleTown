@@ -13,7 +13,9 @@ import java.util.Calendar;
 
 import java.util.ArrayList;
 
-
+/**
+* Classe Metier du programme (couche logique de l'application).
+*/
 public class Metier
 {
 
@@ -34,6 +36,12 @@ public class Metier
 
     private ArrayList<Batiment> ensBatimentActiver;
 
+    /**
+    * Constructeur de la classe.
+    *
+    * @param ctrl
+    *           Controleur
+    */
     public Metier(Controleur ctrl)
     {
         this.banque = new Banque();
@@ -47,17 +55,34 @@ public class Metier
         this.initJoueur();
     }
 
+    /**
+    * Retourne le joueur actif qui joue.
+    *
+    * @return joueur actif.
+    */
     public Joueur getJoueurActif()
     {
         return this.tabJoueurs[numJoueurActif];
     }
     
-
+    /**
+    * Retourne le nombres de joueurs de la partie.
+    *
+    * @return nombres de joueurs de la partie.
+    */
     public int getNbJoueur() { return this.nbJoueurs; }
 
+    /**
+    * Retourne le nombres d'ouvriers de la partie.
+    *
+    * @return nombres d'ouvriers de la partie.
+    */
     public int getNbOuvrier() { return this.nbMaxOuvriers; }
 
 
+    /**
+    * Initialise les joueurs du plateau.
+    */
     private void initJoueur()
     {
         int nbJoueursInit;
@@ -103,6 +128,9 @@ public class Metier
 
     }
 
+    /**
+    * Changement du joueur.
+    */
     public void changementJoueur()
     {
         this.resetBatimentActivation();
@@ -113,6 +141,9 @@ public class Metier
             this.numJoueurActif++;
     }
 
+    /**
+    * Placement d'un ouvrier sur le plateau.
+    */
     public void placerOuvrier()
     {
         if (! this.tabJoueurs[numJoueurActif].aJouer())
@@ -146,7 +177,10 @@ public class Metier
     
     }
 
-
+    /**
+    * Permets de placer un bâtiment sur une tuile vide.
+    * @return Retourne un boolean qui vérifie si la tuile est vide pour construire le bâtiment.
+    */
     public boolean construireBatiment()
     {
 
@@ -216,7 +250,9 @@ public class Metier
 
     }
 
-
+    /**
+    * Permets d'activer une tuile.
+    */
     public void activerTuile()
     {
 
@@ -310,6 +346,9 @@ public class Metier
 
     }
 
+    /**
+    * Permets de nourrir les ouvriers à chaque fin de tour.
+    */
     public void nourrirOuvrier()
     {
         int iOuvrierNourri      = 0;
@@ -350,11 +389,19 @@ public class Metier
 
     }
 
+    /**
+    * Permets d'obtenir les informations d'un bâtiment.
+    */
     public void getInfoBatiment( )
     {
         this.ctrl.getInfoBatiment();
     }
 
+    /**
+    * Permets d'échanger les pièces d'un joueur.
+    *
+    * @return Détermine s'il a assez de pièces pour échanger (boolean).
+    */
     public boolean echangerPiece()
     {
         if ( this.tabJoueurs[numJoueurActif].getRsc('M') < 3 )
@@ -388,6 +435,9 @@ public class Metier
         return false;
     }
 
+    /**
+    * Remet à zéro les bâtiments activés.
+    */
     public void resetBatimentActivation()
     {
         for(Batiment b: this.ensBatimentActiver)
@@ -395,26 +445,45 @@ public class Metier
         this.ensBatimentActiver.clear();
     }
 
+    /**
+    * Déclaration obligatoire (héritage)
+    */
     public void resetDernierOuvrier ()
     {
         this.dernierOuvrierPos = null;
     }
 
+    /**
+    * Retourne le tour actuel de la partie.
+    *
+    * @return Tour actuel de la partie
+    */
     public int getTour()
     {
         return this.tourActuel;
     }
 
+    /**
+    * Retourne les ressources de la banque.
+    *
+    * @return Ressources de la banque.
+    */
     public Banque getBanque()
     {
         return this.banque;
     }
 
+    /**
+    * Passe au tour suivant.
+    */
     public void plus1Tour()
     {
         this.tourActuel++;
     }
 
+    /**
+    * Met fin à la partie.
+    */
     public void finDePartie ()
     {
         Joueur[] tabTmp = new Joueur[this.nbJoueurs];
@@ -449,6 +518,11 @@ public class Metier
         this.ctrl.afficherFinDePartie(tabTmp);
     }
 
+    /**
+    * Retourne le tri des scores des joueurs.
+    * 
+    * @return Boolean qui passe les scores de chaque joueur et retourne true.
+    */
     public boolean estTrier ( Joueur[] tab )
     {
         for ( int cpt = 0; cpt < tab.length - 1; cpt++ )
@@ -458,6 +532,9 @@ public class Metier
         return true;
     }
 
+    /**
+    * Sauvegarde le score des joueurs.
+    */
     public void sauvergardeScore(Joueur[] tab)
     {
         GregorianCalendar date = new GregorianCalendar();

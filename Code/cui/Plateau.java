@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.io.FileInputStream;
 
 /**
-* Classe Plateau (gère les plateaux du jeu).
+* Gère les plateaux du jeu.
 */
 public class Plateau 
 {

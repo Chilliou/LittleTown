@@ -1,7 +1,7 @@
 package littletown.cui;
 
 /**
-* Classe Banque (gère les ressources de la banque et échanges entre joueurs).
+* Gère les ressources de la banque et échanges entre joueurs.
 */
 public class Banque
 {
