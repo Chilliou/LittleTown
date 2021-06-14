@@ -33,7 +33,7 @@ Après **quatre manches**, le joueur ayant cumulé **le plus de points de victoi
 
 > Nous tiendrons compte ici uniquement du répertoire "Code", étant celui qui nous intéresse le plus pour lancer les différentes versions du jeu (CLI & IHM).
 
-![Arborescence](https://i.ibb.co/tXD8Lq6/Capture-d-e-cran-2021-06-10-a-23-40-56.png)
+![Arborescence](https://i.ibb.co/ynxSTKS/Capture-d-e-cran-2021-06-14-a-08-29-15.png)
 
 La racine du projet, c'est-à-dire le répertoire "Code", contiendra toutes nos classes utiles au bon fonctionnement de notre jeu. Le "Controleur.java" lancera la version CUI du projet. Ces classes seront réutilisées pour la version IHM depuis le répertoire "IHM". 
 
@@ -41,17 +41,17 @@ La racine du projet, c'est-à-dire le répertoire "Code", contiendra toutes nos 
 
 Comme dit précédemment, le "Controleur.java", présent dans la racine du projet, permettra de lancer la version CLI du projet qui devrait ressembler à ceci :
 
-![CUI](https://i.ibb.co/4ft1Wc2/Capture-d-e-cran-2021-06-10-a-23-49-48.png)
+![CUI](https://i.ibb.co/nm2khJC/Capture-d-e-cran-2021-06-14-a-08-26-07.png)
 
 ### Version interface homme-machine (IHM)
 
-La version GUI (IHM), pourra quant à elle être lancé directement depuis le répertoire "IHM" présent dans le répertoire "Code". Ce qui devrait ressembler à ceci :
+La version GUI (IHM) version statique, pourra quant à elle être lancé directement depuis le répertoire "IHM" présent dans le répertoire "Code". Ce qui devrait ressembler à ceci :
 
 > Image à venir
 
 ## Mise en route
 
-**ATTENTION : Une version de récente de Java peut être nécessaire pour le bon fonctionnement du programme**
+**ATTENTION : Une version récente de Java peut être nécessaire pour le bon fonctionnement du programme**
 
 ### Version CLI
 
@@ -59,7 +59,7 @@ La version GUI (IHM), pourra quant à elle être lancé directement depuis le r�
 2. Compilez l'ensemble des fichiers Java, en tapant la commande suivante : __javac *.java__
 3. Lancez le programme, en tapant la commande suivante : **java Controleur**
 
-### Version IHM
+### Version IHM (statique)
 
 La manipulation reste la même que pour la version CLI, à l'exception que le répertoire change. 
 
