@@ -4,7 +4,7 @@ package littletown.cui;
 import java.util.ArrayList;
 
 /**
-* Classe Batiment (gère les informations des bâtiments).
+* Gère les informations des bâtiments.
 */
 public class Batiment extends Tuile
 {

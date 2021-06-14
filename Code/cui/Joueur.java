@@ -2,7 +2,7 @@ package littletown.cui;
 
 
 /**
-* Classe Joueur (gère les informations des joueurs).
+* Gère les informations des joueurs.
 */
 public class Joueur extends Banque
 {

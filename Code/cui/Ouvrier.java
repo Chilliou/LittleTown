@@ -2,7 +2,7 @@ package littletown.cui;
 
 
 /**
-* Classe Ouvrier (gère les informations des ouvriers).
+* Gère les informations des ouvriers.
 */
 public class Ouvrier
 {
