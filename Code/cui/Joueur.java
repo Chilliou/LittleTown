@@ -1,7 +1,9 @@
 package littletown.cui;
 
 
-
+/**
+* Classe Joueur (gère les informations des joueurs).
+*/
 public class Joueur extends Banque
 {
 	// Attributs
@@ -17,6 +19,9 @@ public class Joueur extends Banque
 	private int iNumJoueur;
 	private boolean bAJouer;
 
+	/**
+	* Constructeur de la classe Joueur
+	*/
 	public Joueur(String sCouleur, String sNom)
 	{
 		super(3);
@@ -37,30 +42,82 @@ public class Joueur extends Banque
 			super.ajouterEnlever(rsc[i],999*attribut);
 	}
 
+	/**
+	* Permet d'échanger les ressources entre le joueur et la banque
+	* @param b
+	*		Change de ressource avec un autre banque de joueur.
+	* @param rsc
+	*		Type de ressource
+	* @param iNb
+	*		Nombre de ressource a échanger.
+	*/
 	public void echangerRscJoueurVBanque( Banque b, char rsc, int iNb )
 	{
 		b.ajouterEnlever   ( rsc, iNb );
 		this.ajouterEnlever( rsc,-iNb );
 	}
 
+	/**
+	* Change le score du joueur. Le changement du score peut être négatif ou positif.
+	*/
 	public void changeScore( int iScore ) { this.iScore += iScore; }
 	
+	/**
+	* Retourne la couleur du joueur.
+	* @return Couleur du joueur.
+	*/
 	public String getCouleur() { return this.sCouleur;   }
+
+	/**
+	* Retoune le score du joueur.
+	*
+	* @return Score du joueur.
+	*/
 	public int getScore     () { return this.iScore;     }
+
+
+	/**
+	* Retourne le nom du joueur.
+	*
+	* @return Nom du joueur
+	*/
 	public String getNom    () { return this.sNom;       }
+
+	/**
+	* Retourne le numéro du joueur.
+	*
+	* @return Numéro du joueur.
+	*/
 	public int getNumJoueur () { return this.iNumJoueur; }
+
+	/**
+	* Détermine si le joueur à déjà jouer.
+	*
+	* @return Retourne un boolean pour détermine si le joueur à déjà jouer.
+	*/
 	public boolean aJouer   () { return this.bAJouer;    }
 
+	/**
+	* Savoir si le joueur à jouer ou pas.
+	*/
 	public void setAction(boolean bJouer) 
 	{
 		this.bAJouer = bJouer;
 	}
 
+	/**
+	* Met à jour le score du joueur.
+	*/
 	public void majScore(int i)
 	{
 		this.iScore += i;
 	}
 
+	/**
+	* Retourne les informations de la partie du joueur actuel (nom, couleur et points).
+	* 
+	* @return Retourne le numéro du joueur, sa couleur et son nombre de point(s).
+	*/
 	public String toString()
 	{
 		String sRet = "Joueur n°" + this.iNumJoueur + ", ( " + this.sNom + " ), " +  " couleur : " + this.sCouleur+ "\n";
