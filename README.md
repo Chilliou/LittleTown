@@ -55,9 +55,9 @@ La version GUI (IHM) version statique, pourra quant à elle être lancé directe
 
 ### Version CLI
 
-1. Ouvrez votre terminal et rendez-vous dans le répertoire "**Code/cui**"
+1. Ouvrez votre terminal et rendez-vous dans le répertoire "**Code**"
 2. Compilez l'ensemble des fichiers Java, en tapant la commande suivante : __javac @compile.list -d [Chemin de votre paquetage_class]__
-3. Lancez le programme, en tapant la commande suivante : **java littletown.cui.Controleur**
+3. Lancez le programme depuis le répertoire "**Code/cui**", en tapant la commande suivante : **java littletown.cui.Controleur**
 
 ### Version IHM (statique)
 
