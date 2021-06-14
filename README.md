@@ -47,7 +47,7 @@ Comme dit précédemment, le "Controleur.java", présent dans la racine du proje
 
 La version GUI (IHM) version statique, pourra quant à elle être lancé directement depuis le répertoire "IHM" présent dans le répertoire "Code". Ce qui devrait ressembler à ceci :
 
-> Image à venir
+![Plateau](https://media.discordapp.net/attachments/841063506018566144/853894228789952543/unknown.png?width=752&height=518)
 
 ## Mise en route
 
