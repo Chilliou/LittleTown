@@ -190,7 +190,8 @@ public class PlateauBas
 			sRet += "\n+----+----+";
 		}
 
-			
+		sRet += "\n Le tour actuel est " + this.ctrl.getTour() + " / 4.";
+
 
 		return sRet;
 	}

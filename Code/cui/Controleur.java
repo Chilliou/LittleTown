@@ -76,6 +76,7 @@ public class Controleur
 	public Tuile getTuile         ( int x, int y ) { return this.ihm.getTuile( x, y );     }
 	public TuileVide getTuileVide ( int x, int y ) { return this.ihm.getTuileVide( x, y ); }
 	public Batiment getBatiment   ( int x, int y ) { return this.ihm.getBatiment( x, y );  }
+	public int getTour () { return this.metier.getTour() ; }
 
 
 	public void setTuile     ( int x, int y, Tuile tuile )     { this.ihm.setTuile( x, y, tuile ); }
@@ -127,6 +128,14 @@ public class Controleur
 
 	public static void main(String[] a)
 	{
-		new Controleur();
+		if (a.length == 1)
+		{
+			new Controleur();
+		}
+		else
+		{
+			new Controleur();
+		}
+		
 	}
 }
