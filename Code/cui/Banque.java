@@ -1,6 +1,8 @@
 package littletown.cui;
 
-
+/**
+* Classe Banque (gère les ressources de la banque et échanges entre joueurs).
+*/
 public class Banque
 {
 	private int iNbPierre;
@@ -12,6 +14,9 @@ public class Banque
 
 	private int iScore;
 
+	/**
+	* Constructeur de la classe Banque
+	*/
 	public Banque()
 	{
 		this.iNbPierre = 15;
@@ -25,7 +30,11 @@ public class Banque
 		
 	}
 
-	// Constructeur de la banque du joueur
+	/**
+	* Constructeur de la banque du joueur
+	* @param iNbPiece
+    *            Nombre de pieces du joueur
+	*/
 	public Banque(int iNbPiece)
 	{
 		this.iNbPierre = 0;
@@ -40,6 +49,12 @@ public class Banque
 		
 	}
 	
+	/**
+	* Affiche les informations d'une ressource spécifié en paramètre de la méthode.
+	*
+	* @param rsc
+	*			Type de ressource
+	*/
 	public int getRsc( char rsc )
 	{
 		int iNombre = 0;
@@ -56,7 +71,9 @@ public class Banque
 						};
 	}
 
-	//Cette méthode sert à enlever et ajouter une ressources donner
+	/**
+	* Permets d'enlever et ajouter une ressource donnée
+	*/	
 	public void ajouterEnlever( char rsc, int iNb )
 	{
 		switch(rsc)
@@ -70,18 +87,32 @@ public class Banque
 		}
 	}
 
-	// Cette méthode peut retirer ou ajouter du score
+	/**
+	* Permets de retirer ou ajouter du score
+	*/
 	public void changeScore( int iScore )
 	{
 		this.iScore += iScore;
 	}
 
+	/**
+	* Permets d'obtenir le score.
+	*/
 	public int  getScore()
 	{
 		return this.iScore;
 	}
 
-	//Cette méthode sert à echangé une ressource entre la banque et le joueur
+	/**
+	* Permets d'échanger une ressource entre la banque et le joueur
+	* @param j
+	*		Nom du joueur
+	* @param rsc
+	*		Type de ressource
+	* @param iNb
+	*		Nombre de ressources
+	* @return Retourne un boolean pour déterminer si la ressource peut être échangée
+	*/
 	public boolean echangerRscBanqueVJoueur( Joueur j, char rsc, int iNb )
 	{
 		
@@ -98,7 +129,10 @@ public class Banque
 
 	}
 
-
+	/**
+	* Affiche les ressources de la banque.
+	* @return Retourne une chaine de caractères (String) de l'ensemble des ressources disponibles de la banque.
+	*/
 	public String toString ()
 	{
 		return  "Nombre de Pierre : " + this.iNbPierre + "\n" +
