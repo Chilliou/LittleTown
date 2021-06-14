@@ -13,15 +13,23 @@ public class PlateauBas
 	private int       iNbBle;
 	private int       iNbConstru1;
 	private int       iNbConstru2;
+	private int       iNbConstru3;
+	private int       iNbConstru4;
+
+	private Controleur ctrl;
 
 	private ArrayList<Batiment> ensBatiment;
 
-	public PlateauBas()
+	public PlateauBas(Controleur ctrl)
 	{
+		this.ctrl         = ctrl;
+
 		this.plateauBas   = new Tuile[2][6];
 		this.iNbBle       = 5;
 		this.iNbConstru1  = 0;
 		this.iNbConstru2  = 0;
+		this.iNbConstru3  = 0;
+		this.iNbConstru4  = 0;
 		this.initTuile();
 		this.initPlateauBas();
 		
@@ -57,7 +65,8 @@ public class PlateauBas
 		this.ensBatiment = new ArrayList<Batiment>();
 
 		try
-		{
+		{	
+
 			Scanner sc = new Scanner ( new FileInputStream ( "../data/tuile.data" ) );
 
 			while ( sc.hasNextLine() )
@@ -99,11 +108,16 @@ public class PlateauBas
 
 	public void addOuvrier( int iNumJoueur)
 	{
-		if ( iNumJoueur+1 == 1 )
-			this.iNbConstru1++;
+		int iNumOuvrierJoueur;
 
-		if ( iNumJoueur+1 == 2 )
-			this.iNbConstru2++;
+		iNumOuvrierJoueur = iNumJoueur + 1;
+		switch( iNumOuvrierJoueur )
+		{
+			case 1 -> this.iNbConstru1++;
+			case 2 -> this.iNbConstru2++;
+			case 3 -> this.iNbConstru3++;
+			case 4 -> this.iNbConstru4++;
+		}
 
 	}
 
@@ -111,6 +125,9 @@ public class PlateauBas
 	{
 		this.iNbConstru1 = 0;
 		this.iNbConstru2 = 0;
+		this.iNbConstru3 = 0;
+		this.iNbConstru4 = 0;
+
 	}
 
 	// Utilisé pour initialiser le plateau bas de l'IHM
@@ -156,7 +173,24 @@ public class PlateauBas
 				sRet+= "+----";
 
 			sRet += "+----+\n";
+
 		}
+
+
+		if (this.ctrl.getNbJoueur() == 3 )
+		{
+			sRet += "| " + this.iNbConstru3 + "  |";
+			sRet += "\n+----+";
+		}
+
+
+		if (this.ctrl.getNbJoueur() == 4 )
+		{
+			sRet += "| " + this.iNbConstru3 + "  | " + this.iNbConstru4 + "  |";
+			sRet += "\n+----+----+";
+		}
+
+			
 
 		return sRet;
 	}
