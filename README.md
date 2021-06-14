@@ -72,3 +72,4 @@ Manque plus qu'à jouer !
 
 - Équipe 14
 - Auteurs : Dorian Lemercier, Théo Lavie, Quentin Savéan, Mathéo Meinerad
+![Logo_equipe](https://media.discordapp.net/attachments/841063506018566144/853988365787201586/Nouveau_projet_2.png)
