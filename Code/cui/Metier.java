@@ -59,6 +59,8 @@ public class Metier
     * Retourne le joueur actif qui joue.
     *
     * @return joueur actif.
+    *
+	* @see Joueur
     */
     public Joueur getJoueurActif()
     {
@@ -520,6 +522,9 @@ public class Metier
 
     /**
     * Retourne le tri des scores des joueurs.
+    *
+    * @param tab
+    *       Tableau des joueurs.
     * 
     * @return Boolean qui passe les scores de chaque joueur et retourne true.
     */
@@ -534,6 +539,9 @@ public class Metier
 
     /**
     * Sauvegarde le score des joueurs.
+    *
+    * @param tab
+    *       Tableau des joueurs.
     */
     public void sauvergardeScore(Joueur[] tab)
     {

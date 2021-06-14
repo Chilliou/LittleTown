@@ -105,10 +105,12 @@ public class PlateauBas
 
 	/**
 	* Retourne la tuile selon sa position.
+	*
 	* @param x
 	*		Position de la tuile selon l'axe x du plateau.
 	* @param y
 	*		Position de la tuile selon l'axe y du plateau.
+	*
 	* @return Ensemble des tuiles du plateau.
 	*/
 	public Tuile getTuile( int x, int y )
@@ -118,6 +120,11 @@ public class PlateauBas
 
 	/**
     * Retourne les tuiles vides du plateau.
+	* 
+	* @param x
+	*	Position de la tuile selon l'axe x du plateau.
+	* @param y
+	*	Position de la tuile selon l'axe y du plateau.
 	*
 	* @return Tuiles vides du plateau.
     */
@@ -128,11 +135,15 @@ public class PlateauBas
 
 	/**
 	* Retourne la tuile vide selon sa position.
+	*
 	* @param x
 	*		Position de la tuile selon l'axe x du plateau.
 	* @param y
 	*		Position de la tuile selon l'axe y du plateau.
+	*
 	* @return Tuile vide
+	*
+	* @see Batiment
 	*/
 	public Batiment getBatiment(int x, int y)
 	{
@@ -141,6 +152,7 @@ public class PlateauBas
 
 	/**
 	* Ajoute une tuile sur le plateau selon sa position.
+	*
 	* @param x
 	*		Position de la tuile selon l'axe x du plateau.
 	* @param y
@@ -155,6 +167,7 @@ public class PlateauBas
 
 	/**
 	* Ajoute un ouvrier sur le plateau bas.
+	*
 	* @param iNumJoueur
 	*		Numéro du joueur.
 	*/
@@ -188,6 +201,8 @@ public class PlateauBas
 	/**
 	* Initialisation du plateau bas de l'IHM
 	* @return Ensemble des tuiles
+	*
+	* @see Tuile
 	*/
 	public Tuile[] getTuileIHM()
 	{
@@ -202,6 +217,7 @@ public class PlateauBas
 
 	/**
 	* Retourne le plateau bas du jeu.
+	*
 	* @return Plateau bas du jeu sous forme de chaine de caractère.
 	*/
 	public String toString()
