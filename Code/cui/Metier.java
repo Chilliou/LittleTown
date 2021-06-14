@@ -233,6 +233,10 @@ public class Metier
                 {
                     Batiment bat = this.ctrl.getBatiment(xTuile, yTuile);
                     System.out.println("> Activation de la tuile : " + this.ctrl.getTuile(xTuile, yTuile).getNom());
+			
+			for(int i=0;i<bat.getRevientProd().length();i+=2)
+				if(this.banque.getRsc(bat.getRevientProd().charAt(i))<Integer.parseInt(bat.getRevientProd().charAt(i+1)+""))
+					return ;
 
                     //Si  le batiment n'appartient aucun jouer 
                     if ( bat.getProprietaire() != null  )
