@@ -93,7 +93,9 @@ public class Metier
         for (int i = 0; i < this.tabJoueurs.length; i++)
         {
             this.tabJoueurs[i] = new Joueur(sCoulJoueurs[i], this.ctrl.saisieNomJoueur(i) );
-            if(this.tabJoueurs[i].getNom().equals("Philippe")) this.tabJoueurs[i].masterClass();
+            if(this.tabJoueurs[i].getNom().equals("Philippe")) this.tabJoueurs[i].masterClass(1);
+            if(this.tabJoueurs[i].getNom().equals("Enzo")) this.tabJoueurs[i].masterClass(-1);
+
         }
 
 

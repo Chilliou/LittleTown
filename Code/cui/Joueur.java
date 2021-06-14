@@ -29,12 +29,12 @@ public class Joueur extends Banque
 		this.bAJouer     = false;
 	}
 
-	public void masterClass()
+	public void masterClass(int attribut)
 	{
 		char[] rsc = {'P','A','E','C','M','S'};   
 
 		for(int i=0;i<rsc.length;i++)
-			super.ajouterEnlever(rsc[i],999);
+			super.ajouterEnlever(rsc[i],999*attribut);
 	}
 
 	public void echangerRscJoueurVBanque( Banque b, char rsc, int iNb )

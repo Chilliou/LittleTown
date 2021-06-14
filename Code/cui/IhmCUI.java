@@ -75,7 +75,7 @@ public class IhmCUI
 		String  sNomJoueur = "";
         try
         {
-                System.out.print( "Joueur n°" + (numJoueur+1) + " quel est votre nom ? : " );
+                System.out.print( "Joueur n°" + (numJoueur+1) + " quel est votre prenom ? : " );
                 sNomJoueur = sc.nextLine();
         }
 		catch(Exception e) { System.out.println(e);}
