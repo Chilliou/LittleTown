@@ -90,6 +90,9 @@ public class PlateauBas
 			while ( sc.hasNextLine() )
 			{
 				String[] parts = sc.nextLine().split("/");
+				for(int i=0;i<parts.length;i++)
+					if(parts[i].equals("null")) parts[i] = "";
+
 				ensBatiment.add( new Batiment(parts[0], parts[1], parts[2], parts[3], Integer.parseInt( parts[4] ) ) );
 			}
 
