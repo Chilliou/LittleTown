@@ -6,7 +6,9 @@ import java.io.FileInputStream;
 import java.util.Scanner;
 import java.util.Collections;
 
-
+/**
+* Gère le plateau bas du jeu.
+*/
 public class PlateauBas
 {
 	private Tuile[][] plateauBas;
@@ -20,6 +22,12 @@ public class PlateauBas
 
 	private ArrayList<Batiment> ensBatiment;
 
+	/**
+    * Constructeur de la classe.
+    *
+    * @param ctrl
+    *           Controleur
+    */
 	public PlateauBas(Controleur ctrl)
 	{
 		this.ctrl         = ctrl;
@@ -35,6 +43,11 @@ public class PlateauBas
 		
 	}
 
+	/**
+    * Détermine si le placement du blé est possible.
+    *
+    * @return Le placement du blé est possible.
+    */
 	public boolean enleverBle ()
 	{
 		if ( this.iNbBle < 1 )
@@ -44,6 +57,9 @@ public class PlateauBas
 		return true;
 	}
 
+	/**
+    * Initialise le plateau bas.
+    */
 	private void initPlateauBas()
 	{
 
@@ -59,7 +75,9 @@ public class PlateauBas
 
 	}
 	
-
+	/**
+    * Initialise les tuiles du plateau.
+    */
 	private void initTuile()
 	{
 		this.ensBatiment = new ArrayList<Batiment>();
@@ -85,27 +103,61 @@ public class PlateauBas
 	}
 
 
-	
+	/**
+	* Retourne la tuile selon sa position.
+	* @param x
+	*		Position de la tuile selon l'axe x du plateau.
+	* @param y
+	*		Position de la tuile selon l'axe y du plateau.
+	* @return Ensemble des tuiles du plateau.
+	*/
 	public Tuile getTuile( int x, int y )
 	{
 		return this.plateauBas[x-6][y-2];
 	}
 
+	/**
+    * Retourne les tuiles vides du plateau.
+	*
+	* @return Tuiles vides du plateau.
+    */
 	public TuileVide getTuileVide ( int x, int y )
 	{
 		return (TuileVide) this.plateauBas[x-6][y-2];
 	}
 
+	/**
+	* Retourne la tuile vide selon sa position.
+	* @param x
+	*		Position de la tuile selon l'axe x du plateau.
+	* @param y
+	*		Position de la tuile selon l'axe y du plateau.
+	* @return Tuile vide
+	*/
 	public Batiment getBatiment(int x, int y)
 	{
 		return (Batiment) this.plateauBas[x-6][y-2];
 	}
 
+	/**
+	* Ajoute une tuile sur le plateau selon sa position.
+	* @param x
+	*		Position de la tuile selon l'axe x du plateau.
+	* @param y
+	*		Position de la tuile selon l'axe y du plateau.
+	* @param tuile
+	*		Élément que l'ont met sur la tuile
+	*/
 	public void setTuile(int x, int y, Tuile tuile)
 	{
 		this.plateauBas[x-6][y-2] = tuile;
 	}
 
+	/**
+	* Ajoute un ouvrier sur le plateau bas.
+	* @param iNumJoueur
+	*		Numéro du joueur.
+	*/
 	public void addOuvrier( int iNumJoueur)
 	{
 		int iNumOuvrierJoueur;
@@ -121,6 +173,9 @@ public class PlateauBas
 
 	}
 
+	/**
+	* Supprimer les ouvriers du plateau bas.
+	*/
 	public void clearOuvrier()
 	{
 		this.iNbConstru1 = 0;
@@ -130,7 +185,10 @@ public class PlateauBas
 
 	}
 
-	// Utilisé pour initialiser le plateau bas de l'IHM
+	/**
+	* Initialisation du plateau bas de l'IHM
+	* @return Ensemble des tuiles
+	*/
 	public Tuile[] getTuileIHM()
 	{
 		Tuile[] ensTuiles = new Tuile[12];
@@ -142,6 +200,10 @@ public class PlateauBas
 	}
 
 
+	/**
+	* Retourne le plateau bas du jeu.
+	* @return Plateau bas du jeu sous forme de chaine de caractère.
+	*/
 	public String toString()
 	{
 		String sRet="";
