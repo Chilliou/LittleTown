@@ -67,7 +67,7 @@ public class Plateau
 	}
 
 	/**
-	* Retourne l'ensemble des tuiles selon sa position.
+	* Retourne la tuile selon sa position.
 	* @param x
 	*		Position de la tuile selon l'axe x du plateau.
 	* @param y
@@ -80,7 +80,7 @@ public class Plateau
     }
 
 	/**
-	* Retourne l'ensemble des tuiles vides selon sa position.
+	* Retourne la tuile vide selon sa position.
 	* @param x
 	*		Position de la tuile selon l'axe x du plateau.
 	* @param y
@@ -93,7 +93,7 @@ public class Plateau
     }
 
 	/**
-	* Retourne l'ensemble des bâtiments sur le plateau selon sa position.
+	* Retourne un bâtiment sur le plateau selon sa position.
 	* @param x
 	*		Position du bâtiment selon l'axe x du plateau.
 	* @param y
@@ -106,7 +106,7 @@ public class Plateau
     }
 
 	/**
-	* Permets de mettre un élément sur une tuile (ouvrier ou bâtiment).
+	* Ajoute une tuile sur le plateau selon sa position.
 	* @param x
 	*		Position de la tuile selon l'axe x du plateau.
 	* @param y
@@ -120,7 +120,7 @@ public class Plateau
     }
 
 	/**
-	* Permets de mettre un élément sur une tuile vide (ouvrier ou bâtiment).
+	* Ajoute une tuile vide sur le plateau selon sa position.
 	* @param x
 	*		Position de la tuile vide selon l'axe x du plateau.
 	* @param y
