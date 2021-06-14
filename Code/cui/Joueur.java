@@ -29,14 +29,13 @@ public class Joueur extends Banque
 		this.bAJouer     = false;
 	}
 
-	public void echangerRscJoueurVBanque(Banque b,char rsc,int iNb)
+	public void echangerRscJoueurVBanque( Banque b, char rsc, int iNb )
 	{
-		b.ajouterEnlever(rsc, iNb);
-		this.ajouterEnlever(rsc,-iNb);
+		b.ajouterEnlever   ( rsc, iNb );
+		this.ajouterEnlever( rsc,-iNb );
 	}
 
 	public void changeScore( int iScore ) { this.iScore += iScore; }
-
 	
 	public String getCouleur() { return this.sCouleur;   }
 	public int getScore     () { return this.iScore;     }
@@ -44,17 +43,24 @@ public class Joueur extends Banque
 	public int getNumJoueur () { return this.iNumJoueur; }
 	public boolean aJouer   () { return this.bAJouer;    }
 
-	public void setAction(boolean bJouer) { this.bAJouer = bJouer; }
+	public void setAction(boolean bJouer) 
+	{
+		this.bAJouer = bJouer;
+	}
 
-	
-
-	public void majScore(int i) { this.iScore+= i; }
+	public void majScore(int i)
+	{
+		this.iScore += i;
+	}
 
 	public String toString()
 	{
 		String sRet = "Joueur n°" + this.iNumJoueur + ", ( " + this.sNom + " ), " +  " couleur : " + this.sCouleur+ "\n";
-		sRet+=super.toString();
-		sRet+= "\n" +"Nombre de Point  : " + this.iScore  ; 
+		
+		sRet += super.toString();
+		
+		sRet += "\n" +"Nombre de Point  : " + this.iScore;
+		
 		return sRet;
 
 	}

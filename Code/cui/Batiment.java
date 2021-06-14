@@ -1,7 +1,6 @@
 package littletown.cui;
 
 
-
 import java.util.ArrayList;
 
 public class Batiment extends Tuile
@@ -15,7 +14,7 @@ public class Batiment extends Tuile
 	
 	private int iScore;
 
-	public Batiment ( String sNom,String sCout,String sCoutProduction,String sRevientProduction, int iScore )
+	public Batiment ( String sNom, String sCout, String sCoutProduction, String sRevientProduction, int iScore )
 	{		
 		super ( sNom );
 		this.sCout              = sCout;

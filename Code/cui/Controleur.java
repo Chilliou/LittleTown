@@ -72,7 +72,8 @@ public class Controleur
 
 		this.metier.finDePartie();
 	}
-
+	
+	// Toute les méthode qui font le pont entre metier et cui
 	public Tuile getTuile         ( int x, int y ) { return this.ihm.getTuile( x, y );     }
 	public TuileVide getTuileVide ( int x, int y ) { return this.ihm.getTuileVide( x, y ); }
 	public Batiment getBatiment   ( int x, int y ) { return this.ihm.getBatiment( x, y );  }
@@ -81,7 +82,7 @@ public class Controleur
 	public void setTuile     ( int x, int y, Tuile tuile )     { this.ihm.setTuile( x, y, tuile ); }
 	public void setTuileVide ( int x, int y, TuileVide tuile ) { this.ihm.setTuile( x, y, tuile ); }
 
-	public int getInitNbJoueurs()   { return this.ihm.saisienbJoueur();  }
+	public int getInitNbJoueurs()   { return this.ihm.saisieNbJoueur();  }
 	public String saisieNomJoueur(int numJoueur) { return this.ihm.saisieNomJoueur(numJoueur); }
 
 	public void addOuvrier(int iNumJoueur) { this.ihm.addOuvrier( iNumJoueur ); }

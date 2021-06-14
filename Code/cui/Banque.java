@@ -82,7 +82,7 @@ public class Banque
 	}
 
 	//Cette méthode sert à echangé une ressource entre la banque et le joueur
-	public boolean echangerRscBanqueVJoueur( Joueur j,char rsc,int iNb )
+	public boolean echangerRscBanqueVJoueur( Joueur j, char rsc, int iNb )
 	{
 		
 		if( this.getRsc( rsc ) < j.getRsc( rsc ) )

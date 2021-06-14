@@ -11,7 +11,7 @@ public class Plateau
 	private Joueur[]   joueurActif; 
 
 	public Plateau(int nbJoueur,int choixPlateau) // possiblement passer par un factory
-	{											  // Pour check le nbJoueur et choixPlateau
+	{                                             // Pour tester le nbJoueur et choixPlateau
 		this.terrainDeJeu = new Tuile[6][9];
 		this.joueurActif  = new Joueur[nbJoueur];
 

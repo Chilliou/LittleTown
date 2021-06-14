@@ -18,32 +18,34 @@ public class IhmCUI
 	//Affichage des deux plateau
 	public void afficher()
 	{
-		System.out.println("> Plateau actuel : ");
-		System.out.println( this.plateau);
-		System.out.println( this.plateauBas);
+		System.out.println( "> Plateau actuel : " );
+		System.out.println( this.plateau    );
+		System.out.println( this.plateauBas );
 
 	}
 
-	public int saisienbJoueur()
+	public int saisieNbJoueur()
 	{
 		Scanner sc = new Scanner( System.in );
 		String  iSaisieNbJoueurs = "";
 		int     iNbJoueurs = 0;
 
-        try
-        {
-            do
-            {
-                System.out.print( "Combien de joueurs voulez vous choisir : " );
-                iSaisieNbJoueurs = sc.nextLine();
+		try
+		{
+		
+			do
+			{
+				System.out.print( "Combien de joueurs voulez vous choisir : " );
+				iSaisieNbJoueurs = sc.nextLine();
 
-            } while(! iSaisieNbJoueurs.matches("^([2-4]{1})") );
-        }
-		catch(Exception e) { System.out.println(e);}
+			} while(! iSaisieNbJoueurs.matches( "^([2-4]{1})" ) );
+			
+		}
+		catch(Exception e) { System.out.println(e); }
 
-        iNbJoueurs = Integer.parseInt(iSaisieNbJoueurs);
+		iNbJoueurs = Integer.parseInt(iSaisieNbJoueurs);
 
-        return iNbJoueurs;
+		return iNbJoueurs;
 	}
 
 
@@ -53,33 +55,33 @@ public class IhmCUI
 		String  iSaisieNumPlateau = "";
 		int     iNumPlateau = 0;
 
-        try
-        {
-            do
-            {
-                System.out.print( "Sur quel platau voulez vous jouer ? [1 ou 2] : " );
-                iSaisieNumPlateau = sc.nextLine();
+		try
+		{
+			do
+			{
+				System.out.print( "Sur quel platau voulez vous jouer ? [1 ou 2] : " );
+				iSaisieNumPlateau = sc.nextLine();
 
-            } while(! iSaisieNumPlateau.matches("^([1-2]{1})") );
-        }
+			} while(! iSaisieNumPlateau.matches( "^([1-2]{1})" ) );
+		}
 		catch(Exception e) { System.out.println(e);}
 
-        iNumPlateau = Integer.parseInt(iSaisieNumPlateau);
-        return iNumPlateau;
+		iNumPlateau = Integer.parseInt(iSaisieNumPlateau);
+		return iNumPlateau;
 	}
 
 	public String saisieNomJoueur(int numJoueur)
 	{
 		Scanner sc = new Scanner( System.in );
 		String  sNomJoueur = "";
-        try
-        {
-                System.out.print( "Joueur n°" + (numJoueur+1) + " quel est votre nom ? : " );
-                sNomJoueur = sc.nextLine();
-        }
+		try
+		{
+			System.out.print( "Joueur n°" + (numJoueur+1) + " quel est votre nom ? : " );
+			sNomJoueur = sc.nextLine();
+		}
 		catch(Exception e) { System.out.println(e);}
 
-        return sNomJoueur;
+		return sNomJoueur;
 	}
 
 	public boolean enleverBle ()
@@ -141,7 +143,7 @@ public class IhmCUI
 	{
 		String sChoix;
 		int iChoix;
-		String saisieChoix="";
+		String sSaisieChoix = "";
 
 		sChoix  = "+-----------------------------------------------+\n";
 		sChoix += "| > Action possibles:                           |\n";
@@ -161,14 +163,13 @@ public class IhmCUI
 			do
 			{
 				System.out.print( "Faites votre choix : " );
-				saisieChoix = sc.nextLine();
+				sSaisieChoix = sc.nextLine();
 
-			}while(!saisieChoix.matches("^([1-6]{1})"));
-		}catch(Exception e)
-		{
-		}
+			}while(!sSaisieChoix.matches("^([1-6]{1})"));
+			
+		}catch(Exception e){ System.out.println(e); }
 		
-		iChoix = Integer.parseInt(saisieChoix);
+		iChoix = Integer.parseInt(sSaisieChoix);
 
 		return iChoix;
 	}
@@ -185,14 +186,17 @@ public class IhmCUI
 	}
 
 	// Utilisé pour initialiser le plateau bas de l'IHM.
-	public Tuile[] getTuileIHM() { return this.plateauBas.getTuileIHM(); }
+	public Tuile[] getTuileIHM() 
+	{
+		return this.plateauBas.getTuileIHM();
+	}
 
 	// Méthode  pour nourir les ouvriers
-	public int nourrirOuvrier(char ressource, int iOuvrierNourri, int nbOuvrierTotint, Joueur j)
+	public int nourrirOuvrier( char ressource, int iOuvrierNourri, int nbOuvrierTotint, Joueur j )
 	{
 		int iSaisi;
 		int iNouveauNbOuvrierNourri = 0;
-		Scanner kb = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 
 		if (nbOuvrierTotint - iOuvrierNourri > 0)
 		{
@@ -204,7 +208,7 @@ public class IhmCUI
 					System.out.println( "Il vous reste " +  ( nbOuvrierTotint - iOuvrierNourri ) + " ouvrier(s) à nourrir." );
 					System.out.println( "Combien de votre blé voulez vous utiliser ? : " );
 					
-					iSaisi = kb.nextInt();
+					iSaisi = sc.nextInt();
 					
 					if ( j.getRsc('C') >= iSaisi )
 					{
@@ -226,7 +230,7 @@ public class IhmCUI
 					System.out.println( "Il vous reste " +  ( nbOuvrierTotint - iOuvrierNourri ) + " ouvrier(s) à nourrir." );
 					System.out.println( "Combien de votre eau voulez vous utiliser ? : " );
 					
-					iSaisi = kb.nextInt();
+					iSaisi = sc.nextInt();
 
 					if ( j.getRsc('E') >= iSaisi )
 					{
@@ -248,7 +252,7 @@ public class IhmCUI
 					System.out.println( "Il vous reste " +  ( nbOuvrierTotint - iOuvrierNourri ) + " ouvrier(s) à nourrir." );
 					System.out.println( "Combien de vos pièces voulez vous utiliser ? (3 pièces / ouvrier): " );
 
-					iSaisi = kb.nextInt();
+					iSaisi = sc.nextInt();
 
 					if ( j.getRsc('M') >= iSaisi )
 					{
@@ -273,7 +277,7 @@ public class IhmCUI
 	}
 
 	// Méthode  pour nourir les ouvriers
-	public void finNourrir(int iOuvrierNourri, int nbOuvrierTot, Joueur j)
+	public void finNourrir ( int iOuvrierNourri, int nbOuvrierTot, Joueur j )
 	{
 	
 		if ( iOuvrierNourri < nbOuvrierTot )
@@ -295,7 +299,7 @@ public class IhmCUI
 	//Méthode pour éviter les répétitions de demande de pos
 	public String getSaisiePosVide()
 	{
-		String saisie="";
+		String sSaisie = "";
 		Scanner sc = new Scanner( System.in );
 
 		try
@@ -307,25 +311,23 @@ public class IhmCUI
 					System.out.println( "Une position est constituer d'une lettre  entre 'A' et 'I' et un chiffre entre 1 et 6" );
 					System.out.print( "Entrez la position de la tuile vide : " );
 
-					saisie = sc.next();
-					saisie = saisie.toUpperCase();
+					sSaisie = sc.next();
+					sSaisie = sSaisie.toUpperCase();
 
 					
-				}while(!saisie.matches("^([A-I])+([1-6])$") );
-			}while(!this.testTuileVide(saisie));
+				}while(!sSaisie.matches("^([A-I])+([1-6])$") );
 
-		} catch (Exception e) 
-		{
-			System.out.println( e );
+			}while(!this.testTuileVide(sSaisie));
 
-		}
-		return saisie;
+		} catch (Exception e) { System.out.println( e ); }
+		
+		return sSaisie;
 		
 	}
 
 	public String getSaisiePosBtm()
 	{
-		String saisie="";
+		String sSaisie = "";
 		Scanner sc = new Scanner( System.in );
 
 		try
@@ -337,51 +339,51 @@ public class IhmCUI
 					System.out.println( "Une position est constituer d'une lettre  entre 'A' et 'I' et un chiffre entre 1 et 8" );
 					System.out.print( "Entrez la position du batiment : " );
 
-					saisie = sc.nextLine();
-					saisie = saisie.toUpperCase();
+					sSaisie = sc.nextLine();
+					sSaisie = sSaisie.toUpperCase();
 
-				}while(!saisie.matches("((?=^[AI]|[B])([AI])+([1-6])|([B])+([1-7])|^([C-H])+([1-8]))") );
-			}while(!this.testBatiment(saisie));
-		} catch (Exception e) 
-		{
-			System.out.println( "Saisie de position invalide" );
+				}while(!sSaisie.matches("((?=^[AI]|[B])([AI])+([1-6])|([B])+([1-7])|^([C-H])+([1-8]))") );
 
-		}
-		return saisie;
+			}while(!this.testBatiment(sSaisie));
+
+		} catch (Exception e) { System.out.println( "Saisie de position invalide" ); }
+		
+		return sSaisie;
 		
 	}
 
-	public boolean testBatiment(String pos)
+	public boolean testBatiment( String sPos )
 	{
-		int y =  pos.charAt(0) - (int) ('A');
-		int x = (Integer.parseInt(pos.charAt(1)+"")-1) ;
+		int y = sPos.charAt(0) - (int) ('A');
+		int x = ( Integer.parseInt( sPos.charAt(1) + "" ) - 1 ) ;
 
-		if(pos.equals("B7")) return true;
+		if( sPos.equals("B7") )
+			return true;
 
 		Tuile tester = this.getTuile(x,y);
 		
-		return tester.getClass() == new Batiment("Useless").getClass();
+		return tester.getClass() == new Batiment("").getClass();
 	}
 
 	
-	public boolean testTuileVide(String pos)
+	public boolean testTuileVide( String sPos )
 	{
-		int y =  pos.charAt(0) - (int) ('A');
-		int x = (Integer.parseInt(pos.charAt(1)+"")-1) ; 
+		int y =  sPos.charAt(0) - (int) ('A');
+		int x = ( Integer.parseInt( sPos.charAt(1) + "" ) - 1 ) ; 
 
 		Tuile tester = this.getTuile(x,y);
 
-		return tester.getClass() == new TuileVide().getClass();		
+		return tester.getClass() == new TuileVide().getClass();
 	}
 
 	public void getInfoBatiment()
 	{
-		String saisie = this.getSaisiePosBtm();
+		String sSaisie = this.getSaisiePosBtm();
 
-		int y =  saisie.charAt(0) - (int) ('A');
-		int x = (Integer.parseInt(saisie.charAt(1) + "")-1);
+		int y =  sSaisie.charAt(0) - (int) ('A');
+		int x = ( Integer.parseInt( sSaisie.charAt(1) + "" ) - 1 );
 
-		if(saisie.equals("B7")) 
+		if( sSaisie.equals("B7") )
 			System.out.println(new Batiment ( "Blé", "A1", "", "C1", 3 ).infoBatiment());
 		else
 			System.out.println(this.getBatiment(x,y).infoBatiment()); 
@@ -392,11 +394,11 @@ public class IhmCUI
 		System.out.println( "\nPartie Terminé\n");
 		System.out.println( "Tableau des score : ");
 
-		int place = 1;
+		int iPlace = 1;
 		for ( int cpt = tab.length - 1; cpt >= 0; cpt-- )
 		{
-			System.out.println( place + ": Joueur numéro " + tab[cpt].getNumJoueur() );
-			place++;
+			System.out.println( iPlace + ": Joueur numéro " + tab[cpt].getNumJoueur() );
+			iPlace++;
 		}
 	}
 
