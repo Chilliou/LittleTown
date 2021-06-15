@@ -58,7 +58,8 @@ public class Controleur
 						case 3 -> this.metier.activerTuile       ();
 						case 4 -> this.metier.getInfoBatiment    ();
 						case 5 -> this.metier.echangerPiece      ();
-						case 6 ->
+						case 6 -> this.metier.validerObjectif    ();
+						case 7 ->
 						{
 							if (this.metier.getJoueurActif().aJouer()) 
 								bTour = true;
@@ -286,6 +287,11 @@ public class Controleur
 	public void afficherFinDePartie( Joueur[] tab )
 	{
 		this.ihm.afficherFinDePartie(tab);
+	}
+
+	public int getNumeroObjectif()
+	{
+		return this.ihm.getNumeroObjectif();
 	}
 
 	/**

@@ -11,6 +11,7 @@
 ./cui/PlateauBas.java
 ./cui/Tuile.java
 ./cui/TuileVide.java
+./cui/Objectif.java
 
 ./ihm/Controleur.java
 ./ihm/FrameBanque.java

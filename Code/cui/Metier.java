@@ -6,10 +6,11 @@ import java.util.Scanner;
 
 import java.io.PrintWriter;
 import java.io.FileOutputStream;
+import java.io.FileInputStream;
 
 import java.util.GregorianCalendar;
 import java.util.Calendar;
-
+import java.lang.Math;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,8 @@ public class Metier
 
     private ArrayList<Batiment> ensBatimentActiver;
 
+    private ArrayList<Objectif> ensObjectifs;
+
     /**
     * Constructeur de la classe.
     *
@@ -52,6 +55,7 @@ public class Metier
 
         this.ensBatimentActiver = new ArrayList<Batiment>();
 
+        this.initObjectif();
         this.initJoueur();
     }
 
@@ -89,6 +93,41 @@ public class Metier
     public Joueur[] getTabJoueurs() { return this.tabJoueurs; }
 
 
+    public void initObjectif()
+    {
+        this.ensObjectifs = new ArrayList<Objectif>();
+
+		try
+		{	
+			Scanner sc = new Scanner ( new FileInputStream ( "../data/objectif.data" ) );
+
+			while ( sc.hasNextLine() )
+			{
+				String[] parts = sc.nextLine().split("/");
+                try
+                {
+                    this.ensObjectifs.add( new Objectif(parts[0], Integer.parseInt(parts[1])));
+                }
+                catch (Exception err)
+                {
+                    System.out.println(err);
+                }
+			}
+
+			sc.close();
+		}
+		catch (Exception e) { e.printStackTrace(); }
+
+    }
+
+    public void validerObjectif()
+    {
+        
+        Objectif objectifTemp = this.tabJoueurs[numJoueurActif].getObjectifIndex(this.ctrl.getNumeroObjectif());
+        this.tabJoueurs[numJoueurActif].changeScore(objectifTemp.getScore());
+        this.tabJoueurs[numJoueurActif].validerObjectif(1);
+    }
+
     /**
     * Initialise les joueurs du plateau.
     */
@@ -124,16 +163,23 @@ public class Metier
             }
         }
 
+
         for (int i = 0; i < this.tabJoueurs.length; i++)
         {
-            this.tabJoueurs[i] = new Joueur(sCoulJoueurs[i], this.ctrl.saisieNomJoueur(i) );
+            // Choix de deux nombres aléatoires
+            int iNumObjectif1 = (int)(Math.random() * this.ensObjectifs.size()-1);
+            int iNumObjectif2 = (int)(Math.random() * this.ensObjectifs.size()-1);
+
+            this.tabJoueurs[i] = new Joueur(sCoulJoueurs[i], this.ctrl.saisieNomJoueur(i),
+            this.ensObjectifs.get(iNumObjectif1), this.ensObjectifs.get(iNumObjectif2));
+
+            this.ensObjectifs.remove(iNumObjectif1);
+            this.ensObjectifs.remove(iNumObjectif2);
+
             if(this.tabJoueurs[i].getNom().equals("Philippe")) this.tabJoueurs[i].masterClass(1);
             if(this.tabJoueurs[i].getNom().equals("Enzo")) this.tabJoueurs[i].masterClass(-1);
-
         }
 
-
-        
 
     }
 

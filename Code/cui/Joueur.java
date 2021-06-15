@@ -17,6 +17,7 @@ public class Joueur extends Banque
 	private int nbBatiment;
 	private int iNumJoueur;
 	private boolean bAJouer;
+	private Objectif[] ensObjectifs;
 
 	/**
 	* Constructeur de la classe Joueur.
@@ -26,16 +27,21 @@ public class Joueur extends Banque
 	* @param sNom
 	*			Nom du joueur.
 	*/
-	public Joueur(String sCouleur, String sNom)
+	public Joueur(String sCouleur, String sNom, Objectif objtif1, Objectif objectif2)
 	{
 		super(3);
-		this.iScore      = 0;
-		this.sCouleur    = sCouleur;
-		this.sNom        = sNom;
-		this.nbBatiment  = 0;
-		this.iNumJoueur  = ++ Joueur.iNbJoueur;
-		this.bAJouer     = false;
+		this.iScore          = 0;
+		this.sCouleur        = sCouleur;
+		this.sNom            = sNom;
+		this.nbBatiment      = 0;
+		this.iNumJoueur      = ++ Joueur.iNbJoueur;
+		this.bAJouer         = false;
+
+		this.ensObjectifs    = new Objectif[2];
+		this.ensObjectifs[0] = objtif1;
+		this.ensObjectifs[1] = objectif2;
 	}
+
 
 	/**
 	* Méthode spécial.
@@ -48,7 +54,43 @@ public class Joueur extends Banque
 		char[] rsc = {'P','A','E','C','M','S'};   
 
 		for(int i=0;i<rsc.length;i++)
-			super.ajouterEnlever(rsc[i],999*attribut);
+			super.ajouterEnlever(rsc[i], 999 * attribut);
+	}
+
+	public Objectif getObjectifIndex(int iIndexObjectif)
+	{
+		return this.ensObjectifs[iIndexObjectif];
+	}
+
+	public String getObjectifRestant()
+	{
+		String sRet = "";
+
+		for (int cpt = 0; cpt < this.ensObjectifs.length; cpt++)
+		{
+			if (this.ensObjectifs[cpt] != null)
+			{
+				sRet += "[" + (cpt+1) + "] " +  this.ensObjectifs[cpt].getCondition();
+				sRet += "\nCette objectif rapporte : " +  this.ensObjectifs[cpt].getScore() + " points.\n";
+			}
+		}
+
+		return sRet;
+
+
+	}
+
+	public void validerObjectif(int iNumObjectif)
+	{
+		try
+		{
+			this.ensObjectifs[(iNumObjectif-1)] = null;
+		}
+		catch (Exception e)
+		{
+			System.out.println("Erreur l'opération n'a pas pu aboutir.");
+		}
+
 	}
 
 	/**
@@ -58,7 +100,7 @@ public class Joueur extends Banque
 	* @param rsc
 	*		Type de ressource.
 	* @param iNb
-	*		Nombre de ressource a échanger.
+	*		new Objectif(sCondition, iScore)Nombre de ressource a échanger.
 	*/
 	public void echangerRscJoueurVBanque( Banque b, char rsc, int iNb )
 	{
@@ -155,7 +197,10 @@ public class Joueur extends Banque
 		
 		sRet += super.toString();
 		
-		sRet += "\n" +"Nombre de Point  : " + this.iScore;
+		sRet += "\n" + "Nombre de Point  : " + this.iScore;
+
+		sRet += "\n\n" + "Objectif(s) restant(s):";
+		sRet += "\n" + this.getObjectifRestant();
 		
 		return sRet;
 

@@ -62,6 +62,27 @@ public class IhmCUI
         return iNbJoueurs;
 	}
 
+	public int getNumeroObjectif()
+	{
+		Scanner sc = new Scanner( System.in );
+		String  iSaisieNumObjectif = "";
+		int     iNumObjectif = 0;
+
+        try
+        {
+            do
+            {
+                System.out.print( "Quel est le numéro de l'objectif ? [1 ou 2] : " );
+                iSaisieNumObjectif = sc.nextLine();
+
+            } while(! iSaisieNumObjectif.matches("^([1-2]{1})") );
+        }
+		catch(Exception e) { System.out.println(e);}
+
+        iNumObjectif = Integer.parseInt(iSaisieNumObjectif);
+        return iNumObjectif;
+	}
+
 
 	/**
 	* Saisi du numéro du plateau.
@@ -254,7 +275,8 @@ public class IhmCUI
 		sChoix += "| 3 - Activer tuile                             |\n";
 		sChoix += "| 4 - Info Batiment                             |\n";
 		sChoix += "| 5 - Echanger pièce -> ressources              |\n";
-		sChoix += "| 6 - Fin de tour                               |\n";
+		sChoix += "| 6 - Valider un objectif                       |\n";
+		sChoix += "| 7 - Fin de tour                               |\n";
 		sChoix += "+-----------------------------------------------+\n";
 
 		System.out.println( sChoix);

@@ -1,7 +1,8 @@
+package littletown.cui;
+
 
 public class Objectif
 {
-    // Attributs
     private String sCondition;
     private int    iScore;
 
@@ -10,5 +11,15 @@ public class Objectif
     {
         this.sCondition = sCondition;
         this.iScore     = iScore;
+    }
+
+    public int getScore()
+    {
+        return this.iScore;
+    }
+
+    public String getCondition()
+    {
+        return this.sCondition;
     }
 }
