@@ -154,7 +154,7 @@ public class Banque
 		        "Nombre de Arbre  : " + this.iNbBois   + "\n" +
 		        "Nombre d'eau     : " + this.iNbEau    + "\n" +
 		        "Nombre de Ble    : " + this.iNbBle    + "\n" +
-		        "Nombre de Piece  : " + this.iNbPiece   ;
+		        "Nombre de Piece  : " + this.iNbPiece  ;
 	}
 
 }

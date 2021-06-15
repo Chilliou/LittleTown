@@ -12,20 +12,27 @@ public class Controleur
 
 	/**
 	* Constructeur de la classe.
+	* @param mode
+	*			Mode du jeu selectionné.
+	*
 	*/
-	public Controleur()
+	public Controleur(String mode)
 	{
 		this.ihm     = new IhmCUI(this);
 		this.metier  = new Metier(this);
-		this.lancerJeu();
+		this.lancerJeu(mode);
 	}
 
 	/**
 	* Permets de lancer le jeu.
 	*/
-	private void lancerJeu()
+	private void lancerJeu(String mode)
 	{
 		int iAction;
+
+		// Gestion des modes
+		if (mode.equals("fp")) this.scenarioFinDePartie();
+		if (mode.equals("no")) this.scenarioNourrirOuvrier();
 
 		while ( this.metier.getTour() <= 4 ) 
 		{
@@ -279,6 +286,38 @@ public class Controleur
 	}
 
 	/**
+	* Initialise le scénario de fin de partie.
+	*
+	*/
+	public void scenarioFinDePartie()
+	{
+		this.metier.plus1Tour();
+		this.metier.plus1Tour();
+		this.metier.plus1Tour();
+	}
+
+
+	/**
+	* Initialise le scénario pour nourir les ouvriers.
+	*
+	*/
+	public void scenarioNourrirOuvrier()
+	{
+		this.metier.plus1Tour();
+
+		// On donne 
+		for(Joueur j : this.metier.getTabJoueurs())
+		{
+			j.ajouterEnlever('C', 2);
+			j.ajouterEnlever('E', 1);
+			j.ajouterEnlever('M', 3);
+		}
+
+
+		this.metier.nourrirOuvrier();
+	}
+
+	/**
 	* Classe main du controleur.
 	*	
 	* @param a
@@ -286,14 +325,8 @@ public class Controleur
 	*/
 	public static void main(String[] a)
 	{
-		if (a.length == 1)
-		{
-			new Controleur();
-		}
-		else
-		{
-			new Controleur();
-		}
+
+		new Controleur(a[0]);
 		
 	}
 }

@@ -81,6 +81,13 @@ public class Metier
     */
     public int getNbOuvrier() { return this.nbMaxOuvriers; }
 
+    /**
+    * Retourne le tableau de joueur de la partie.
+    *
+    * @return Tableau de joueur.
+    */
+    public Joueur[] getTabJoueurs() { return this.tabJoueurs; }
+
 
     /**
     * Initialise les joueurs du plateau.
