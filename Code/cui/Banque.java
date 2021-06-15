@@ -69,7 +69,7 @@ public class Banque
 							case 'C' -> this.iNbBle;
 							case 'M' -> this.iNbPiece;
 							case 'S' -> this.iScore;
-							default -> 99;
+							default  -> 99;
 						};
 	}
 
