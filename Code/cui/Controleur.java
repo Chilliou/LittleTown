@@ -318,6 +318,10 @@ public class Controleur
 		this.metier.nourrirOuvrier();
 	}
 
+	/**
+	* Initialise le scénario de milieu de partie.
+	*
+	*/
 	public void scenarioMillieuDePartie()
 	{
 		this.metier.plus1Tour();
