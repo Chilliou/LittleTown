@@ -591,7 +591,7 @@ public class Metier
 
             for(int i=0;i < tab.length;i++)
             {
-                 pw.println(String.format("%-10s", classement[i]) + " : "+ tab[i].getNom()+"\n");    
+                 pw.println(String.format("%-10s", classement[i]) + " : "+ tab[i].getNom()+"avec un score de "+classement[i].getScore()+'\n");    
             }
 
             pw.close();
