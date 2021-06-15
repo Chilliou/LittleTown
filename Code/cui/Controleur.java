@@ -85,6 +85,9 @@ public class Controleur
 
 			// Clear Ouvrier
 			this.ihm.clearOuvrier();
+
+			// On change de premier joueur
+			this.metier.changementDuPremierJoueur();
 		}
 
 		this.metier.finDePartie();

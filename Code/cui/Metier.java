@@ -466,6 +466,22 @@ public class Metier
     }
 
     /**
+    * Permet de changer le premier joueur à chaque manche.
+    */
+    public void changementDuPremierJoueur()
+    {
+        Joueur joueurTemp;
+        joueurTemp = this.tabJoueurs[0];
+        for(int cpt = 0; cpt < this.tabJoueurs.length; cpt++)
+        {
+            if (cpt < this.tabJoueurs.length-1)
+                this.tabJoueurs[cpt] = this.tabJoueurs[cpt+1];
+            else
+                this.tabJoueurs[cpt] = joueurTemp;
+        }
+    }
+
+    /**
     * Retourne le tour actuel de la partie.
     *
     * @return Tour actuel de la partie
