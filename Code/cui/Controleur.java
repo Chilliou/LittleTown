@@ -295,6 +295,45 @@ public class Controleur
 	*/
 	public void scenarioFinDePartie()
 	{
+
+		int[][] iCoordDebut = {
+			{6, 5},
+			{6, 2},
+			{7, 3},
+			{7, 4},
+			};
+
+		int[][] iCoordFin = {
+					{2, 5},
+					{4, 2},
+					{2, 2},
+					{1, 7},
+					};
+
+		int cpt = 0;
+		for(Joueur j : this.metier.getTabJoueurs())
+		{
+			Batiment bat;
+
+			bat = this.getBatiment( iCoordDebut[cpt][0], iCoordDebut[cpt][1] );
+			TuileVide terrain = this.getTuileVide( iCoordFin[cpt][0], iCoordFin[cpt][1] );
+
+			this.setTuile( iCoordFin[cpt][0],iCoordFin[cpt][1],     bat    );
+			this.setTuile( iCoordDebut[cpt][0],iCoordDebut[cpt][1], terrain);
+
+
+			bat.setProprietaire(j);
+
+			// On donne des ressources au joueur.
+			j.ajouterEnlever('A', 1);
+			j.ajouterEnlever('C', 2);
+			j.ajouterEnlever('E', 1);
+			j.ajouterEnlever('M', 10);
+
+			cpt++;
+		}
+
+
 		this.metier.plus1Tour();
 		this.metier.plus1Tour();
 		this.metier.plus1Tour();
@@ -365,7 +404,7 @@ public class Controleur
 			j.ajouterEnlever('A', 1);
 			j.ajouterEnlever('C', 2);
 			j.ajouterEnlever('E', 1);
-			j.ajouterEnlever('M', 3);
+			j.ajouterEnlever('M', 10);
 
 			cpt++;
 		}
