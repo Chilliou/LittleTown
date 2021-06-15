@@ -542,6 +542,18 @@ public class Metier
             cpt++;
         }
 
+
+        // On ajoute du score au joueur en fonction de leurs pièces
+        // 3 pièces = +1 score.
+        for (Joueur j : tabJoueurs)
+        {
+            while(j.getRsc('M') >= 3)
+            {
+                j.ajouterEnlever('M', -3);
+                j.changeScore(1);
+            }
+        }
+
         this.sauvergardeScore(tabTmp);
         this.ctrl.afficherFinDePartie(tabTmp);
     }
@@ -584,14 +596,14 @@ public class Metier
             PrintWriter pw = new PrintWriter( new FileOutputStream("../data/Score.txt", true) );
 
 
-            pw.println ("\n" +"Parti du "+ mois[date.get(Calendar.MONTH)] + " "
+            pw.println ("\n" +"> Partie  "+ mois[date.get(Calendar.MONTH)] + " "
                                     + date.get(Calendar.DATE) + ", "
-                                    + date.get(Calendar.HOUR) + "h ," + date.get(Calendar.MINUTE) + " ( "
+                                    + date.get(Calendar.HOUR) + "h" + date.get(Calendar.MINUTE) + " ( "
                                     + date.get(Calendar.YEAR) + " )\n");
 
             for(int i=0;i < tab.length;i++)
             {
-                 pw.println(String.format("%-10s", classement[i]) + " : "+ tab[i].getNom()+"avec un score de "+classement[i].getScore()+'\n");    
+                 pw.println(String.format("%-10s", classement[i]) + " : "+ tab[i].getNom()+" avec un score de "+ tab[i].getScore()+ "\n");    
             }
 
             pw.close();

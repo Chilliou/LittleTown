@@ -38,7 +38,7 @@ public class Controleur
 		while ( this.metier.getTour() <= 4 ) 
 		{
 
-			for( int iTour = 0; iTour < this.metier.getNbOuvrier() * this.getNbJoueur(); iTour++ ) 
+			for( int iTour = 0; iTour < this.metier.getNbOuvrier() * this.getNbJoueur(); iTour++ )
 			{
 				boolean bTour = false;
 
@@ -231,8 +231,7 @@ public class Controleur
 	* @param iOuvrierNourri
 	*			Numéro de l'ouvrier à nourrir.
 	* @param iNbOuvrierTot
-	*			Nombre des ouvriers à nourri
-	* @param j
+	*			Nombre des ouvriers à n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
 	*			Joueur
 	*/
 	public void finNourrir( int iOuvrierNourri, int iNbOuvrierTot, Joueur j )

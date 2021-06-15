@@ -559,8 +559,8 @@ public class IhmCUI
 	*/
 	public void afficherFinDePartie( Joueur[] tab )
 	{
-		System.out.println( "\nPartie Terminé\n");
-		System.out.println( "Tableau des score : ");
+		System.out.println( "\nPartie Terminé !\n");
+		System.out.println( "Tableau des scores : ");
 
 		int place = 1;
 		for ( int cpt = tab.length - 1; cpt >= 0; cpt-- )
