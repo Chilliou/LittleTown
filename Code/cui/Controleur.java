@@ -348,6 +348,12 @@ public class Controleur
 
 			bat.setProprietaire(j);
 
+			// On donne des ressources au joueur.
+			j.ajouterEnlever('A', 1);
+			j.ajouterEnlever('C', 2);
+			j.ajouterEnlever('E', 1);
+			j.ajouterEnlever('M', 3);
+
 			cpt++;
 		}
 
