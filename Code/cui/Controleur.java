@@ -31,8 +31,9 @@ public class Controleur
 		int iAction;
 
 		// Gestion des modes
-		if (mode.equals("fp")) this.scenarioFinDePartie();
-		if (mode.equals("no")) this.scenarioNourrirOuvrier();
+		if (mode.equals("mp")) this.scenarioMillieuDePartie();
+		if (mode.equals("fp")) this.scenarioFinDePartie    ();
+		if (mode.equals("no")) this.scenarioNourrirOuvrier ();
 
 		while ( this.metier.getTour() <= 4 ) 
 		{
@@ -315,6 +316,43 @@ public class Controleur
 
 
 		this.metier.nourrirOuvrier();
+	}
+
+	public void scenarioMillieuDePartie()
+	{
+		this.metier.plus1Tour();
+
+		int[][] iCoordDebut = {
+			              {6, 5},
+					      {6, 2},
+						  {7, 3},
+						  {7, 4},
+						  };
+		int[][] iCoordFin = {
+			              {2, 5},
+					      {4, 2},
+						  {2, 2},
+						  {1, 7},
+						  };
+		int cpt = 0;
+		for(Joueur j : this.metier.getTabJoueurs())
+		{
+			Batiment bat;
+
+			bat = this.getBatiment( iCoordDebut[cpt][0], iCoordDebut[cpt][1] );
+			TuileVide terrain = this.getTuileVide( iCoordFin[cpt][0], iCoordFin[cpt][1] );
+	
+			this.setTuile( iCoordFin[cpt][0],iCoordFin[cpt][1],     bat    );
+			this.setTuile( iCoordDebut[cpt][0],iCoordDebut[cpt][1], terrain);
+
+
+			bat.setProprietaire(j);
+
+			cpt++;
+		}
+
+
+
 	}
 
 	/**

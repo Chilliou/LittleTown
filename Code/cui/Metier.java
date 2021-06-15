@@ -46,9 +46,9 @@ public class Metier
     {
         this.banque = new Banque();
 
-        this.ctrl              = ctrl;
-        this.dernierOuvrierPos = null;
-        this.tourActuel        = 1;
+        this.ctrl               = ctrl;
+        this.dernierOuvrierPos  = null;
+        this.tourActuel         = 1;
 
         this.ensBatimentActiver = new ArrayList<Batiment>();
 
