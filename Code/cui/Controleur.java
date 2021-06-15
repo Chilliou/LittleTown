@@ -298,6 +298,10 @@ public class Controleur
 		this.metier.plus1Tour();
 		this.metier.plus1Tour();
 		this.metier.plus1Tour();
+
+		this.metier.changementDuPremierJoueur();
+		this.metier.changementDuPremierJoueur();
+		this.metier.changementDuPremierJoueur();
 	}
 
 
@@ -308,6 +312,7 @@ public class Controleur
 	public void scenarioNourrirOuvrier()
 	{
 		this.metier.plus1Tour();
+		this.metier.changementDuPremierJoueur();
 
 		// On donne 
 		for(Joueur j : this.metier.getTabJoueurs())
@@ -328,6 +333,7 @@ public class Controleur
 	public void scenarioMillieuDePartie()
 	{
 		this.metier.plus1Tour();
+		this.metier.changementDuPremierJoueur();
 
 		int[][] iCoordDebut = {
 			              {6, 5},
