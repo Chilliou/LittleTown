@@ -219,9 +219,7 @@ public class Metier
                     bat = this.ctrl.getBatiment( lig, col ) ;
 
                 TuileVide terrain = this.ctrl.getTuileVide( x, y );
-				
-				System.out.println( terrain.getOuvrier() );
-				
+								
                 if( terrain.getOuvrier() != null )
                     return false;
 
