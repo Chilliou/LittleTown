@@ -382,7 +382,6 @@ public class IhmCUI
 					{
 						while ( iSaisi >= 3 )
 						{
-							System.out.println( "Je passe :" );
 							iSaisi                  -= 3;
 							iNouveauNbOuvrierNourri += 1;
 						}
