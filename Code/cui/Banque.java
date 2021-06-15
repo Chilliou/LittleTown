@@ -54,6 +54,8 @@ public class Banque
 	*
 	* @param rsc
 	*			Type de ressource
+	*
+	* @return Ressource(s).
 	*/
 	public int getRsc( char rsc )
 	{
@@ -73,6 +75,11 @@ public class Banque
 
 	/**
 	* Permets d'enlever et ajouter une ressource donnée
+	*
+	* @param rsc
+	*		Type de ressource.
+	* @param iNb
+	*		Nombre de ressource(s).
 	*/	
 	public void ajouterEnlever( char rsc, int iNb )
 	{
@@ -89,6 +96,9 @@ public class Banque
 
 	/**
 	* Permets de retirer ou ajouter du score
+	*
+	* @param iScore
+	*			Score à ajouter/retirer.
 	*/
 	public void changeScore( int iScore )
 	{
@@ -97,6 +107,8 @@ public class Banque
 
 	/**
 	* Permets d'obtenir le score.
+	*
+	* @return Score.
 	*/
 	public int  getScore()
 	{
@@ -105,12 +117,14 @@ public class Banque
 
 	/**
 	* Permets d'échanger une ressource entre la banque et le joueur
+	*
 	* @param j
 	*		Nom du joueur
 	* @param rsc
 	*		Type de ressource
 	* @param iNb
 	*		Nombre de ressources
+	*
 	* @return Retourne un boolean pour déterminer si la ressource peut être échangée
 	*/
 	public boolean echangerRscBanqueVJoueur( Joueur j, char rsc, int iNb )
@@ -131,12 +145,13 @@ public class Banque
 
 	/**
 	* Affiche les ressources de la banque.
+	*
 	* @return Retourne une chaine de caractères (String) de l'ensemble des ressources disponibles de la banque.
 	*/
 	public String toString ()
 	{
 		return  "Nombre de Pierre : " + this.iNbPierre + "\n" +
-		        "Nombre de Arbre   : " + this.iNbBois   + "\n" +
+		        "Nombre de Arbre  : " + this.iNbBois   + "\n" +
 		        "Nombre d'eau     : " + this.iNbEau    + "\n" +
 		        "Nombre de Ble    : " + this.iNbBle    + "\n" +
 		        "Nombre de Piece  : " + this.iNbPiece   ;

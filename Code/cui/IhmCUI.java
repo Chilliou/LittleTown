@@ -3,20 +3,30 @@ package littletown.cui;
 
 import java.util.Scanner;
 
+/**
+* Gère l'IHM du mode CUI.
+*/
 public class IhmCUI
 {
 
 	private Plateau    plateau;
 	private PlateauBas plateauBas;
 
-
+	/**
+	* Constructeur de la classe.
+	*
+	* @param ctrl
+	*		Controleur
+	*/
 	public IhmCUI(Controleur ctrl)
 	{
 		this.plateau    = new Plateau(2,this.getNumeroPlateau());
 		this.plateauBas = new PlateauBas(ctrl);
 	}
-	
-	//Affichage des deux plateau
+
+	/**
+	* Affichage des deux plateau.
+	*/
 	public void afficher()
 	{
 		System.out.println("> Plateau actuel : ");
@@ -25,6 +35,11 @@ public class IhmCUI
 
 	}
 
+	/**
+	* Saisi du nombre de joueurs de la partie (min : 2 et max 4).
+	*
+	* @return Nombre de joueurs.
+	*/
 	public int saisienbJoueur()
 	{
 		Scanner sc = new Scanner( System.in );
@@ -48,6 +63,11 @@ public class IhmCUI
 	}
 
 
+	/**
+	* Retourne le numéro du plateau.
+	*
+	* @return Numéro du plateau.
+	*/
 	public int getNumeroPlateau()
 	{
 		Scanner sc = new Scanner( System.in );
@@ -58,7 +78,7 @@ public class IhmCUI
         {
             do
             {
-                System.out.print( "Sur quel platau voulez vous jouer ? [1 ou 2] : " );
+                System.out.print( "Sur quel plateau voulez vous jouer ? [1 ou 2] : " );
                 iSaisieNumPlateau = sc.nextLine();
 
             } while(! iSaisieNumPlateau.matches("^([1-2]{1})") );
@@ -69,6 +89,15 @@ public class IhmCUI
         return iNumPlateau;
 	}
 
+
+	/**
+	* Saisie du nom du joueur.
+	*	
+	* @param numJoueur
+	*				Numéro du joueur.
+	*
+	* @return Nom du joueur.
+	*/
 	public String saisieNomJoueur(int numJoueur)
 	{
 		Scanner sc = new Scanner( System.in );
@@ -83,11 +112,28 @@ public class IhmCUI
         return sNomJoueur;
 	}
 
+	/**
+	* Vérifie si l'on peut enlever le blé du plateau bas.
+	*
+	* @return Le blé peut-il être enlevé ? (boolean).
+	*/
 	public boolean enleverBle ()
 	{
 		return this.plateauBas.enleverBle();
 	}
 
+	/**
+	* Informations d'une tuile sur le plateau selon sa position.
+	*
+	* @param x 
+	*		Position x de la tuile.
+	* @param y
+	*		Position y de la tuile.
+	*
+	* @return Informations de la tuile.
+	*
+	* @see Tuile
+	*/
 	public Tuile getTuile( int x, int y )
 	{
 		if( x <= 5 )
@@ -96,6 +142,18 @@ public class IhmCUI
 			return this.plateauBas.getTuile( x, y );
 	}
 
+	/**
+	* Informations d'une tuile vide sur le plateau selon sa position.
+	*
+	* @param x 
+	*		Position x de la tuile.
+	* @param y
+	*		Position y de la tuile.
+	*
+	* @return Informations de la tuile vide.
+	*
+	* @see TuileVide
+	*/
 	public TuileVide getTuileVide ( int x, int y )
 	{
 		if( x <= 5 )
@@ -104,6 +162,18 @@ public class IhmCUI
 			return this.plateauBas.getTuileVide( x, y );
 	}
 
+	/**
+	* Informations d'un bâtiment selon sa position sur le plateau.
+	*
+	* @param x 
+	*		Position x du bâtiment.
+	* @param y
+	*		Position y du bâtiment.
+	*
+	* @return Informations du bâtiment.
+	*
+	* @see TuileVide
+	*/
 	public Batiment getBatiment( int x, int y )
 	{
 		if( x <= 5 )
@@ -112,6 +182,16 @@ public class IhmCUI
 			return this.plateauBas.getBatiment( x, y );
 	}
 
+	/**
+	* Permets de placer une tuile.
+	*
+	* @param x 
+	*		Position x du bâtiment.
+	* @param y
+	*		Position y du bâtiment.
+	* @param tuile
+	*		Tuile à placer.
+	*/
 	public void setTuile( int x, int y, Tuile tuile )
 	{
 		if( x <= 5 )
@@ -120,24 +200,47 @@ public class IhmCUI
 			this.plateauBas.setTuile( x, y, tuile );
 	}
 
+	/**
+	* Met une tuile à vide.
+	*
+	* @param x 
+	*		Position x de la tuile vide.
+	* @param y
+	*		Position y de la tuile vide.
+	* @param tuile
+	*		Tuile à mettre à vide.
+	*/
 	public void setTuileVide ( int x, int y, TuileVide tuile )
 	{
 		this.plateau.setTuile( x, y, tuile );
 	}
 	
-	//Rénitialisation des ouvriers sur le plateau
+	/**
+	* Rénitialisation des ouvriers sur le plateau.
+	*/
 	public void clearOuvrier()
 	{
 		this.plateauBas.clearOuvrier();
 		this.plateau   .clearOuvrier();
 	}
 
+	/**
+	* Ajout d'un ouvrier sur le plateau.
+	*
+	* @param iNumJoueur
+	*				Numéro du joueur.
+	*/
 	public void addOuvrier(int iNumJoueur)
 	{
 		this.plateauBas.addOuvrier( iNumJoueur );
 	}
 	
-	//Affichage du choix de l'action
+
+	/**
+	* Affichage du choix de l'action.
+	*
+	* @return Choix du joueur.
+	*/
 	public int getChoix()
 	{
 		String sChoix;
@@ -175,7 +278,12 @@ public class IhmCUI
 	}
 
 
-	// Méthode  pour nourir les ouvriers
+	/**
+	* Averti l'utilisateur qu'il faut nourrir les ouvriers.
+	*
+	* @param j
+	*		Ouvrier du joueur à nourrir.
+	*/
 	public void nourrirOuvrierInfo(Joueur j)
 	{
 		System.out.println("<=======> A table !!!! <=======>\n");
@@ -185,10 +293,29 @@ public class IhmCUI
 		System.out.println("En cas de nourriture manquante, vous recevez -3 de score par ouvrier non nourri.");
 	}
 
-	// Utilisé pour initialiser le plateau bas de l'IHM.
+	/**
+	* Initialisation du plateau bas de l'IHM.
+	*
+	* @return Plateau bas
+	*
+	* @see PlateauBas
+	*/
 	public Tuile[] getTuileIHM() { return this.plateauBas.getTuileIHM(); }
 
-	// Méthode  pour nourir les ouvriers
+	/**
+	* Permets de nourrir les ouvriers selon les ressources des joueurs.
+	*
+	* @param ressource
+	*				Type de ressource.
+	* @param iOuvrierNourri
+	*				Ouvrier(s) à nourrir.
+	* @param nbOuvrierTotint
+	*				Nombre d'ouvrier(s) à nourrir.
+	* @param j
+	*				Ouvrier du joueur.
+	*
+	* @return Ouvriers nourris. 
+	*/
 	public int nourrirOuvrier(char ressource, int iOuvrierNourri, int nbOuvrierTotint, Joueur j)
 	{
 		int iSaisi;
@@ -273,7 +400,16 @@ public class IhmCUI
 
 	}
 
-	// Méthode  pour nourir les ouvriers
+	/**
+	* Met fin à la l'alimentation des ouvriers.
+	*
+	* @param iOuvrierNourri
+	*				Numéro de l'ouvrier à nourrir.
+	* @param nbOuvrierTot
+	*				Nombre d'ouvrier(s) à nourrir.
+	* @param j
+	*				Ouvrier du joueur.
+	*/
 	public void finNourrir(int iOuvrierNourri, int nbOuvrierTot, Joueur j)
 	{
 	
@@ -292,8 +428,12 @@ public class IhmCUI
 			System.out.println( j.toString() );
 		}
 	}
-	
-	//Méthode pour éviter les répétitions de demande de pos
+
+	/**
+	* Evite les répétitions de demande de positions
+	*
+	* @return Saisie de la position.
+	*/
 	public String getSaisiePosVide()
 	{
 		String saisie="";
@@ -324,6 +464,11 @@ public class IhmCUI
 		
 	}
 
+	/**
+	* Retourne la position du bâtiment.
+	*
+	* @return Position du bâtiment.
+	*/
 	public String getSaisiePosBtm()
 	{
 		String saisie="";
@@ -352,6 +497,14 @@ public class IhmCUI
 		
 	}
 
+	/**
+	* Test d'un placement de bâtiment.
+	*
+	* @param pos
+	*		Position du bâtiment.
+	*
+	* @return Vérifie si le bâtiment peut être placé.
+	*/
 	public boolean testBatiment(String pos)
 	{
 		int y =  pos.charAt(0) - (int) ('A');
@@ -365,6 +518,14 @@ public class IhmCUI
 	}
 
 	
+	/**
+	* Test d'un placement de tuile.
+	*
+	* @param pos
+	*		Position de la tuile.
+	*
+	* @return Vérifie si la tuile peut être placé.
+	*/
 	public boolean testTuileVide(String pos)
 	{
 		int y =  pos.charAt(0) - (int) ('A');
@@ -375,6 +536,9 @@ public class IhmCUI
 		return tester.getClass() == new TuileVide().getClass();		
 	}
 
+	/**
+	* Informations du bâtiment.
+	*/
 	public void getInfoBatiment()
 	{
 		String saisie = this.getSaisiePosBtm();
@@ -388,6 +552,12 @@ public class IhmCUI
 			System.out.println(this.getBatiment(x,y).infoBatiment()); 
 	}
 
+	/**
+	* Affiche la fin de la partie (tableau des scores et gagnant).
+	*
+	* @param tab
+	*			Tableau des joueurs.
+	*/
 	public void afficherFinDePartie( Joueur[] tab )
 	{
 		System.out.println( "\nPartie Terminé\n");

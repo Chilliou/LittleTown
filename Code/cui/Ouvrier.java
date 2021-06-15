@@ -12,9 +12,9 @@ public class Ouvrier
 
 	/**
 	* Constructeur de la classe
-	* @param iPostLigne
+	* @param iPosLigne
 	*		Position de l'ouvrier sur une ligne du plateau
-	* @param iPostColonne
+	* @param iPosColonne
 	*		Position de l'ouvrier sur une colonne du plateau
 	* @param jProprietaire
 	*		Proprietaire de l'ouvrier
@@ -30,6 +30,8 @@ public class Ouvrier
 	* Retourne le proprietaire de l'ouvrier.
 	*
 	* @return Propriétaire de l'ouvrier.
+	*
+	* @see Joueur
 	*/
 	public Joueur getProprietaire()
 	{

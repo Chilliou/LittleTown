@@ -1,12 +1,18 @@
 package littletown.cui;
 
 
+/**
+* Controleur du programme (permet de lancer l'application).
+*/
 public class Controleur
 {
 	private Metier metier;
 
 	private IhmCUI ihm;
 
+	/**
+	* Constructeur de la classe.
+	*/
 	public Controleur()
 	{
 		this.ihm     = new IhmCUI(this);
@@ -14,6 +20,9 @@ public class Controleur
 		this.lancerJeu();
 	}
 
+	/**
+	* Permets de lancer le jeu.
+	*/
 	private void lancerJeu()
 	{
 		int iAction;
@@ -73,59 +82,208 @@ public class Controleur
 		this.metier.finDePartie();
 	}
 
+	/**
+	* Informations d'une tuile sur le plateau selon sa position.
+	*
+	* @param x 
+	*		Position x de la tuile.
+	* @param y
+	*		Position y de la tuile.
+	*
+	* @return Informations de la tuile.
+	*
+	* @see Tuile
+	*/
 	public Tuile getTuile         ( int x, int y ) { return this.ihm.getTuile( x, y );     }
+
+	/**
+	* Informations d'une tuile vide sur le plateau selon sa position.
+	*
+	* @param x 
+	*		Position x de la tuile.
+	* @param y
+	*		Position y de la tuile.
+	*
+	* @return Informations de la tuile vide.
+	*
+	* @see TuileVide
+	*/
 	public TuileVide getTuileVide ( int x, int y ) { return this.ihm.getTuileVide( x, y ); }
+
+	/**
+	* Informations d'un bâtiment selon sa position sur le plateau.
+	*
+	* @param x 
+	*		Position x du bâtiment.
+	* @param y
+	*		Position y du bâtiment.
+	*
+	* @return Informations du bâtiment.
+	*
+	* @see TuileVide
+	*/
 	public Batiment getBatiment   ( int x, int y ) { return this.ihm.getBatiment( x, y );  }
+
+	/**
+	* Retourne le tour.
+	*
+	* @return Tour de la partie.
+	*/
 	public int getTour () { return this.metier.getTour() ; }
 
-
+	/**
+	* Permets de placer une tuile.
+	*
+	* @param x 
+	*		Position x du bâtiment.
+	* @param y
+	*		Position y du bâtiment.
+	* @param tuile
+	*		Tuile à placer.
+	*/
 	public void setTuile     ( int x, int y, Tuile tuile )     { this.ihm.setTuile( x, y, tuile ); }
+
+	/**
+	* Mer tuile à vide.
+	*
+	* @param x 
+	*		Position x de la tuile vide.
+	* @param y
+	*		Position y de la tuile vide.
+	* @param tuile
+	*		Tuile à mettre à vide.
+	*/
 	public void setTuileVide ( int x, int y, TuileVide tuile ) { this.ihm.setTuile( x, y, tuile ); }
 
+	/**
+	* Retourne la saisi du nombre de joueurs.
+	*
+	* @return Nombre de joueurs.
+	*/
 	public int getInitNbJoueurs()                { return this.ihm.saisienbJoueur();           }
+
+	/**
+	* Saisie du nom du joueur.
+	*	
+	* @param numJoueur
+	*				Numéro du joueur.
+	*
+	* @return Nom du joueur.
+	*/
 	public String saisieNomJoueur(int numJoueur) { return this.ihm.saisieNomJoueur(numJoueur); }
+
+	/**
+	* Retourne le nombre de joueurs de la partie.
+	*
+	* @return Nombre de joueurs.
+	*/
 	public int getNbJoueur()                     { return this.metier.getNbJoueur() ; }
 
+	/**
+	* Ajout d'un ouvrier.
+	*
+	* @param iNumJoueur
+	*			Numéro du joueur.
+	*/
 	public void addOuvrier(int iNumJoueur) { this.ihm.addOuvrier( iNumJoueur ); }
 
+	/**
+	* Informations sur la nourritures des ouvriers.
+	*
+	* @param j
+	*		Joueur
+	*/
 	public void nourrirOuvrierInfo(Joueur j) { this.ihm.nourrirOuvrierInfo(j); }
-
+	
+	/**
+	* Retourne les ouvriers à nourrir.
+	*
+	* @param ressource
+	*			Type de ressource
+	* @param iOuvrierNourri
+	*			Numéro de l'ouvrier à nourrir.
+	* @param iNbOuvrierTotint
+	*			Nombre des ouvriers à nourri
+	* @param j
+	*			Joueur
+	*
+	* @return Nourriture des ouvriers.
+	*/
 	public int nourrirOuvrier(char ressource, int iOuvrierNourri, int iNbOuvrierTotint, Joueur j)
 	{
 		return this.ihm.nourrirOuvrier (ressource, iOuvrierNourri, iNbOuvrierTotint, j);
 	}
 
+	/**
+	* Arrête de nourrir les ouvriers.
+	*
+	* @param iOuvrierNourri
+	*			Numéro de l'ouvrier à nourrir.
+	* @param iNbOuvrierTot
+	*			Nombre des ouvriers à nourri
+	* @param j
+	*			Joueur
+	*/
 	public void finNourrir( int iOuvrierNourri, int iNbOuvrierTot, Joueur j )
 	{
 		this.ihm.finNourrir(iOuvrierNourri, iNbOuvrierTot, j);
 	}
 
+	/**
+	* Vérifie si l'on peut enlever le blé.
+	*
+	* @return Le blé peut-il être enlevé ? (boolean).
+	*/
 	public boolean enleverBle ()
 	{
 		return this.ihm.enleverBle();
 	}
 
+	/**
+	* Evite les répétitions de demande de positions
+	*
+	* @return Saisie de la position.
+	*/
 	public String getSaisiePosVide()
 	{
 		return this.ihm.getSaisiePosVide	();
 	}
 
+	/**
+	* Retourne la position du bâtiment.
+	*
+	* @return Position du bâtiment.
+	*/
 	public String getSaisiePosBtm()
 	{
 		return this.ihm.getSaisiePosBtm	();
 	}
 
+	/**
+	* Informations du bâtiment.
+	*/
 	public void getInfoBatiment()
 	{
 		this.ihm.getInfoBatiment();
 	}
 
+	/**
+	* Affiche la fin de la partie (tableau des scores et gagnant).
+	*
+	* @param tab
+	*			Tableau des joueurs.
+	*/
 	public void afficherFinDePartie( Joueur[] tab )
 	{
 		this.ihm.afficherFinDePartie(tab);
 	}
 
-
+	/**
+	* Classe main du controleur.
+	*	
+	* @param a
+	*		Argument du main.
+	*/
 	public static void main(String[] a)
 	{
 		if (a.length == 1)

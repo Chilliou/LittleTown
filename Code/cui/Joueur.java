@@ -20,7 +20,12 @@ public class Joueur extends Banque
 	private boolean bAJouer;
 
 	/**
-	* Constructeur de la classe Joueur
+	* Constructeur de la classe Joueur.
+	*
+	* @param sCouleur
+	*			Couleur du joueur.
+	* @param sNom
+	*			Nom du joueur.
 	*/
 	public Joueur(String sCouleur, String sNom)
 	{
@@ -34,6 +39,12 @@ public class Joueur extends Banque
 		this.bAJouer     = false;
 	}
 
+	/**
+	* Méthode spécial.
+	*
+	* @param attribut
+	*			Nombre de ressources du joueur.
+	*/
 	public void masterClass(int attribut)
 	{
 		char[] rsc = {'P','A','E','C','M','S'};   
@@ -47,7 +58,7 @@ public class Joueur extends Banque
 	* @param b
 	*		Change de ressource avec un autre banque de joueur.
 	* @param rsc
-	*		Type de ressource
+	*		Type de ressource.
 	* @param iNb
 	*		Nombre de ressource a échanger.
 	*/
@@ -59,6 +70,9 @@ public class Joueur extends Banque
 
 	/**
 	* Change le score du joueur. Le changement du score peut être négatif ou positif.
+	*
+	* @param iScore
+	*			Score à changer.
 	*/
 	public void changeScore( int iScore ) { this.iScore += iScore; }
 	
@@ -79,7 +93,7 @@ public class Joueur extends Banque
 	/**
 	* Retourne le nom du joueur.
 	*
-	* @return Nom du joueur
+	* @return Nom du joueur.
 	*/
 	public String getNom    () { return this.sNom;       }
 
@@ -99,6 +113,9 @@ public class Joueur extends Banque
 
 	/**
 	* Savoir si le joueur à jouer ou pas.
+	*
+	* @param bJouer
+	*			Vérifie si le joueur peut effectuer une action.
 	*/
 	public void setAction(boolean bJouer) 
 	{
@@ -106,7 +123,10 @@ public class Joueur extends Banque
 	}
 
 	/**
-	* Met à jour le score du joueur.
+	* Met à jour le score du joueur et l'incrémente.
+	*
+	* @param i
+	*		Score.
 	*/
 	public void majScore(int i)
 	{
