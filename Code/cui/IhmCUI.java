@@ -25,7 +25,7 @@ public class IhmCUI
 	}
 
 	/**
-	* Affichage des deux plateau.
+	* Affichage des deux plateaux.
 	*/
 	public void afficher()
 	{
@@ -36,9 +36,9 @@ public class IhmCUI
 	}
 
 	/**
-	* Saisi du nombre de joueurs de la partie (min : 2 et max 4).
+	* Saisi du nombre de joueur de la partie (min : 2 et max 4).
 	*
-	* @return Nombre de joueurs.
+	* @return Nombre de joueur.
 	*/
 	public int saisienbJoueur()
 	{
@@ -64,7 +64,7 @@ public class IhmCUI
 
 
 	/**
-	* Retourne le numéro du plateau.
+	* Saisi du numéro du plateau.
 	*
 	* @return Numéro du plateau.
 	*/
@@ -201,14 +201,14 @@ public class IhmCUI
 	}
 
 	/**
-	* Met une tuile à vide.
+	* Remplace une tuile par une autre passé en paramètre.
 	*
 	* @param x 
 	*		Position x de la tuile vide.
 	* @param y
 	*		Position y de la tuile vide.
 	* @param tuile
-	*		Tuile à mettre à vide.
+	*		Nouvelle tuile.
 	*/
 	public void setTuileVide ( int x, int y, TuileVide tuile )
 	{
@@ -225,7 +225,7 @@ public class IhmCUI
 	}
 
 	/**
-	* Ajout d'un ouvrier sur le plateau.
+	* Ajout d'un ouvrier sur le plateau bas.
 	*
 	* @param iNumJoueur
 	*				Numéro du joueur.
@@ -279,10 +279,10 @@ public class IhmCUI
 
 
 	/**
-	* Averti l'utilisateur qu'il faut nourrir les ouvriers.
+	* Donne les informations pour nourir un ouvrier au joueur.
 	*
 	* @param j
-	*		Ouvrier du joueur à nourrir.
+	*		Joueur qui doit nourir ses ouvriers.
 	*/
 	public void nourrirOuvrierInfo(Joueur j)
 	{
@@ -294,16 +294,16 @@ public class IhmCUI
 	}
 
 	/**
-	* Initialisation du plateau bas de l'IHM.
+	* Récupère une tuile du plateau bas.
 	*
-	* @return Plateau bas
+	* @return Une tuile
 	*
 	* @see PlateauBas
 	*/
 	public Tuile[] getTuileIHM() { return this.plateauBas.getTuileIHM(); }
 
 	/**
-	* Permets de nourrir les ouvriers selon les ressources des joueurs.
+	* Permets de nourrir les ouvriers selon les ressources du joueur.
 	*
 	* @param ressource
 	*				Type de ressource.
@@ -314,7 +314,7 @@ public class IhmCUI
 	* @param j
 	*				Ouvrier du joueur.
 	*
-	* @return Ouvriers nourris. 
+	* @return Nombre d'ouvriers nourris. 
 	*/
 	public int nourrirOuvrier(char ressource, int iOuvrierNourri, int nbOuvrierTotint, Joueur j)
 	{
@@ -432,7 +432,7 @@ public class IhmCUI
 	/**
 	* Evite les répétitions de demande de positions
 	*
-	* @return Saisie de la position.
+	* @return Position.
 	*/
 	public String getSaisiePosVide()
 	{
@@ -471,7 +471,7 @@ public class IhmCUI
 	*/
 	public String getSaisiePosBtm()
 	{
-		String saisie="";
+		String saisie = "";
 		Scanner sc = new Scanner( System.in );
 
 		try
