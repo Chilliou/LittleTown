@@ -229,7 +229,10 @@ public class Metier
                     if(this.tabJoueurs[numJoueurActif].getRsc(bat.getCout().charAt(i))<Integer.parseInt(bat.getCout().charAt(i+1)+""))
                         return false;
 
-                // Du coup on peut ajouter le batiment 
+                // On regarde si le joueur n'a pas atteint la limite de batiment.
+                if ( this.tabJoueurs[numJoueurActif].getNbBatiment() >= this.nbMaxBatiment ) return false;
+
+                // Du coup on peut ajouter le batiment
                 for(int i=0;i<bat.getCout().length();i+=2)
                     this.tabJoueurs[numJoueurActif].echangerRscJoueurVBanque(this.banque,bat.getCout().charAt(i),Integer.parseInt(bat.getCout().charAt(i+1)+""));
 
@@ -241,7 +244,9 @@ public class Metier
                 this.ctrl.addOuvrier(this.numJoueurActif);
                 this.tabJoueurs[numJoueurActif].majScore(bat.getScore());
                 bat.setProprietaire(this.tabJoueurs[numJoueurActif]);
+                this.tabJoueurs[numJoueurActif].construireBatiment();
                 this.tabJoueurs[numJoueurActif].setAction(true);
+
 
                 return true;
 
@@ -273,7 +278,7 @@ public class Metier
             int xOuvrier = (Integer.parseInt(this.dernierOuvrierPos.charAt(1)+"")-1);
 
             int yTuile   =  coorTuile.charAt(0) - (int) ('A');
-            int xTuile   = (Integer.parseInt(coorTuile.charAt(1)+"")-1);
+            int xTuile   = (Integer.parseInt(coorTuile.charAt(1) + "")-1);
 
             // Vérifiaction des coordonnées de la tuile
             if ((xTuile == xOuvrier - 1 || xTuile == xOuvrier + 1 || xTuile == xOuvrier)
@@ -294,18 +299,18 @@ public class Metier
                     if ( bat.getProprietaire() != null  )
                     {
                         //Verif si il a les ressources néccésaire
-                        for(int i=0;i<bat.getCoutProd().length();i+=2)
+                        for(int i=0;i<bat.getCoutProd().length();i += 2)
                              if(this.tabJoueurs[numJoueurActif].getRsc(bat.getCoutProd().charAt(i))<Integer.parseInt(bat.getCoutProd().charAt(i+1)+""))
                                 return ;
 
                         //si le Proprietaire est différence du genre actuel
                         if(bat.getProprietaire() == this.tabJoueurs[this.numJoueurActif])
                         {
-                            for(int i=0;i<bat.getCoutProd().length();i+=2)
+                            for(int i=0;i<bat.getCoutProd().length();i += 2)
                             {
                                  this.tabJoueurs[numJoueurActif].echangerRscJoueurVBanque(this.banque,bat.getCoutProd().charAt(i),Integer.parseInt(bat.getCoutProd().charAt(i+1)+""));
                             }
-                            for(int i=0;i<bat.getRevientProd().length();i+=2)
+                            for(int i=0;i<bat.getRevientProd().length(); i+= 2)
                             {
                                 this.banque.echangerRscBanqueVJoueur(this.tabJoueurs[numJoueurActif],
                                                         bat.getRevientProd().charAt(i),

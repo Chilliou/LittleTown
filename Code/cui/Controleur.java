@@ -373,8 +373,9 @@ public class Controleur
 	*/
 	public static void main(String[] a)
 	{
-
-		new Controleur(a[0]);
-		
+		if (a.length != 0)
+			new Controleur(a[0]);
+		else
+			new Controleur("");
 	}
 }

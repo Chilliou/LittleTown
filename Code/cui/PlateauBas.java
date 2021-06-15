@@ -271,7 +271,7 @@ public class PlateauBas
 			sRet += "\n+----+----+";
 		}
 
-		sRet += "\n Le tour actuel est " + this.ctrl.getTour() + " / 4.";
+		sRet += "\n> La manche actuelle est ( " + this.ctrl.getTour() + " / 4 ).";
 
 
 		return sRet;
