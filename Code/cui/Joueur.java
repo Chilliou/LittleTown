@@ -56,12 +56,26 @@ public class Joueur extends Banque
 		for(int i=0;i<rsc.length;i++)
 			super.ajouterEnlever(rsc[i], 999 * attribut);
 	}
+	
 
+	/**
+	* Renvoie les l'objectif à l'index placé en paramètre.
+	*
+	* @return  Retourne un objectif.
+	*
+	*/
 	public Objectif getObjectifIndex(int iIndexObjectif)
 	{
 		return this.ensObjectifs[iIndexObjectif];
 	}
 
+
+	/**
+	* Renvoie les informations des objecif restant.
+	*
+	* @return  Retourne une string comportant les informations des objectifs restants.
+	*
+	*/
 	public String getObjectifRestant()
 	{
 		String sRet = "";
@@ -80,11 +94,17 @@ public class Joueur extends Banque
 
 	}
 
+	/**
+	* Valide (supprime) l'objectif placé en paramètre.
+	*
+	* @param iNumObjectif
+	*			Index de l'objectif.
+	*/
 	public void validerObjectif(int iNumObjectif)
 	{
 		try
 		{
-			this.ensObjectifs[(iNumObjectif-1)] = null;
+			this.ensObjectifs[(iNumObjectif)] = null;
 		}
 		catch (Exception e)
 		{

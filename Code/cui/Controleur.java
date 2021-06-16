@@ -19,7 +19,7 @@ public class Controleur
 	public Controleur(String mode)
 	{
 		this.ihm     = new IhmCUI(this);
-		this.metier  = new Metier(this);
+		this.metier  = new Metier(this, mode);
 		this.lancerJeu(mode);
 	}
 
@@ -289,6 +289,11 @@ public class Controleur
 		this.ihm.afficherFinDePartie(tab);
 	}
 
+	/**
+	* Affiche la fin de la partie (tableau des scores et gagnant).
+	*
+	* @return renvoie le numéro de l'objectif saisie par le joueur.
+	*/
 	public int getNumeroObjectif()
 	{
 		return this.ihm.getNumeroObjectif();
@@ -369,6 +374,8 @@ public class Controleur
 
 		this.metier.nourrirOuvrier();
 	}
+
+
 
 	/**
 	* Initialise le scénario de milieu de partie.

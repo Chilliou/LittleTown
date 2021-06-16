@@ -48,6 +48,26 @@ public class Banque
 
 		
 	}
+
+
+	/**
+	* Constructeur de la banque du joueur pour le scénario
+	* @param mode
+    *            Nombre de pieces du joueur
+	*/
+	public Banque(String mode)
+	{
+		this.iNbPierre = 0;
+		this.iNbBois   = 0;
+		this.iNbEau    = 0;
+		this.iNbBle    = 0;
+
+		this.iNbPiece  = 20;
+		
+		this.iScore    = 0;
+
+		
+	}
 	
 	/**
 	* Affiche les informations d'une ressource spécifié en paramètre de la méthode.

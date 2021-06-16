@@ -265,8 +265,8 @@ public class IhmCUI
 	public int getChoix()
 	{
 		String sChoix;
-		int iChoix;
-		String saisieChoix="";
+		int    iChoix;
+		String saisieChoix = "";
 
 		sChoix  = "+-----------------------------------------------+\n";
 		sChoix += "| > Action possibles:                           |\n";

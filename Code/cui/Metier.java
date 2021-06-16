@@ -45,9 +45,13 @@ public class Metier
     * @param ctrl
     *           Controleur
     */
-    public Metier(Controleur ctrl)
+    public Metier(Controleur ctrl, String mode)
     {
-        this.banque = new Banque();
+        if ( mode.equals("bv") )
+            this.banque = new Banque('V');
+        else
+            this.banque = new Banque();
+        
 
         this.ctrl               = ctrl;
         this.dernierOuvrierPos  = null;
@@ -92,7 +96,11 @@ public class Metier
     */
     public Joueur[] getTabJoueurs() { return this.tabJoueurs; }
 
-
+    /**
+    * Initialise les objectifs à partir du fichir .data
+    *
+    *
+    */
     public void initObjectif()
     {
         this.ensObjectifs = new ArrayList<Objectif>();
@@ -119,13 +127,25 @@ public class Metier
 		catch (Exception e) { e.printStackTrace(); }
 
     }
-
+    /**
+    * Valide l'objectif selectionné par le joueur.
+    *
+    */
     public void validerObjectif()
     {
-        
-        Objectif objectifTemp = this.tabJoueurs[numJoueurActif].getObjectifIndex(this.ctrl.getNumeroObjectif());
-        this.tabJoueurs[numJoueurActif].changeScore(objectifTemp.getScore());
-        this.tabJoueurs[numJoueurActif].validerObjectif(1);
+        int iNumObjectif;
+        iNumObjectif = this.ctrl.getNumeroObjectif()-1;
+        try
+        {
+            Objectif objectifTemp = this.tabJoueurs[numJoueurActif].getObjectifIndex(iNumObjectif);
+            this.tabJoueurs[numJoueurActif].changeScore(objectifTemp.getScore());
+            this.tabJoueurs[numJoueurActif].validerObjectif(iNumObjectif);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Erreur lors de l'opération.");
+        }
+
     }
 
     /**
