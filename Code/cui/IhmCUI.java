@@ -144,6 +144,16 @@ public class IhmCUI
 	}
 
 	/**
+	* Renvoie le nombre de blé restant.
+	*
+	* @return Renvoie le nombre de blé.
+	*/
+	public int getNbBle()
+	{
+		return this.plateauBas.getNbBle();
+	}
+
+	/**
 	* Informations d'une tuile sur le plateau selon sa position.
 	*
 	* @param x 

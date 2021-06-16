@@ -288,6 +288,9 @@ public class Metier
 								
                 if( terrain.getOuvrier() != null )
                     return false;
+                
+                if (bat.getNom().equals("Blé") && ( this.ctrl.getNbBle() <= 0 ) )
+                    return false;
 
                 for(int i=0;i<bat.getCout().length();i+=2)
                     if(this.tabJoueurs[numJoueurActif].getRsc(bat.getCout().charAt(i))<Integer.parseInt(bat.getCout().charAt(i+1)+""))

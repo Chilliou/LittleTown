@@ -26,7 +26,7 @@ public class PlateauBas
     * Constructeur de la classe.
     *
     * @param ctrl
-    *           Controleur
+    *           ControleurNb
     */
 	public PlateauBas(Controleur ctrl)
 	{
@@ -74,6 +74,19 @@ public class PlateauBas
 		}
 
 	}
+
+
+	/**
+    * Récupère le nombre de blé restant
+    *
+    * @return retourne le nombre de blé.
+    */
+	public int getNbBle()
+	{
+		return this.iNbBle;
+	}
+
+
 	
 	/**
     * Initialise les tuiles du plateau.

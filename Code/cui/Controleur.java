@@ -207,6 +207,19 @@ public class Controleur
 	*/
 	public void nourrirOuvrierInfo(Joueur j) { this.ihm.nourrirOuvrierInfo(j); }
 	
+
+	/**
+	* Renvoie le nombre de blé restant.
+	*
+	* @return Renvoie le nombre de blé.
+	*/
+	public int getNbBle()
+	{
+		return this.ihm.getNbBle();
+	}
+
+
+
 	/**
 	* Retourne les ouvriers à nourrir.
 	*
