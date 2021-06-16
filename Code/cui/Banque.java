@@ -170,11 +170,11 @@ public class Banque
 	*/
 	public String toString ()
 	{
-		return  "Nombre de Pierre : " + this.iNbPierre + "\n" +
-		        "Nombre de Arbre  : " + this.iNbBois   + "\n" +
-		        "Nombre d'eau     : " + this.iNbEau    + "\n" +
-		        "Nombre de Ble    : " + this.iNbBle    + "\n" +
-		        "Nombre de Piece  : " + this.iNbPiece  ;
+		return  "Nombre de Pierre   : " + this.iNbPierre + "\n" +
+		        "Nombre de Arbre    : " + this.iNbBois   + "\n" +
+		        "Nombre d' Eau      : " + this.iNbEau    + "\n" +
+		        "Nombre de Céréale  : " + this.iNbBle    + "\n" +
+		        "Nombre de Piece    : " + this.iNbPiece  ;
 	}
 
 }

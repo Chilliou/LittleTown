@@ -217,7 +217,7 @@ public class Joueur extends Banque
 		
 		sRet += super.toString();
 		
-		sRet += "\n" + "Nombre de Point  : " + this.iScore;
+		sRet += "\n" + "Nombre de Point    : " + this.iScore;
 
 		sRet += "\n\n" + "Objectif(s) restant(s):";
 		sRet += "\n" + this.getObjectifRestant();

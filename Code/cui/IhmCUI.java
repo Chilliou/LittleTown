@@ -365,7 +365,7 @@ public class IhmCUI
 					}
 					else
 					{
-						System.out.println( "Ressource insufisante" );
+						System.out.println( "Ressource insufisante." );
 					}
 
 				}
@@ -387,7 +387,7 @@ public class IhmCUI
 					}
 					else
 					{
-						System.out.println( "Ressource insufisante" );
+						System.out.println( "Ressource insufisante." );
 					}
 				}
 	
@@ -402,7 +402,7 @@ public class IhmCUI
 
 					if ( j.getRsc('M') >= iSaisi )
 					{
-						while ( iSaisi >= 3 )
+						while ( iSaisi >= 3 && (iNouveauNbOuvrierNourri < iOuvrierNourri-1) )
 						{
 							iSaisi                  -= 3;
 							iNouveauNbOuvrierNourri += 1;
@@ -410,7 +410,7 @@ public class IhmCUI
 					}
 					else
 					{
-						System.out.println( "Ressource insufisante" );
+						System.out.println( "Ressource insufisante." );
 					}
 
 				}
